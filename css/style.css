@@ -1,0 +1,215 @@
+/*--Home--*/
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-height: 100vh;
+
+  text-align: center;
+
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.logo-home {
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+
+.menu {
+  font-size: 14px;
+
+  margin-top: 30px;
+
+  padding: 12px 20px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+}
+
+.menu-principal {
+   display: flex;
+   gap: 80px;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+.menu-principal > li {
+   position: relative;
+}
+
+.home h5, h1 {
+    justify-content: center;
+}
+
+.home h5 {
+    margin-top: 30px;
+}
+
+
+.dropbtn {
+  background-color: #2f5e2f;
+  font-weight: 700;
+  border: none;
+  color:#ffffff;
+  width: 100%;
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.dropbtn:hover {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.2em;
+  background-color: rgb(143, 188, 143);
+  transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/*--Calculadora Quinquênio--*/
+
+.cabecalho {
+    position: relative;
+    height: 180px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 0;
+    
+}
+
+.quinquenio-box {
+  margin: 50px auto;
+  margin-top: 30px;
+  text-align:  center;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+.quinquenio-box h4 {
+  margin-bottom: 20px;
+}
+
+.quinquenio-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.quinquenio-box input {
+  width: 100%;
+  max-width: 250px;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+.quinquenio-box button {
+  padding: 10px 20px;
+  background-color: #2f5e2f;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#resultado {
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.logo img {
+  width: 350px;
+  text-align: center;
+}
+
+header img {
+    position: relative;
+}
+
+.btn {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  margin-left: auto;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #2f5e2f;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+}
+
+.btn:hover {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9em;
+  background-color: rgb(143, 188, 143);
+
+}
+
+.rodape {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    margin-top: 80px;
+    padding-top: 20px;
+}
+
+.rodape img {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+
+@media print {
+
+  .button-pdf {
+    display: none;
+  }
+
+}
+
+@page {
+  margin: 2cm;
+}
+
+@media print {
+
+  .btn {
+    display: none;
+  }
+
+}
+
+@media print {
+
+  .rodape {
+ 
+    bottom: 0;
+
+    width: 100%;
+
+    margin-top:25px;
+
+    padding-bottom: 0;
+  }
+
+}
