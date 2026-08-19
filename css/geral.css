@@ -59,7 +59,7 @@ body {
 .menu-principal {
    display: flex;
    flex: 2;
-   gap: 60px;
+   gap: 80px;
    justify-content: center;
    align-items: flex-start;
 }
