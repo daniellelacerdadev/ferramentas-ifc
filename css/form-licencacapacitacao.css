@@ -18,6 +18,7 @@ p {
   margin: 30px;
   background-color: var(--cor-fundo);
   border: solid 1px var(--cor-border-rodape);
+  border-radius: 8px;
 }
 
 legend {
@@ -35,12 +36,7 @@ legend {
    
 }
 
-.linha {
-  display: block;
-  margin: 20px;
-}
-
-.quantidade, .acoes {
+.linha, .quantidade, .acoes {
   display: block;
   margin: 20px;
 }
@@ -48,6 +44,13 @@ legend {
 .sub-acao {
   display: block;
   margin-left: 30px;
+}
+
+.manifestacao {
+  display: flex;
+  margin: 20px;
+  gap: 30px;
+
 }
 
 .campo input,
@@ -200,24 +203,19 @@ legend {
   display: inline;
 }
 
-.quantidade, .acoes {
-  display: block;
-  margin: 20px;
-}
-
 .acoes-onus {
   display: flex;
   gap: 30px;
   margin: 10px;
 }
 
-.sub-acao {
-  display: block;
-  margin-left: 30px;
-}
-
 .quantidadedias input {
   margin: 10px;
+}
+
+.obs {
+  font-style: italic;
+  font-weight: 600;
 }
 
 .importante {
@@ -303,175 +301,3 @@ legend {
 /*
 
 
-.cardPeriodo{
-    position:relative;
-    border-radius:12px;
-    transition:.25s;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    width: fit-content;
-    min-width: 220px;
-    max-width: 420px;
-    background-color: var(--cor-branco);
-    color:var(--cor-verde-principal);
-    border: solid 2px var(--cor-verde-principal);
-    padding: 10px 40px 10px 40px;
-    cursor: pointer;
-}
-
-.cardPeriodo:hover {
-    position:relative;
-    border-radius:12px;
-    transition:.25s;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    width: fit-content;
-    min-width: 220px;
-    max-width: 420px;
-    background-color: var(--cor-verde-principal-hover);
-    color:var(--cor-verde-principal);
-    border: solid 2px var(--cor-verde-principal);
-    padding: 10px 40px 10px 40px;
-    cursor: pointer;
-}
-
-.cardPeriodo i {
-  width: 20px;
-  position: absolute;
-  top: 15px;
-  left: 10px;
-  color: var(--cor-verde-principal);
-}
-
-
-.cardPeriodo:has(input:checked){
-    background: var(--cor-verde-principal);
-    color: var(--cor-branco);
-    padding-right: 40px;
-    padding-left: 40px;
-}
-
-.cardPeriodo:has(input:checked)::after{
-    content:"✔";
-    position:absolute;
-    font-weight: 600;
-    top:10px;
-    right:15px;
-    font-size:18px;
-    color: var(--cor-branco);
-}
-
-
-.valida, .campo-intersticio {
-  margin: 20px;
-}
-
-.valida input {
-  margin-left: 20px;
-  border-radius: 8px;
-  padding: 3px;
-  background-color: var(--cor-fundo-input);
-  border: 1px solid var(--cor-verde-principal-hover);
-}
-
-.campo-intersticio input:focus {
-  border-radius: 8px;
-  border: 2px solid var(--cor-verde-principal-hover);
-  padding: 3px;
-  outline: none;
-  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
-}
-
-
-
-h5 {
-  font-weight: 700;
-}
-
-
-
-.cardParcelamento input {
-  display: none;
-}
-
-.cardsParcelamento {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-
- .cardParcelamento {
-  position: relative;
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 500;
-  width: fit-content;
-  min-width: 220px;
-  max-width: 420px;
-  background-color: var(--cor-branco);
-  color:var(--cor-verde-principal);
-  border: 2px solid var(--cor-verde-principal);
-  padding: 10px 40px 10px 30px;
-  border-radius: 8px;
-  cursor: pointer;
- }
-
- .cardParcelamento:hover {
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 600;
-  width: fit-content;
-  min-width: 220px;
-  max-width: 420px;
-  background-color: var(--cor-verde-principal-hover);
-  color:var(--cor-verde-principal);
-  border: 2px solid var(--cor-verde-principal);
-  padding: 10px 40px 10px 30px;
-  border-radius: 8px;
-  padding-right: 40px;
-  cursor: pointer;
-  transition: .3s;
-  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
- }
-
- .cardParcelamento:has(input:checked)::after{
-    content:"✔";
-    position:absolute;
-    font-weight: 600;
-    top:10px;
-    right:15px;
-    font-size:18px;
-    color: var(--cor-branco);
-}
-
- .cardParcelamento:has(input:checked){
-    background: var(--cor-verde-principal);
-    color: var(--cor-branco);
-}
-
-
-
-.mensagem-ok {
-    color: var(--cor-verde-principal);
-    font-weight: 600;
-    margin: 20px 0 20px 20px ;
-    font-size: 1.1rem;
-}
-
-.mensagem-alerta {
-    color: var(--texto-alerta);
-    font-weight: 600;
-    margin: 20px 0 20px 20px ;
-    font-size: 1.1rem;
-}
-
-.mensagem-erro {
-    color: var(--texto-erro);
-    font-weight: 600;
-    margin: 20px 0 20px 20px ;
-    font-size: 1.1rem;
-}

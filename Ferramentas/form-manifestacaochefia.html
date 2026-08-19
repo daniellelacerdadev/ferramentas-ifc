@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+    crossorigin="anonymous">
+     <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="/css/geral.css">
+    <link rel="stylesheet" type="text/css" href="/css/form-licencacapacitacao.css">
+
+     <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/1e631c2bc0.js" crossorigin="anonymous"></script>
+  
+  <title>Formulário de Manifestação da Chefia</title>
+</head>
+
+<body>
+  <header class="cabecalho">
+
+    <div class="logo">
+      <img src="/assets/logo_gov.png" width="400"  alt="Logo do governo e dados do órgão de emissão">
+    </div>
+
+    <nav>
+      <a
+        href="/index.html"
+        class="btn btn-outline-rosa">
+
+          Voltar ao Menu Principal
+
+      </a>
+    </nav>
+  </header>
+
+  <section>
+    <h3>FORMULÁRIO DE MANIFESTAÇÃO DA CHEFIA SOBRE REQUERIMENTO DE LICENÇA CAPACITAÇÃO DE SERVIDOR </h3>
+    <h6>(Lei nº 8.112/90, Decreto nº 9.991/2019 e Resolução CONSUPER nº 35/2025)</h6>
+
+    <form action="">
+      <fieldset class="sectioncard">
+      <legend>I – DADOS DO SERVIDOR REQUERENTE E DO RESPECTIVO REQUERIMENTO:</legend>
+        <div class="linha-dupla">
+          <div class="campo-grande">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" name="nome" id="nome" required>
+          </div>
+          <div class="campo-grande">
+            <label for="cargo">Cargo:</label>
+             <input type="text" name="cargo" id="cargo" required>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo-inline">
+            <label for="matricula">Matrícula SIAPE:</label>
+             <input type="text" name="matricula" id="matricula" inputmode="numeric" pattern="[0-9]{7}" minlength="7"
+                maxlength="7" required>
+          </div>
+          <div class="campo-inline">
+            <label for="cpf">CPF:</label>
+             <input type="text" name="cpf" id="cpf" size="14" maxlength="14" required>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="lotacao">Unidade de Lotação:</label>
+            <select name="lotacao" id="lotacao" required>
+              <option value="" disabled selected>Selecione uma unidade</option>
+              <option value="abelardo-luz">Campus Abelardo Luz</option>
+              <option value="araquari">Campus Araquari</option>
+              <option value="blumenau">Campus Blumenau</option>
+              <option value="brusque">Campus Brusque</option>
+              <option value="camboriu">Campus Camboriú</option>
+              <option value="campos-novos">Campus Campos Novos</option>
+              <option value="concordia">Campus Concórdia</option>
+              <option value="fraiburgo">Campus Fraiburgo</option>
+              <option value="ibirama">Campus Ibirama</option>
+              <option value="luzerna">Campus Luzerna</option>
+              <option value="rio-do-sul">Campus Rio do Sul</option>
+              <option value="sao-bento">Campus São Bento do Sul</option>
+              <option value="sao-francisco">Campus São Francisco do Sul</option>
+              <option value="santa-rosa">Campus Santa Rosa do Sul</option>
+              <option value="sombrio">Campus Sombrio</option>
+              <option value="videira">Campus Videira</option>
+              <option value="reitoria">Reitoria Administrativa</option>
+            </select>
+          </div>
+          <div class="campo-medio">
+            <label for="email">E-mail Institucional:</label>
+             <input type="email" name="email" id="email" required>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="data-inicio">Requer a licença Capacitação para o período de:</label>
+            <input type="date" name="data-inicio" id="data-inicio" class="campo-data" required>
+            <label for="data-fim">a</label>
+            <input type="date" name="data-fim" id="data-fim" class="campo-data"
+       readonly>
+          </div>
+          <div class="campo">
+            <label for="qtdade">por:</label>
+            <select type="number" name="qtdade" id="qtdade">
+              <option value="" disabled selected>Selecione uma quantidade</option>
+              <option value="q15">15 dias</option>
+              <option value="q30">30 dias</option>
+              <option value="q45">45 dias</option>
+              <option value="q60">60 dias</option>
+              <option value="q75">75 dias</option>
+              <option value="q90">90 dias</option>
+            </select>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div>
+            <label for="nome-acao">Para a participação de: </label>
+            <textarea class="espaco-maior" name="nome-acao" id="nome-acao" required></textarea>
+           </div>
+           <div class="campo-medio">
+            <label for="promotora"> Instituição (ões) promotora (s) da ação de capacitação:  </label>
+              <input type="text" name="promotora" id="promotora" required>
+           </div>
+        </div>
+      </fieldset> 
+      <fieldset class="sectioncard">
+        <legend>II - MANIFESTAÇÃO DA CHEFIA-IMEDIATA</legend>
+          <div class="manifestacao">
+          <div>
+            <input type="radio" name="manifestacao" id="deacordo" value="sim" required>
+            <label for="licenca-nao"> De acordo com a solicitação </label>
+          </div>
+          <div>
+            <input type="radio" name="manifestacao" id="contra" value="não">
+            <label for="licenca-sim"> Não estou de acordo com a solicitação </label>
+          </div>
+        </div>
+        <div class="linha">
+          <div>
+            <label for="observacao-chefia">Observações ou justificativa da manifestação da chefia (opcional):</label>
+            <textarea class="espaco-maior" name="observacao-chefia" id="observacao-chefia"></textarea>
+          </div>
+          <div class="linha">
+            <p class="obs">A manifestação da chefia é opcional quanto à apresentação de observações, salvo em caso de não concordância.</p>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="sectioncard">
+        <legend>III - DADOS DA CHEFIA IMEDIATA DO REQUERENTE</legend>
+          <div class="linha-dupla">
+            <div class="campo-inline">
+              <label for="chefia">Nome da Chefia imediata:</label>
+              <input type="text" name="chefia" id="chefia" required>
+            </div>
+            <div>
+              <label for="data-atual">Data: </label>
+                <input class="campo-data" type="date" name="data-atual" id="data-atual" >
+              
+            </div>
+
+          </div>
+      </fieldset>
+      <div class="submit">
+        <input type="submit" id="envio" class="btn-submit">
+      </div>
+    </form>
+  </section>
+
+  <footer class="rodape">
+
+          <img src="assets/logo_ifc.png" class="logoifc"  alt="Logo IFC">
+
+          <div class="endereco">  
+
+           <p>Rua das Missões, 100</p>
+           <p>Bairro: Ponta Aguda</p>
+           <p>Blumenau-SC</p>
+           <p>CEP: 89.051-000</p>
+
+       </footer>
+
+
+
+
+
+
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/js/form-licencacapacitacao.js" defer></script>
+    <script src="/js/gerar-pdf.js" defer></script>
+
+</body>
+</html>

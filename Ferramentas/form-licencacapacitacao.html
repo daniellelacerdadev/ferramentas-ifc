@@ -9,25 +9,25 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
     crossorigin="anonymous">
      <!-- Estilo customizado -->
-    <link rel="stylesheet" type="text/css" href="css/geral.css">
-    <link rel="stylesheet" type="text/css" href="css/form-licencacapacitacao.css">
+    <link rel="stylesheet" type="text/css" href="/css/geral.css">
+    <link rel="stylesheet" type="text/css" href="/css/form-licencacapacitacao.css">
 
      <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/1e631c2bc0.js" crossorigin="anonymous"></script>
   
-  <title>Formulário de Reserva para Licença Capacitação</title>
+  <title>Formulário de Solicitação para Licença Capacitação</title>
 </head>
 
 <body>
   <header class="cabecalho">
 
     <div class="logo">
-      <img src="assets/logo_gov.png" width="400"  alt="Logo do governo e dados do órgão de emissão">
+      <img src="/assets/logo_gov.png" width="400"  alt="Logo do governo e dados do órgão de emissão">
     </div>
 
     <nav>
       <a
-        href="index.html"
+        href="/index.html"
         class="btn btn-outline-rosa">
 
           Voltar ao Menu Principal
@@ -119,7 +119,7 @@
             <p>Já usufruiu de licença capacitação referente ao quinquênio solicitado?</p>
             <input type="radio" name="licenca-anterior" id="licenca-nao" value="nao" required>
             <label for="licenca-nao"> Não</label>
-            <input type="radio" name="licenca-anterior" id="licenca-sim" value="sim" required>
+            <input type="radio" name="licenca-anterior" id="licenca-sim" value="sim">
             <label for="licenca-sim"> Sim</label>
           </div>
         </div>
@@ -184,7 +184,7 @@
         <div class="acoes">
           <div>
             <label>
-            <input type="radio" name="acao" id="acao-desenvolvimento" value="desenvolvimento">
+            <input type="radio" name="acao" id="acao-desenvolvimento" value="desenvolvimento" required>
             Ações de desenvolvimento presenciais ou à distância;
             </label>
           </div>
@@ -224,24 +224,24 @@
         <div class="linha">
           <div class="campo-medio">
             <label for="promotora"> Instituição (ões) promotora (s) da ação de capacitação:  </label>
-              <input type="text" name="promotora" id="promotora">
+              <input type="text" name="promotora" id="promotora" required>
           </div>
         </div>
        
         <div class="linha">
           <div>
             <label for="nome-acao">Nome da (s) ação (ações) de capacitação: </label>
-            <textarea class="espaco-maior" name="nome-acao" id="nome-acao"></textarea>
+            <textarea class="espaco-maior" name="nome-acao" id="nome-acao" required></textarea>
           </div>
         </div>
         <div class="linha-dupla">
           <div class="campo">
             <label for="carga-horaria">Carga horária total: </label>
-            <input name="carga" id="carga">
+            <input name="carga" id="carga" required>
           </div>
           <div class="campo-inline">
             <label for="local">Cidade/UF/País: </label>
-            <input name="local" id="local">
+            <input name="local" id="local" required>
           </div>
         </div>
         <div id="mensagemcargahoraria"></div>
@@ -252,8 +252,8 @@
           </p>
 
           <label>
-            <input type="checkbox" name="relevancia" value="pdp">
-            Está prevista ou relacionada ao PDP do IFC. — [<a href="assets/documentos/PDP-2026.pdf" target="_blank"
+            <input type="checkbox" name="relevancia" value="pdp" required>
+            Está prevista ou relacionada ao PDP do IFC. — [<a href="/assets/documentos/PDP-2026.pdf" target="_blank"
             rel="noopener noreferrer">Consultar PDP em PDF</a>]
           </label>
 
@@ -362,7 +362,7 @@ informações prestadas e a autenticidade das cópias dos documentos que devem s
           </div>
 
           <div class="importante">
-           <span><img src="assets/triangle-exclamation-solid-full.svg"> <h3>Importante</h3></span>
+           <span><img src="/assets/triangle-exclamation-solid-full.svg"> <h3>Importante</h3></span>
             <p>
                A solitação da licença será enviada para 
               o e-mail institucional informado. 
@@ -400,8 +400,8 @@ informações prestadas e a autenticidade das cópias dos documentos que devem s
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="js/form-licencacapacitacao.js" defer></script>
-    <script src="js/gerar-pdf.js" defer></script>
+    <script src="/js/form-licencacapacitacao.js" defer></script>
+    <script src="/js/gerar-pdf.js" defer></script>
 
 </body>
 </html>
