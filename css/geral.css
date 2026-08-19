@@ -92,7 +92,7 @@
 .botao:hover {
   color: var(--cor-branco);
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: .9rem;
   background-color: var(--cor-verde-principal-hover);
   transition: 0.3s;
 }
