@@ -1,6 +1,7 @@
 /*--cores--*/
 
 :root {
+--tamanho-fonte: 14px;
 --cor-verde-principal: #2f5e2f;
 --cor-verde-principal-hover: rgb(143, 188, 143);
 --cor-branco: #ffffff;
@@ -11,6 +12,15 @@
 --texto-alerta: #d68910;
 --texto-erro:  #c62828;
 }
+
+body {
+  font-size: var(--tamanho-fonte);
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+
 
 /*--Home--*/
 
@@ -47,9 +57,9 @@
 }
 
 .menu-principal {
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   gap: 40px;
+   display: flex;
+   flex: 2;
+   gap: 60px;
    justify-content: center;
    align-items: flex-start;
 }
@@ -79,6 +89,7 @@
   background-color: var(--cor-verde-principal);
   font-weight: 700;
   border: none;
+  font-size: 1rem;
   color: var(--cor-branco);
   width: 100%;
   padding: 10px 24px;
