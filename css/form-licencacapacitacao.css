@@ -1,0 +1,477 @@
+/*-- Formulário de Reserva de vaga para Licença Capacitação --*/
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+h3, h6 {
+  text-align: center;
+  font-weight: 700;
+}
+
+p {
+  margin: 10px;
+}
+
+.sectioncard {
+  margin: 30px;
+  background-color: var(--cor-fundo);
+  border: solid 1px var(--cor-border-rodape);
+}
+
+legend {
+  color: var(--cor-verde-principal);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.linha-dupla { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 15px;
+    margin: 15px;
+   
+}
+
+.linha {
+  display: block;
+  margin: 20px;
+}
+
+.quantidade, .acoes {
+  display: block;
+  margin: 20px;
+}
+
+.sub-acao {
+  display: block;
+  margin-left: 30px;
+}
+
+.campo input,
+.campo select, 
+.campo-intersticio input {
+  border-radius: 8px;
+  margin-left: 3px;
+  padding: 3px;
+  outline: none;
+  background-color: var(--cor-fundo-input);
+  border: 1px solid var(--cor-verde-principal-hover);
+}
+
+
+ .campo input:focus-visible,
+ .campo select:focus-visible {
+   border-radius: 8px;
+   margin-left: 3px;
+   border: 2px solid var(--cor-verde-principal-hover);
+   padding: 3px;
+   outline: 2px solid var(--cor-fundo-input);
+   outline-offset: 2px;
+   box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+.campo-data {
+  display: inline-block;
+  width: 120px;
+  max-width: fit-content;
+  border-radius: 8px;
+  margin-left: 3px;
+  padding: 3px;
+  outline: none;
+  background-color: var(--cor-fundo-input);
+  border: 1px solid var(--cor-verde-principal-hover);
+}
+
+.campo-data:focus-visible {
+   border-radius: 8px;
+   margin-left: 3px;
+   border: 2px solid var(--cor-verde-principal-hover);
+   padding: 3px;
+   outline: 2px solid var(--cor-fundo-input);
+   outline-offset: 2px;
+   box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+.campo-grande input {
+  display: inline-block;
+  text-align: left;
+  margin-left: 3px;
+  min-width: 350px;
+  max-width: 100%;
+  border: 1px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  color: var(--cor-preto);
+  background-color: var(--cor-fundo-input);
+  font-size: 1em;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.campo-grande input:focus-visible {
+  border: 2px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  outline: 2px solid var(--cor-fundo-input);
+  outline-offset: 2px;
+  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+.campo-medio input {
+  display: inline-block;
+  text-align: left;
+  margin-left: 3px;
+  min-width: 300px;
+  max-width: 100%;
+  border: 1px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  color: var(--cor-preto);
+  background-color: var(--cor-fundo-input);
+  font-size: 1em;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.campo-medio input:focus-visible {
+  border: 2px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  outline: 2px solid var(--cor-fundo-input);
+  outline-offset: 2px;
+  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+.campo-inline input {
+  display: inline-block;
+  text-align: left;
+  min-width: 100px;
+  max-width: 100%;
+  border: 1px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  color: var(--cor-preto);
+  background-color: var(--cor-fundo-input);
+  font-size: 1em;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.campo-inline input:focus-visible {
+  border: 2px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  outline: 2px solid var(--cor-fundo-input);
+  outline-offset: 2px;
+  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+.espaco-maior {
+  display: block;
+  text-align: left;
+  margin-left: 3px;
+  width: 100%;
+  max-width: 700px;
+  min-height: 80px;
+  box-sizing: border-box;
+  border: 1px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--cor-preto);
+  background-color: var(--cor-fundo-input);
+  font-size: 1em;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.espaco-maior:focus-visible {
+   border: 2px solid var(--cor-verde-principal-hover);
+  border-radius: 8px;
+  padding: 3px;
+  outline: 2px solid var(--cor-fundo-input);
+  outline-offset: 2px;
+  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+.razao {
+  display: inline;
+}
+
+.quantidade, .acoes {
+  display: block;
+  margin: 20px;
+}
+
+.acoes-onus {
+  display: flex;
+  gap: 30px;
+  margin: 10px;
+}
+
+.sub-acao {
+  display: block;
+  margin-left: 30px;
+}
+
+.quantidadedias input {
+  margin: 10px;
+}
+
+.importante {
+  margin: 30px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid var(--cor-verde-principal);
+  background-color: var(--cor-fundo);
+}
+
+.importante h3 {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+ .importante img {
+  margin-top: -10px;
+  width: 40px;
+ }
+
+ .btn-submit {
+  top: 70px;
+  right: 20px;
+  margin-left: 30px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: var(--cor-verde-principal);
+  color: var(--cor-branco);
+  border: none;
+}
+
+.btn-submit:hover {
+  top: 70px;
+  right: 20px;
+  margin-left: 30px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: var(--cor-verde-principal-hover);
+  color: var(--cor-verde-principal);
+  border: none;
+}
+
+.mensagem-ok {
+    color: var(--cor-verde-principal);
+    font-weight: 600;
+    margin: 20px 0 20px 20px ;
+    font-size: 1rem;
+}
+
+.mensagem-alerta {
+    color: var(--texto-alerta);
+    font-weight: 600;
+    margin: 20px 0 20px 20px ;
+    font-size: 0.9rem;
+}
+
+.mensagem-erro {
+    color: var(--texto-erro);
+    font-weight: 600;
+    margin: 20px 0 20px 20px ;
+    font-size: 0.9rem;
+}
+
+/*== CARDS DAS SEÇÕES ==*/
+
+.sectioncard {
+    position: relative;
+    transition: .3s;
+}
+
+.sectioncard.concluido {
+    border: 2px solid var(--cor-verde-principal);
+    background-color: var(--cor-fundo);
+}
+
+.sectioncard.concluido legend::after {
+    content: " ✓";
+    color: var(--cor-verde-principal);
+    font-weight: 700;
+}
+/*
+
+
+.cardPeriodo{
+    position:relative;
+    border-radius:12px;
+    transition:.25s;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    width: fit-content;
+    min-width: 220px;
+    max-width: 420px;
+    background-color: var(--cor-branco);
+    color:var(--cor-verde-principal);
+    border: solid 2px var(--cor-verde-principal);
+    padding: 10px 40px 10px 40px;
+    cursor: pointer;
+}
+
+.cardPeriodo:hover {
+    position:relative;
+    border-radius:12px;
+    transition:.25s;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    width: fit-content;
+    min-width: 220px;
+    max-width: 420px;
+    background-color: var(--cor-verde-principal-hover);
+    color:var(--cor-verde-principal);
+    border: solid 2px var(--cor-verde-principal);
+    padding: 10px 40px 10px 40px;
+    cursor: pointer;
+}
+
+.cardPeriodo i {
+  width: 20px;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  color: var(--cor-verde-principal);
+}
+
+
+.cardPeriodo:has(input:checked){
+    background: var(--cor-verde-principal);
+    color: var(--cor-branco);
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.cardPeriodo:has(input:checked)::after{
+    content:"✔";
+    position:absolute;
+    font-weight: 600;
+    top:10px;
+    right:15px;
+    font-size:18px;
+    color: var(--cor-branco);
+}
+
+
+.valida, .campo-intersticio {
+  margin: 20px;
+}
+
+.valida input {
+  margin-left: 20px;
+  border-radius: 8px;
+  padding: 3px;
+  background-color: var(--cor-fundo-input);
+  border: 1px solid var(--cor-verde-principal-hover);
+}
+
+.campo-intersticio input:focus {
+  border-radius: 8px;
+  border: 2px solid var(--cor-verde-principal-hover);
+  padding: 3px;
+  outline: none;
+  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+}
+
+
+
+h5 {
+  font-weight: 700;
+}
+
+
+
+.cardParcelamento input {
+  display: none;
+}
+
+.cardsParcelamento {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+ .cardParcelamento {
+  position: relative;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: fit-content;
+  min-width: 220px;
+  max-width: 420px;
+  background-color: var(--cor-branco);
+  color:var(--cor-verde-principal);
+  border: 2px solid var(--cor-verde-principal);
+  padding: 10px 40px 10px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+ }
+
+ .cardParcelamento:hover {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: fit-content;
+  min-width: 220px;
+  max-width: 420px;
+  background-color: var(--cor-verde-principal-hover);
+  color:var(--cor-verde-principal);
+  border: 2px solid var(--cor-verde-principal);
+  padding: 10px 40px 10px 30px;
+  border-radius: 8px;
+  padding-right: 40px;
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: 0 0 6px rgba(41, 110, 56, .3);
+ }
+
+ .cardParcelamento:has(input:checked)::after{
+    content:"✔";
+    position:absolute;
+    font-weight: 600;
+    top:10px;
+    right:15px;
+    font-size:18px;
+    color: var(--cor-branco);
+}
+
+ .cardParcelamento:has(input:checked){
+    background: var(--cor-verde-principal);
+    color: var(--cor-branco);
+}
+
+
+
+.mensagem-ok {
+    color: var(--cor-verde-principal);
+    font-weight: 600;
+    margin: 20px 0 20px 20px ;
+    font-size: 1.1rem;
+}
+
+.mensagem-alerta {
+    color: var(--texto-alerta);
+    font-weight: 600;
+    margin: 20px 0 20px 20px ;
+    font-size: 1.1rem;
+}
+
+.mensagem-erro {
+    color: var(--texto-erro);
+    font-weight: 600;
+    margin: 20px 0 20px 20px ;
+    font-size: 1.1rem;
+}

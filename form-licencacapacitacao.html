@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+    crossorigin="anonymous">
+     <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="css/geral.css">
+    <link rel="stylesheet" type="text/css" href="css/form-licencacapacitacao.css">
+
+     <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/1e631c2bc0.js" crossorigin="anonymous"></script>
+  
+  <title>Formulário de Reserva para Licença Capacitação</title>
+</head>
+
+<body>
+  <header class="cabecalho">
+
+    <div class="logo">
+      <img src="assets/logo_gov.png" width="400"  alt="Logo do governo e dados do órgão de emissão">
+    </div>
+
+    <nav>
+      <a
+        href="index.html"
+        class="btn btn-outline-rosa">
+
+          Voltar ao Menu Principal
+
+      </a>
+    </nav>
+  </header>
+
+  <section>
+    <h3>FORMULÁRIO DE SOLICITAÇÃO DE LICENÇA CAPACITAÇÃO</h3>
+    <h6>(Lei nº 8.112/90, Decreto nº 9.991/2019 e Resolução CONSUPER nº 35/2025)</h6>
+
+    <form action="">
+      <fieldset class="sectioncard">
+      <legend>I – DADOS PESSOAIS E FUNCIONAIS DO(A) REQUERENTE</legend>
+        <div class="linha-dupla">
+          <div class="campo-grande">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" name="nome" id="nome" required>
+          </div>
+          <div class="campo-grande">
+            <label for="cargo">Cargo:</label>
+             <input type="text" name="cargo" id="cargo" required>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo-inline">
+            <label for="matricula">Matrícula SIAPE:</label>
+             <input type="text" name="matricula" id="matricula" inputmode="numeric" pattern="[0-9]{7}" minlength="7"
+                maxlength="7" required>
+          </div>
+          <div class="campo-inline">
+            <label for="cpf">CPF:</label>
+             <input type="text" name="cpf" id="cpf" size="14" maxlength="14" required>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="lotacao">Unidade de Lotação:</label>
+            <select name="lotacao" id="lotacao" required>
+              <option value="" disabled selected>Selecione uma unidade</option>
+              <option value="abelardo-luz">Campus Abelardo Luz</option>
+              <option value="araquari">Campus Araquari</option>
+              <option value="blumenau">Campus Blumenau</option>
+              <option value="brusque">Campus Brusque</option>
+              <option value="camboriu">Campus Camboriú</option>
+              <option value="campos-novos">Campus Campos Novos</option>
+              <option value="concordia">Campus Concórdia</option>
+              <option value="fraiburgo">Campus Fraiburgo</option>
+              <option value="ibirama">Campus Ibirama</option>
+              <option value="luzerna">Campus Luzerna</option>
+              <option value="rio-do-sul">Campus Rio do Sul</option>
+              <option value="sao-bento">Campus São Bento do Sul</option>
+              <option value="sao-francisco">Campus São Francisco do Sul</option>
+              <option value="santa-rosa">Campus Santa Rosa do Sul</option>
+              <option value="sombrio">Campus Sombrio</option>
+              <option value="videira">Campus Videira</option>
+              <option value="reitoria">Reitoria Administrativa</option>
+            </select>
+          </div>
+          <div class="campo-medio">
+            <label for="email">E-mail Institucional:</label>
+             <input type="email" name="email" id="email" required>
+          </div>
+          </div>
+        <div class="linha-dupla">
+          <div class="campo-grande">
+            <label for="chefia">Nome da Chefia imediata:</label>
+             <input type="text" name="chefia" id="chefia" required>
+          </div>
+          <div class="campo-medio">
+            <label for="email-chefia">E-mail Institucional da Chefia Imediata:</label>
+             <input type="email" name="email-chefia" id="email-chefia" required>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="data-sp">Data de Efetivo Exercício no Serviço Público:</label>
+            <input type="date" name="data" id="data-sp" required>
+          </div>
+          <div class="campo">
+            <label for="data-cargo">Data de Efetivo Exercício no Cargo Atual:</label>
+            <input type="date" name="data-cargo" id="data-cargo" required>
+          </div>
+          <div id="quinquenio"></div>
+        </div>
+        <div class="linha">
+          <div class="campo">
+            <p>Já usufruiu de licença capacitação referente ao quinquênio solicitado?</p>
+            <input type="radio" name="licenca-anterior" id="licenca-nao" value="nao" required>
+            <label for="licenca-nao"> Não</label>
+            <input type="radio" name="licenca-anterior" id="licenca-sim" value="sim" required>
+            <label for="licenca-sim"> Sim</label>
+          </div>
+        </div>
+          <div id="dadoslicencaanterior" class="quantidade"></div>
+
+          <div id="mensagemlicencaanterior" class="quantidade"></div>
+          
+        </div>
+      </fieldset>
+      <fieldset class="sectioncard">
+      <legend>II – DADOS DA(S) AÇÃO(AÇÕES) DE CAPACITAÇÃO</legend>
+
+        <div class="quantidade">
+          <p>
+        Solicito, com base no art. 87 da Lei nº 8.112/1990, no Decreto nº 9.991/19 e alterações, e na Resolução nº 35/2025 –
+        Consuper/IFC, autorização para o gozo de Licença Capacitação por:  </p>
+        </div>
+        <div class="quantidade">
+          <div>
+            <input type="radio" name="quantidadeDias" id="q15" value="15" required> 
+            <label for="q15">15 dias</label>
+          </div>
+          <div>
+            <input type="radio" name="quantidadeDias" id="qt30" value="30">
+            <label for="q30">30 dias</label>
+          </div>
+          <div>
+            <input type="radio" name="quantidadeDias" id="qt45" value="45">
+            <label for="q45">45 dias</label>
+          </div>
+          <div>
+            <input type="radio" name="quantidadeDias" id="qt60" value="60"> 
+            <label for="q60">60 dias</label>
+          </div>
+          <div>
+            <input type="radio" name="quantidadeDias" id="qt75" value="75">
+            <label for="q75">75 dias</label> 
+          </div>
+          <div>
+            <input type="radio" name="quantidadeDias" id="qt90" value="90">
+            <label for="q90">90 dias</label>
+          </div>
+          <div id="mensagemsaldo" class="quantidade"></div>
+        </div>
+
+        <div class="linha">
+          <div class="campo">
+            <label for="data-inicio">Para o período de:</label>
+            <input type="date" name="data-inicio" id="data-inicio" class="campo-data" required>
+            <label for="data-fim">até:</label>
+            <input type="date" name="data-fim" id="data-fim" class="campo-data"
+       readonly>, 
+            <p class="razao"> para a participação de:</p>
+            
+            <div id="mensagemintersticio" class="quantidade"></div>
+            <div id="mensagemfgcd" class="quantidade"></div>
+            <div id="mensagemantecedencia" class="quantidade"></div>
+          </div>
+
+        </div>
+      
+        <div class="acoes">
+          <div>
+            <label>
+            <input type="radio" name="acao" id="acao-desenvolvimento" value="desenvolvimento">
+            Ações de desenvolvimento presenciais ou à distância;
+            </label>
+          </div>
+          <div>
+            <label>
+            <input type="radio" name="acao" id="acao-tcc" value="trabalho-conclusao">
+            Elaboração de monografia, TCC, dissertação de mestrado, tese de doutorado, livre docência ou estágio pósdoutoral;
+            </label>
+          </div>
+          <div>
+            <label>
+            <input type="radio" name="acao" id="acao-lgestrangeira" value="lingua-estrageira">
+            Participação em curso presencial ou intercâmbio para aprendizado de língua estrangeira;
+            </label>
+          </div>
+          <div>
+            <label>
+            <input type="radio" name="acao" id="acao-conjugado" value="curso-conjugado">
+            Curso conjugado com:
+            </label>
+              <div class="sub-acao">
+                <label>
+                  <input type="radio" name="sub-acao" id="acao-atividade" value="atividade-pratica">
+                  Atividades práticas em posto de trabalho, órgão ou entidade da Administração Pública ou em organismos
+                internacionais;
+                </label>
+              </div>
+              <div class="sub-acao">
+                <label>
+                  <input type="radio" name="sub-acao" id="acao-voluntario" value="voluntario">
+                  Realização de atividade voluntária em entidade que preste serviços dessa natureza, no País ou no exterior. 
+                </label>
+              </div>
+          </div>
+        </div>
+
+        <div class="linha">
+          <div class="campo-medio">
+            <label for="promotora"> Instituição (ões) promotora (s) da ação de capacitação:  </label>
+              <input type="text" name="promotora" id="promotora">
+          </div>
+        </div>
+       
+        <div class="linha">
+          <div>
+            <label for="nome-acao">Nome da (s) ação (ações) de capacitação: </label>
+            <textarea class="espaco-maior" name="nome-acao" id="nome-acao"></textarea>
+          </div>
+        </div>
+        <div class="linha-dupla">
+          <div class="campo">
+            <label for="carga-horaria">Carga horária total: </label>
+            <input name="carga" id="carga">
+          </div>
+          <div class="campo-inline">
+            <label for="local">Cidade/UF/País: </label>
+            <input name="local" id="local">
+          </div>
+        </div>
+        <div id="mensagemcargahoraria"></div>
+        <div class="linha-dupla"> 
+           <div class="acoes">
+          <p>
+            A ação de capacitação está relacionada a pelo menos uma das seguintes situações:
+          </p>
+
+          <label>
+            <input type="checkbox" name="relevancia" value="pdp">
+            Está prevista ou relacionada ao PDP do IFC. — [<a href="assets/documentos/PDP-2026.pdf" target="_blank"
+            rel="noopener noreferrer">Consultar PDP em PDF</a>]
+          </label>
+
+          <label>
+            <input type="checkbox" name="relevancia" value="orgao">
+        Contribui para as competências do órgão de exercício ou de lotação.
+          </label>
+
+          <label>
+            <input type="checkbox" name="relevancia" value="carreira">
+        Está relacionada às atribuições da carreira ou do cargo efetivo.
+          </label>
+
+            <label>
+              <input type="checkbox" name="relevancia" value="comissao">
+           Está relacionada às atribuições do cargo em comissão ou função de confiança, quando houver.
+            </label>
+          </div>
+       </div>
+      </fieldset>
+      <fieldset class="sectioncard">
+      <legend>III – DO ÔNUS PARA A CONCESSÃO DA LICENÇA PARA CAPACITAÇÃO</legend>
+          <div class="linha">
+            <p> Declaro que a minha participação na (s) referida (s) ação (ações) de capacitação dar-se-á com:</p>
+          </div>
+          <div class="acoes">
+            <label>
+              <input type="radio" name="onus" id="onus-limitado" value="limitado">
+              Ônus limitado (quando implicar direito apenas à remuneração do cargo efetivo).
+            </label>
+          </div>
+          <div id="mensagemonuslim" class="quantidade"></div>
+          <div class="acoes">
+            <label>
+              <input type="radio" name="onus" id="onus-outro-orgao" value="outro-orgao">
+              Ônus para outro  (anexar comprovante (s) de concessão do auxílio).
+            </label>
+          </div>
+          <div id="mensagemonusorgaodif" class="quantidade"></div>
+      </fieldset>
+      <fieldset class="sectioncard">
+        <legend> IV -  MANIFESTAÇÃO DO(A) SERVIDOR(A) INTERESSADO(A)</legend>
+          <div class="linha">
+            <label for="manifestacao-servidor">
+            Especificar os objetivos da (s) atividade (s) de capacitação proposta (s), bem como, as contribuições para o
+            desempenho das atribuições de seu cargo e das atividades desenvolvidas no ambiente organizacional em que está
+            lotado (a), nas competências relativas: (a) ao meu órgão de exercício ou de lotação; b) à minha carreira ou cargo
+            efetivo; e/ou c) ao meu cargo em comissão ou função de confiança: </label>
+          </div>
+          <div class="linha">    
+            <textarea class="espaco-maior" name="manifestacao-servidor" id="manifestacao-servidor"></textarea>
+          </div>  
+      </fieldset>
+      <fieldset class="sectioncard">
+        <legend>V -  COMPROMISSO DO(A) REQUERENTE QUANTO ÀS OBRIGAÇÕES REFERENTES À LICENÇA CAPACITAÇÃO</legend>
+          <div class="linha">
+            <P> Leia e assinale cada uma das informações a seguir, para gerar o pdf do formulário:</P>
+          </div>
+          <div class="acoes">
+            <label for="validacao-parcelamento">
+              <input type="checkbox" name="validacao" id="validacao-parcelamento" value="parcelamento">
+              A licença para capacitação poderá ser parcelada em, no máximo, seis períodos e o menor período não
+            poderá ser inferior a quinze dias.
+            </label>
+            <label for="validacao-relevancia">
+              <input type="checkbox" name="validacao" id="validacao-relevancia" value="relevancia">
+             A concessão da licença de que trata este processo está sujeita à relevância da ação de desenvolvimento
+          para o IFC e o cumprimento dos requisitos necessários, critérios estes que deverão ser avaliados pela
+          Diretoria de Gestão de Pessoas, por meio de parecer.
+            </label>
+            <label for="validacao-pedagio">
+              <input type="checkbox" name="validacao" id="validacao-pedagio" value="pedagio">
+           <strong> Terei que permanecer por dois anos em exercício, a contar do término da licença capacitação, para
+            afastar-me integralmente para participar de programa de pós-graduação stricto sensu, nos termos da
+            legislação e normativas vigentes à época da análise e concessão.</strong>
+            </label>
+             <label for="validacao-custos">
+              <input type="checkbox" name="validacao" id="validacao-custos" value="custos">
+            Os custos diretos ou indiretos com inscrição, deslocamento, hospedagem e realização da ação de
+            desenvolvimento são de minha total responsabilidade, salvo quando houver: disponibilidade
+            orçamentária, interesse da Administração e aprovação do dirigente máximo do órgão.
+            </label>
+            <label for="validacao-remanescente">
+              <input type="checkbox" name="validacao" id="validacao-remanescente" value="remanescente">
+           Para solicitar a utilização de saldo remanescente oriundo de interrupção dessa licença, terei que instruir
+          novo processo de solicitação, respeitando o intertício mínimo de 60 dias a partir do último dia da licença interrompida, nos termos da legislação e normativas vigentes à época da análise.
+            </label>
+            <label for="validacao-acumulacao">
+              <input type="checkbox" name="validacao" id="validacao-acumulacao" value="acumulação">
+              <strong> Os períodos de licença não são acumuláveis. </strong>
+            </label>
+             <label for="validacao-veracidade">
+              <input type="checkbox" name="validacao" id="validacao-veracidade" value="veracidade">
+              Declaro que o requerido neste formulário expressa a verdade, assumindo inteira responsabilidade pelas
+informações prestadas e a autenticidade das cópias dos documentos que devem ser anexadas a esta solicitação.
+            </label>
+             <label for="validacao-ciencia">
+              <input type="checkbox" name="validacao" id="validacao-ciencia" value="ciencia">
+              Estou ciente das normas que regem a Licença para Capacitação, inclusive quanto à <strong> obrigatoriedade de aguardar em exercício a publicação da portaria de autorização,  para gozo da referida
+              licença</strong>.
+            </label>
+            <label for="validacao-encaminhamento">
+              <input type="checkbox" name="validacao" id="validacao-encaminhamento" value="encaminhamento">
+              Estou ciente de que o pdf deste formulário deverá ser encaminhado à Coordenação de Gestão de Pessoas do meu campus, ou se eu for lotado na Reitoria, à Coordenação de Concessões, Aposentadoria e Ações Judiciais (concessoes@ifc.edu.br) junto com o print do curso ou declaração de matrícula, para abertura do processo e solicitação das devidas assinaturas.</strong>.
+            </label>
+          </div>
+
+          <div class="importante">
+           <span><img src="assets/triangle-exclamation-solid-full.svg"> <h3>Importante</h3></span>
+            <p>
+               A solitação da licença será enviada para 
+              o e-mail institucional informado. 
+            </p>         
+            <p>                                 
+          Confira se os e-mails institucionais do servidor e da chefia estão corretos antes de enviar a solicitação.  
+           </p>
+        </div>
+      </fieldset> 
+      <div class="submit">
+        <input type="submit" id="envio" class="btn-submit">
+      </div>
+    </form>
+  </section>
+
+  <footer class="rodape">
+
+          <img src="assets/logo_ifc.png" class="logoifc"  alt="Logo IFC">
+
+          <div class="endereco">  
+
+           <p>Rua das Missões, 100</p>
+           <p>Bairro: Ponta Aguda</p>
+           <p>Blumenau-SC</p>
+           <p>CEP: 89.051-000</p>
+
+       </footer>
+
+
+
+
+
+
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/form-licencacapacitacao.js" defer></script>
+    <script src="js/gerar-pdf.js" defer></script>
+
+</body>
+</html>
