@@ -47,8 +47,9 @@
 }
 
 .menu-principal {
-   display: flex;
-   gap: 80px;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 40px;
    justify-content: center;
    align-items: flex-start;
 }
