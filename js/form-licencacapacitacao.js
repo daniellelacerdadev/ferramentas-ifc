@@ -713,3 +713,102 @@ formulario.addEventListener(
 atualizarCards();
 
 atualizarEstadoFormulario();
+
+//== GERA LINK PARA MANIFESTAÇÃO DA CHEFIA ==//
+
+async function gerarLinkManifestacao() {
+
+    if (!formularioEstaValido()) {
+        return;
+    }
+
+    try {
+
+        // Coleta todos os dados preenchidos no formulário
+        const dadosFormulario = {};
+
+        const campos = formulario.querySelectorAll(
+            "input, select, textarea"
+        );
+
+        campos.forEach((campo) => {
+
+            if (!campo.name) {
+                return;
+            }
+
+            // Radio e checkbox: somente os marcados
+            if (
+                (campo.type === "radio" || campo.type === "checkbox") &&
+                !campo.checked
+            ) {
+                return;
+            }
+
+            dadosFormulario[campo.name] = campo.value;
+        });
+
+
+        // Envia os dados para o backend
+        const resposta = await fetch(
+            "https://ferramentas-ifc.vercel.app/api/manifestacao",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dadosFormulario)
+            }
+        );
+
+
+        if (!resposta.ok) {
+            throw new Error("Não foi possível gerar o link.");
+        }
+
+
+        const resultado = await resposta.json();
+
+
+        // Monta o link para a página da manifestação
+        const linkManifestacao =
+            new URL(
+                "form-manifestacaochefia.html?token=" + resultado.token,
+                window.location.href
+            ).href;
+
+
+        console.log("Token gerado:", resultado.token);
+        console.log("Link para manifestação:", linkManifestacao);
+
+
+        // Mostra o link para teste
+        alert(
+            "Link para manifestação da chefia gerado com sucesso!\n\n" +
+            linkManifestacao
+        );
+
+
+    } catch (erro) {
+
+        console.error("Erro ao gerar link:", erro);
+
+        alert(
+            "Não foi possível gerar o link para manifestação da chefia."
+        );
+    }
+}
+
+
+// Executa a função ao clicar no botão
+botaoLinkChefia.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        gerarLinkManifestacao();
+    }
+);
