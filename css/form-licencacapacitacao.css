@@ -46,7 +46,10 @@ legend {
   display: flex;
   margin: 20px;
   gap: 30px;
+}
 
+.acoes-compromisso {
+  margin: 5px 20px;
 }
 
 .campo input,
@@ -294,6 +297,21 @@ legend {
     color: var(--cor-verde-principal);
     font-weight: 700;
 }
-/*
+
+#mensagem-sucesso {
+    display: none;
+    margin: 15px 30px;
+    padding: 12px 16px;
+    border: 1px solid var(--cor-verde-principal);
+    background-color: #eaf7ec;
+    color: var(--cor-verde-principal);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#mensagem-sucesso.visivel {
+    display: block;
+}
 
 

@@ -552,7 +552,9 @@ function validarOnus() {
 onusLimitado.addEventListener("change", validarOnus);
 onusOutroOrgao.addEventListener("change", validarOnus);
 
-//== VALIDAÇÃO DOS COMPROMISSOS DO(A) REQUERENTE ==//
+//== VALIDAÇÃO GERAL DO FORMULÁRIO ==//
+
+const formulario = document.querySelector("form");
 
 const validacoes = document.querySelectorAll(
     'input[name="validacao"]'
@@ -560,28 +562,79 @@ const validacoes = document.querySelectorAll(
 
 const botaoEnvio = document.getElementById("envio");
 
-function validarCompromissos() {
+const botaoLinkChefia = document.getElementById(
+    "gerar-link-chefia"
+);
 
-    const todosMarcados = [...validacoes].every(
+const mensagemSucesso = document.getElementById(
+    "mensagem-sucesso"
+);
+
+
+// ----------------------------------------------------------
+// Verifica se todos os compromissos foram marcados
+// ----------------------------------------------------------
+
+function compromissosValidos() {
+
+    return [...validacoes].every(
         (checkbox) => checkbox.checked
     );
-
-    botaoEnvio.disabled = !todosMarcados;
 }
 
 
-// Verifica os compromissos sempre que uma opção for marcada ou desmarcada.
+// ----------------------------------------------------------
+// Verifica se o formulário está completamente preenchido
+// ----------------------------------------------------------
 
-validacoes.forEach((checkbox) => {
-    checkbox.addEventListener("change", validarCompromissos);
-});
+function formularioEstaValido() {
+
+    return (
+        formulario.checkValidity() &&
+        compromissosValidos()
+    );
+}
 
 
-// Mantém o botão bloqueado ao carregar o formulário.
+// ----------------------------------------------------------
+// Atualiza os botões e a mensagem de sucesso
+// ----------------------------------------------------------
 
-validarCompromissos();
+function atualizarEstadoFormulario() {
 
-//== STATUS DOS CARDS DAS SEÇÕES ==//
+    const formularioValido = formularioEstaValido();
+
+    // Botões
+    botaoEnvio.disabled = !formularioValido;
+
+    botaoLinkChefia.disabled = !formularioValido;
+
+
+    // Mensagem de sucesso
+    if (formularioValido) {
+
+        mensagemSucesso.innerHTML = `
+            <p>
+                 <strong>Formulário preenchido com sucesso!</strong>
+                Você pode gerar o PDF do requerimento e o link
+                para manifestação da chefia.
+            </p>
+        `;
+
+        mensagemSucesso.classList.add("visivel");
+
+    } else {
+
+        mensagemSucesso.innerHTML = "";
+
+        mensagemSucesso.classList.remove("visivel");
+    }
+}
+
+
+// ----------------------------------------------------------
+// STATUS DOS CARDS DAS SEÇÕES
+// ----------------------------------------------------------
 
 const secoes = document.querySelectorAll(".sectioncard");
 
@@ -597,7 +650,10 @@ function atualizarCards() {
             (campo) => campo.checkValidity()
         );
 
-        // Seção V: todos os compromissos precisam estar marcados
+
+        // Seção V:
+        // todos os compromissos precisam estar marcados
+
         const validacoesSecao = secao.querySelectorAll(
             'input[name="validacao"]'
         );
@@ -605,34 +661,55 @@ function atualizarCards() {
         let secaoVValida = true;
 
         if (validacoesSecao.length > 0) {
+
             secaoVValida = [...validacoesSecao].every(
                 (checkbox) => checkbox.checked
             );
         }
 
+
+        // Marca a seção como concluída
+
         if (camposValidos && secaoVValida) {
+
             secao.classList.add("concluido");
+
         } else {
+
             secao.classList.remove("concluido");
         }
     });
 }
 
 
-// Atualiza os cards sempre que houver alteração no formulário.
+// ----------------------------------------------------------
+// Atualiza tudo quando o formulário é alterado
+// ----------------------------------------------------------
 
-document.querySelector("form").addEventListener(
+formulario.addEventListener(
     "input",
-    atualizarCards
+    function () {
+
+        atualizarCards();
+        atualizarEstadoFormulario();
+    }
 );
 
-document.querySelector("form").addEventListener(
+
+formulario.addEventListener(
     "change",
-    atualizarCards
+    function () {
+
+        atualizarCards();
+        atualizarEstadoFormulario();
+    }
 );
 
 
-// Verifica o estado inicial.
+// ----------------------------------------------------------
+// Estado inicial
+// ----------------------------------------------------------
 
 atualizarCards();
 
+atualizarEstadoFormulario();

@@ -245,29 +245,33 @@
           </div>
         </div>
         <div id="mensagemcargahoraria"></div>
-        <div class="linha-dupla"> 
-           <div class="acoes">
+        <div class="linha"> 
           <p>
             A ação de capacitação está relacionada a pelo menos uma das seguintes situações:
           </p>
-
-          <label>
+        </div>
+        <div>
+          <div class="acoes-compromisso">
+            <label>
             <input type="checkbox" name="relevancia" value="pdp" required>
             Está prevista ou relacionada ao PDP do IFC. — [<a href="https://ifc.edu.br/wp-content/uploads/2025/09/PDP-2026.pdf" target="_blank"
             rel="noopener noreferrer">Consultar PDP em PDF</a>]
           </label>
-
-          <label>
+          </div>
+          <div class="acoes-compromisso">
+            <label>
             <input type="checkbox" name="relevancia" value="orgao">
         Contribui para as competências do órgão de exercício ou de lotação.
           </label>
-
-          <label>
-            <input type="checkbox" name="relevancia" value="carreira">
-        Está relacionada às atribuições da carreira ou do cargo efetivo.
-          </label>
-
+          </div>
+          <div class="acoes-compromisso">
             <label>
+            <input type="checkbox" name="relevancia" value="carreira">
+            Está relacionada às atribuições da carreira ou do cargo efetivo.
+          </label>
+          </div>
+          <div class="acoes-compromisso">
+             <label>
               <input type="checkbox" name="relevancia" value="comissao">
            Está relacionada às atribuições do cargo em comissão ou função de confiança, quando houver.
             </label>
@@ -312,54 +316,78 @@
           <div class="linha">
             <P> Leia e assinale cada uma das informações a seguir, para gerar o pdf do formulário:</P>
           </div>
-          <div class="acoes">
+        <div>
+          <div class="acoes-compromisso">
+             <label for="validacao-curso">
+              <input type="checkbox" name="validacao" id="validacao-curso" value="curso">
+              O(s) curso(s) deverá(ão) abranger todo o período da licença para capacitação, iniciando no primeiro dia e finalizando no último, sem intervalo entre as ações. A ausência de participação efetiva ou de comprovação poderá sujeitar o servidor às consequências previstas na legislação vigente. Antes de escolher a ação, verifique se há necessidade de inscrição prévia na instituição promotora. [<a href="../Ferramentas/tabela-instituicoespromotoras.html">Consulte aqui</a>]
+            </label>
+          </div>
+          <div class="acoes-compromisso">
             <label for="validacao-parcelamento">
               <input type="checkbox" name="validacao" id="validacao-parcelamento" value="parcelamento">
               A licença para capacitação poderá ser parcelada em, no máximo, seis períodos e o menor período não
             poderá ser inferior a quinze dias.
             </label>
-            <label for="validacao-relevancia">
+          </div>
+          <div class="acoes-compromisso">
+             <label for="validacao-relevancia">
               <input type="checkbox" name="validacao" id="validacao-relevancia" value="relevancia">
              A concessão da licença de que trata este processo está sujeita à relevância da ação de desenvolvimento
           para o IFC e o cumprimento dos requisitos necessários, critérios estes que deverão ser avaliados pela
           Diretoria de Gestão de Pessoas, por meio de parecer.
             </label>
+          </div>
+          <div class="acoes-compromisso">
             <label for="validacao-pedagio">
               <input type="checkbox" name="validacao" id="validacao-pedagio" value="pedagio">
            <strong> Terei que permanecer por dois anos em exercício, a contar do término da licença capacitação, para
             afastar-me integralmente para participar de programa de pós-graduação stricto sensu, nos termos da
             legislação e normativas vigentes à época da análise e concessão.</strong>
             </label>
-             <label for="validacao-custos">
+          </div>
+          <div class="acoes-compromisso">
+            <label for="validacao-custos">
               <input type="checkbox" name="validacao" id="validacao-custos" value="custos">
             Os custos diretos ou indiretos com inscrição, deslocamento, hospedagem e realização da ação de
             desenvolvimento são de minha total responsabilidade, salvo quando houver: disponibilidade
             orçamentária, interesse da Administração e aprovação do dirigente máximo do órgão.
             </label>
-            <label for="validacao-remanescente">
+          </div>
+          <div class="acoes-compromisso">
+             <label for="validacao-remanescente">
               <input type="checkbox" name="validacao" id="validacao-remanescente" value="remanescente">
            Para solicitar a utilização de saldo remanescente oriundo de interrupção dessa licença, terei que instruir
           novo processo de solicitação, respeitando o intertício mínimo de 60 dias a partir do último dia da licença interrompida, nos termos da legislação e normativas vigentes à época da análise.
             </label>
+          </div>
+          <div class="acoes-compromisso">
             <label for="validacao-acumulacao">
               <input type="checkbox" name="validacao" id="validacao-acumulacao" value="acumulação">
               <strong> Os períodos de licença não são acumuláveis. </strong>
             </label>
-             <label for="validacao-veracidade">
+          </div>
+          <div class="acoes-compromisso">
+            <label for="validacao-veracidade">
               <input type="checkbox" name="validacao" id="validacao-veracidade" value="veracidade">
               Declaro que o requerido neste formulário expressa a verdade, assumindo inteira responsabilidade pelas
-informações prestadas e a autenticidade das cópias dos documentos que devem ser anexadas a esta solicitação.
+            informações prestadas e a autenticidade das cópias dos documentos que devem ser anexadas a esta solicitação.
             </label>
-             <label for="validacao-ciencia">
+          </div>
+          <div class="acoes-compromisso">
+            <label for="validacao-ciencia">
               <input type="checkbox" name="validacao" id="validacao-ciencia" value="ciencia">
               Estou ciente das normas que regem a Licença para Capacitação, inclusive quanto à <strong> obrigatoriedade de aguardar em exercício a publicação da portaria de autorização,  para gozo da referida
               licença</strong>.
             </label>
-            <label for="validacao-encaminhamento">
+          </div>
+          <div class="acoes-compromisso">
+             <label for="validacao-encaminhamento">
               <input type="checkbox" name="validacao" id="validacao-encaminhamento" value="encaminhamento">
               Estou ciente de que o pdf deste formulário deverá ser encaminhado à Coordenação de Gestão de Pessoas do meu campus, ou se eu for lotado na Reitoria, à Coordenação de Concessões, Aposentadoria e Ações Judiciais (concessoes@ifc.edu.br) junto com o print do curso ou declaração de matrícula, para abertura do processo e solicitação das devidas assinaturas.</strong>.
             </label>
           </div>
+        </div>
 
           <div class="importante">
            <span><img src="../assets/triangle-exclamation-solid-full.svg"> <h3>Importante</h3></span>
@@ -372,9 +400,15 @@ informações prestadas e a autenticidade das cópias dos documentos que devem s
            </p>
         </div>
       </fieldset> 
-      <div class="submit">
-        <input type="submit" id="envio" class="btn-submit">
-      </div>
+      <div id="mensagem-sucesso"></div>
+
+        <div class="submit">
+          <input type="submit" id="envio" class="btn-submit" value="Gerar PDF do requerimento">
+
+          <button type="button" id="gerar-link-chefia" class="btn-submit">
+            Gerar link para manifestação da chefia
+          </button>
+        </div>
     </form>
   </section>
 

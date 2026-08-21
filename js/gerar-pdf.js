@@ -158,10 +158,6 @@ async function gerarPDF() {
             "assets/logo_ifc.png"
         );
 
-        endereco = await carregarImagem(
-            "assets/end_rodape.png"
-        );
-
     } catch (erro) {
 
         console.warn(
@@ -614,7 +610,7 @@ async function gerarPDF() {
    function checkboxTexto(texto) {
 
     const tamanhoCaixa = 4;
-    const espacamentoTexto = 6.7;
+    const espacamentoTexto = 7;
     const alturaLinha = 4;
 
     const xCaixa = margem;
@@ -688,7 +684,7 @@ async function gerarPDF() {
         "normal"
     );
 
-    pdf.setFontSize(7.45);
+    pdf.setFontSize(7.4);
 
     pdf.setTextColor(
         50,
@@ -710,7 +706,7 @@ async function gerarPDF() {
     // ESPAÇO PARA O PRÓXIMO
     // =========================
 
-    y += alturaTexto + 4;
+    y += alturaTexto + 3;
 }
 
     // ======================================================
@@ -968,3 +964,10 @@ document
             gerarPDF();
         }
     );
+
+    document
+    .getElementById("gerar-link-chefia")
+    .addEventListener("click", function () {
+
+        alert("O link da chefia será gerado aqui.");
+    });
