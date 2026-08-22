@@ -1,6 +1,9 @@
 import crypto from "crypto";
+import { neon } from "@neondatabase/serverless";
 
-export default function handler(req, res) {
+const sql = neon(process.env.DATABASE_URL);
+
+export default async function handler(req, res) {
 
     // Permite a comunicação com o formulário
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -19,16 +22,34 @@ export default function handler(req, res) {
         });
     }
 
-    // Recebe os dados enviados pelo formulário
-    const dados = req.body;
+    try {
 
-    // Gera um identificador único
-    const token = crypto.randomUUID();
+        // Recebe os dados enviados pelo formulário
+        const dados = req.body;
 
-    return res.status(200).json({
-        sucesso: true,
-        mensagem: "Dados recebidos com sucesso!",
-        token: token,
-        dadosRecebidos: dados
-    });
+        // Gera um identificador único
+        const token = crypto.randomUUID();
+
+        // Salva o token e os dados no banco
+        await sql`
+            INSERT INTO manifestacoes (token, dados)
+            VALUES (${token}, ${JSON.stringify(dados)})
+        `;
+
+        // Retorna o token para o formulário
+        return res.status(200).json({
+            sucesso: true,
+            mensagem: "Dados recebidos e salvos com sucesso!",
+            token: token
+        });
+
+    } catch (erro) {
+
+        console.error("Erro ao salvar manifestação:", erro);
+
+        return res.status(500).json({
+            sucesso: false,
+            erro: "Não foi possível salvar os dados."
+        });
+    }
 }
