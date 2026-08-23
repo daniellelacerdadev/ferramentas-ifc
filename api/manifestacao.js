@@ -36,6 +36,16 @@ export default async function handler(req, res) {
             VALUES (${token}, ${JSON.stringify(dados)})
         `;
 
+        const [verificacao] = await sql`
+    SELECT
+        current_database() AS banco,
+        current_schema() AS schema,
+        COUNT(*) AS total
+    FROM manifestacoes
+`;
+
+console.log("BANCO USADO PELA API:", verificacao);
+
         // Retorna o token para o formulário
         return res.status(200).json({
             sucesso: true,
