@@ -15,6 +15,51 @@ export default async function handler(req, res) {
         return res.status(200).end();
     }
 
+    // ----------------------------------------------------------
+// Busca um requerimento pelo token
+// ----------------------------------------------------------
+
+if (req.method === "GET") {
+
+    try {
+
+        const { token } = req.query;
+
+        if (!token) {
+            return res.status(400).json({
+                erro: "Token não informado."
+            });
+        }
+
+        const resultado = await sql`
+            SELECT dados
+            FROM manifestacoes
+            WHERE token = ${token}
+            LIMIT 1
+        `;
+
+        if (resultado.length === 0) {
+            return res.status(404).json({
+                erro: "Requerimento não encontrado."
+            });
+        }
+
+        return res.status(200).json({
+            sucesso: true,
+            dados: resultado[0].dados
+        });
+
+    } catch (erro) {
+
+        console.error("Erro ao buscar requerimento:", erro);
+
+        return res.status(500).json({
+            sucesso: false,
+            erro: "Não foi possível carregar o requerimento."
+        });
+    }
+}
+
     // Aceita somente POST
     if (req.method !== "POST") {
         return res.status(405).json({
