@@ -151,11 +151,11 @@ async function gerarPDF() {
     try {
 
         logoGov = await carregarImagem(
-            "assets/logo_gov.png"
+            "../assets/logo_gov.png"
         );
 
         logoIfc = await carregarImagem(
-            "assets/logo_ifc.png"
+            "../assets/logo_ifc.png"
         );
 
     } catch (erro) {
@@ -777,9 +777,6 @@ async function gerarPDF() {
             : ""
     );
 
-
-    
-
     campo(
         "Chefia imediata",
         valorCampo("chefia")
@@ -791,7 +788,7 @@ async function gerarPDF() {
     );
 
 
-   camposLadoALado(
+   campo(
     "Data de efetivo exercício no serviço público",
     formatarDataPDF(valorCampo("data-sp")),
     "Data de efetivo exercício no cargo atual",
