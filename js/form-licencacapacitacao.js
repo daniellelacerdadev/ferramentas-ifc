@@ -784,11 +784,45 @@ async function gerarLinkManifestacao() {
         console.log("Link para manifestação:", linkManifestacao);
 
 
-        // Mostra o link para teste
-        alert(
-            "Link para manifestação da chefia gerado com sucesso!\n\n" +
-            linkManifestacao
-        );
+       // Mostra o link para a manifestação
+mensagemSucesso.innerHTML = `
+    <p>
+        <strong>Link para manifestação da chefia gerado com sucesso!</strong>
+    </p>
+
+    <p>
+        <a href="${linkManifestacao}" target="_blank">
+            Abrir formulário de manifestação da chefia
+        </a>
+    </p>
+
+    <button type="button" id="copiar-link-chefia">
+        Copiar link
+    </button>
+`;
+
+mensagemSucesso.classList.add("visivel");
+
+// Botão para copiar o link
+const botaoCopiarLink = document.getElementById(
+    "copiar-link-chefia"
+);
+
+botaoCopiarLink.addEventListener("click", async () => {
+
+    try {
+
+        await navigator.clipboard.writeText(linkManifestacao);
+
+        botaoCopiarLink.textContent = "Link copiado!";
+
+    } catch (erro) {
+
+        console.error("Erro ao copiar link:", erro);
+
+        alert("Não foi possível copiar o link automaticamente.");
+    }
+});
 
 
     } catch (erro) {
