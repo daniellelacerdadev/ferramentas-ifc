@@ -706,7 +706,7 @@ async function gerarPDF() {
     // ESPAÇO PARA O PRÓXIMO
     // =========================
 
-    y += alturaTexto + 3;
+    y += alturaTexto + 4;
 }
 
     // ======================================================
