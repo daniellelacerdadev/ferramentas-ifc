@@ -913,6 +913,52 @@ async function gerarPDF() {
     );
 
     // ======================================================
+// SEÇÃO VI
+// ======================================================
+
+titulo(
+    "VI – MANIFESTAÇÃO DA CHEFIA IMEDIATA"
+);
+
+
+// Manifestação da chefia
+const manifestacaoChefia =
+    textoRadio("manifestacao");
+
+campo(
+    "Manifestação",
+    manifestacaoChefia
+);
+
+
+// Observação da chefia
+textoGrande(
+    "Observações ou justificativa da manifestação da chefia",
+    valorCampo("observacao-chefia")
+);
+
+
+// ======================================================
+// SEÇÃO VII
+// ======================================================
+
+titulo(
+    "VII – DADOS DA CHEFIA IMEDIATA DO REQUERENTE"
+);
+
+campo(
+    "Nome da chefia imediata",
+    valorCampo("chefia")
+);
+
+campo(
+    "Data da manifestação",
+    formatarDataPDF(
+        valorCampo("data-atual")
+    )
+);
+
+    // ======================================================
     // RODAPÉS
     // ======================================================
 
@@ -964,9 +1010,4 @@ document
         }
     );
 
-    document
-    .getElementById("gerar-link-chefia")
-    .addEventListener("click", function () {
-
-        alert("O link da chefia será gerado aqui.");
-    });
+   
