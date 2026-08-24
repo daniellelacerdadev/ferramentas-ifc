@@ -796,7 +796,7 @@ mensagemSucesso.innerHTML = `
         </a>
     </p>
 
-    <button type="button" id="copiar-link-chefia">
+    <button type="button" id="copiar-link-chefia" class="btn-submit">
         Copiar link
     </button>
 `;
