@@ -53,7 +53,7 @@
              <input type="text" name="cargo" id="cargo" required>
           </div>
         </div>
-        <div class="linha-dupla">
+        <div class="linha-tripla">
           <div class="campo-inline">
             <label for="matricula">Matrícula SIAPE:</label>
              <input type="text" name="matricula" id="matricula" inputmode="numeric" pattern="[0-9]{7}" minlength="7"
@@ -62,6 +62,10 @@
           <div class="campo-inline">
             <label for="cpf">CPF:</label>
              <input type="text" name="cpf" id="cpf" size="14" maxlength="14" required>
+          </div>
+          <div class="campo-medio">
+            <label for="email">E-mail Institucional:</label>
+             <input type="email" name="email" id="email" placeholder="digite seu e-mail completo" required>
           </div>
         </div>
         <div class="linha-dupla">
@@ -88,11 +92,31 @@
               <option value="reitoria">Reitoria Administrativa</option>
             </select>
           </div>
-          <div class="campo-medio">
-            <label for="email">E-mail Institucional:</label>
-             <input type="email" name="email" id="email" required>
+          <div class="campo">
+            <label for="exercicio">Unidade de Exercício:</label>
+            <select name="exercicio" id="exercicio" required>
+              <option value="" disabled selected>Selecione uma unidade</option>
+              <option value="abelardo-luz">Campus Abelardo Luz</option>
+              <option value="araquari">Campus Araquari</option>
+              <option value="blumenau">Campus Blumenau</option>
+              <option value="brusque">Campus Brusque</option>
+              <option value="camboriu">Campus Camboriú</option>
+              <option value="campos-novos">Campus Campos Novos</option>
+              <option value="concordia">Campus Concórdia</option>
+              <option value="fraiburgo">Campus Fraiburgo</option>
+              <option value="ibirama">Campus Ibirama</option>
+              <option value="luzerna">Campus Luzerna</option>
+              <option value="rio-do-sul">Campus Rio do Sul</option>
+              <option value="sao-bento">Campus São Bento do Sul</option>
+              <option value="sao-francisco">Campus São Francisco do Sul</option>
+              <option value="santa-rosa">Campus Santa Rosa do Sul</option>
+              <option value="sombrio">Campus Sombrio</option>
+              <option value="videira">Campus Videira</option>
+              <option value="reitoria">Reitoria Administrativa</option>
+            </select>
           </div>
-          </div>
+          
+        </div>
         <div class="linha-dupla">
           <div class="campo-grande">
             <label for="chefia">Nome da Chefia imediata:</label>
@@ -100,7 +124,7 @@
           </div>
           <div class="campo-medio">
             <label for="email-chefia">E-mail Institucional da Chefia Imediata:</label>
-             <input type="email" name="email-chefia" id="email-chefia" required>
+             <input type="email" name="email-chefia" id="email-chefia" placeholder="digite o e-mail completo" required>
           </div>
         </div>
         <div class="linha-dupla">
@@ -112,8 +136,11 @@
             <label for="data-cargo">Data de Efetivo Exercício no Cargo Atual:</label>
             <input type="date" name="data-cargo" id="data-cargo" required>
           </div>
+          
           <div id="quinquenio"></div>
+          <div id="mensagemestagioprobatorio"></div>
         </div>
+        
         <div class="linha">
           <div class="campo">
             <p>Já usufruiu de licença capacitação referente ao quinquênio solicitado?</p>

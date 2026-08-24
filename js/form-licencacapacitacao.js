@@ -2,12 +2,17 @@
 
 const dataIngresso = document.getElementById("data-sp");
 const quinquenio = document.getElementById("quinquenio");
+const dataCargo = document.getElementById("data-cargo");
+const mensagemEstagioProbatorio = document.getElementById(
+    "mensagemestagioprobatorio"
+);
 
 function calcularQuinquenio() {
     if (!dataIngresso.value) {
         quinquenio.textContent = "";
         return;
     }
+
 
     const [ano, mes, dia] = dataIngresso.value.split("-").map(Number);
     const ingresso = new Date(ano, mes - 1, dia);
@@ -52,6 +57,7 @@ function calcularQuinquenio() {
         ingresso.getDate() - 1
     );
 
+   
     // Formata as datas para dd/mm/aaaa
     const formatarData = (data) => {
         return data.toLocaleDateString("pt-BR");
@@ -72,7 +78,82 @@ function calcularQuinquenio() {
     `;
 }
 
+//== VALIDAÇÃO DO ESTÁGIO PROBATÓRIO ==//
+
+function validarEstagioProbatorio() {
+
+    const datas = [
+        {
+            campo: dataIngresso,
+            descricao: "data de ingresso no serviço público"
+        },
+        {
+            campo: dataCargo,
+            descricao: "data de ingresso no cargo atual"
+        }
+    ];
+
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    const datasComMenosDeTresAnos = [];
+
+    datas.forEach(({ campo, descricao }) => {
+
+        if (!campo.value) {
+            return;
+        }
+
+        const [ano, mes, dia] = campo.value.split("-").map(Number);
+
+        const dataInicio = new Date(
+            ano,
+            mes - 1,
+            dia
+        );
+
+        const dataTresAnos = new Date(dataInicio);
+
+        dataTresAnos.setFullYear(
+            dataTresAnos.getFullYear() + 3
+        );
+
+        if (hoje < dataTresAnos) {
+            datasComMenosDeTresAnos.push(descricao);
+        }
+    });
+
+    if (datasComMenosDeTresAnos.length > 0) {
+
+        mensagemEstagioProbatorio.innerHTML = `
+            <p class="mensagem-alerta">
+                <strong>Atenção:</strong> com base na(s)
+                ${datasComMenosDeTresAnos.join(" e ")}
+                informada(s), ainda não foram completados
+                3 anos de efetivo exercício.
+                Verifique a situação do estágio probatório antes de prosseguir
+                com a solicitação.
+            </p>
+        `;
+
+        return;
+    }
+
+    mensagemEstagioProbatorio.innerHTML = "";
+}
+
+
 dataIngresso.addEventListener("change", calcularQuinquenio);
+dataIngresso.addEventListener(
+    "change",
+    validarEstagioProbatorio
+);
+
+dataCargo.addEventListener(
+    "change",
+    validarEstagioProbatorio
+);
+
 
 //== LICENÇA ANTERIOR E SALDO DO QUINQUÊNIO ==//
 

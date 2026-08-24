@@ -203,3 +203,17 @@ header img {
   }
 
 }
+
+/* ==========================================
+   RESPONSIVIDADE - CELULAR
+   ========================================== */
+
+@media (max-width: 768px) {
+  .menu-principal {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 30px;
+   padding: 20px;
+  }
+}

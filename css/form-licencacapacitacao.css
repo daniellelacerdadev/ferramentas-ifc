@@ -29,7 +29,13 @@ legend {
     grid-template-columns: 1fr 1fr;
     gap: 0 15px;
     margin: 15px;
-   
+}
+
+.linha-tripla {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 10px;
+  margin: 15px;
 }
 
 .linha, .quantidade, .acoes {
@@ -315,3 +321,80 @@ legend {
 }
 
 
+/* ==========================================
+   RESPONSIVIDADE - CELULAR
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .btn {
+    top: 40px;
+  }
+
+    .sectioncard {
+        margin: 15px 10px;
+    }
+
+    .linha-dupla,
+    .linha-tripla {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 15px 10px;
+    }
+
+    .campo-grande input,
+    .campo-medio input,
+    .campo-inline input,
+    .campo input,
+    .campo select {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .campo-data {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .linha,
+    .quantidade,
+    .acoes {
+        margin: 15px 10px;
+    }
+
+    .manifestacao {
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 10px;
+    }
+
+    .sub-acao {
+        margin-left: 15px;
+    }
+
+    .acoes-onus {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .espaco-maior {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    legend {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 0.85rem;
+    }
+}
