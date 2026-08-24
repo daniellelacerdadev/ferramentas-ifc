@@ -745,6 +745,11 @@ async function gerarPDF() {
         valorCampo("cpf")
     );
 
+    campo(
+        "E-mail institucional",
+        valorCampo("email")
+    );
+
 
     const lotacao =
         document.getElementById("lotacao");
@@ -759,11 +764,21 @@ async function gerarPDF() {
             : ""
     );
 
+    const exercicio =
+        document.getElementById("exercicio");
+
 
     campo(
-        "E-mail institucional",
-        valorCampo("email")
+        "Unidade de Exercício",
+        exercicio
+            ? exercicio.options[
+                exercicio.selectedIndex
+              ].text
+            : ""
     );
+
+
+    
 
     campo(
         "Chefia imediata",
