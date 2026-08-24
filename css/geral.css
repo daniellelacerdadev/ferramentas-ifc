@@ -17,10 +17,7 @@ body {
   font-size: var(--tamanho-fonte);
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
 }
-
-
 
 /*--Home--*/
 
@@ -144,6 +141,11 @@ header img {
   font-size: 0.9em;
   background-color: var(--cor-verde-principal-hover);
 
+}
+
+h3, h6 {
+  text-align: center;
+  font-weight: 700;
 }
 
 .rodape {

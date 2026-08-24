@@ -560,6 +560,60 @@ async function gerarPDF() {
             6;
     }
 
+    // ======================================================
+// AVISO ADMINISTRATIVO
+// ======================================================
+
+function avisoAdministrativo() {
+
+    const tituloAviso = "ATENÇÃO";
+
+    const textoAviso =
+        "A presente manifestação expressa exclusivamente a concordância " +
+        "ou não concordância da chefia imediata com a solicitação. " +
+        "Não constitui autorização para o usufruto da Licença para Capacitação.\n\n" +
+
+        "A concessão dependerá da instrução e análise do processo pelas " +
+        "unidades competentes e da publicação do respectivo ato de concessão. " +
+        "O servidor não deverá se afastar de suas atividades antes da publicação do ato.";
+
+    const linhas = pdf.splitTextToSize(
+        textoAviso,
+        larguraTexto
+    );
+
+    verificarEspaco(
+        (linhas.length * 4.5) + 18
+    );
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(9);
+    pdf.setTextColor(180, 90, 0);
+
+    pdf.text(
+        tituloAviso,
+        margem,
+        y
+    );
+
+    y += 5;
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(8.5);
+    pdf.setTextColor(50, 50, 50);
+
+    pdf.text(
+        linhas,
+        margem,
+        y,
+        {
+            lineHeightFactor: 1.4
+        }
+    );
+
+    y += linhas.length * 4.5 + 6;
+}
+
     // =====================================================
     //  CAMPOS LADO A LADO
     //=====================================================
@@ -969,6 +1023,8 @@ campo(
         valorCampo("data-atual")
     )
 );
+
+avisoAdministrativo();
 
     // ======================================================
     // RODAPÉS
