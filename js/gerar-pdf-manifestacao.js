@@ -788,7 +788,7 @@ async function gerarPDF() {
     );
 
 
-   campo(
+   camposLadoALado(
     "Data de efetivo exercício no serviço público",
     formatarDataPDF(valorCampo("data-sp")),
     "Data de efetivo exercício no cargo atual",
