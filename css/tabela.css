@@ -1,4 +1,65 @@
-.introducao p {
-  margin: 30px 10px;
-  font-size: 1.1rem;
+main {
+  background-color: var(--cor-fundo-input);
 }
+
+.introducao h3 {
+  padding-top: 30px;
+  letter-spacing: 2px;
+}
+
+.introducao p {
+  margin: 30px 20px;
+  font-size: 1rem;
+}
+
+.atencao {
+  font-weight: 700;
+  width: 70%;
+  justify-self: center;
+  font-size: 1.1rem;
+  border: 1px double var(--cor-verde-principal);
+  border-radius: 5px;
+}
+
+.atencao span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.atencao span img {
+    width: 35px;
+    height: 35px;
+    
+}
+
+.atencao span h3 {
+    margin: 20px 0;
+}
+
+.atencao p {
+  margin: 10px 20px;
+}
+
+.tabela {
+  margin-top: 30px;
+}
+
+table th, td {
+  margin: 30px 20px;
+  border: 1px solid var(--cor-verde-principal);
+}
+
+th {
+  background-color: var(--cor-fundo);
+  color: var(--cor-verde-principal);
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  padding-left: 10px;
+} 
