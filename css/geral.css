@@ -27,7 +27,7 @@ body {
   align-items: center;
   justify-content: flex-start;
 
-  min-height: 100vh;
+  min-height: 100px;
 
   text-align: center;
 
@@ -42,14 +42,11 @@ body {
 
 
 .menu {
-  font-size: 14px;
-
-  margin-top: 30px;
-
+  font-size: 1.2rem;
+  margin-top: 50px;
   padding: 12px 20px;
-
+  height: 550px;
   border-radius: 12px;
-
   text-decoration: none;
 }
 
@@ -167,6 +164,24 @@ h3, h6 {
   margin-left: auto;
   text-align: right;
   margin-right: 10px;
+}
+
+/*--Rodape-index--*/
+
+.rodape-sobre {
+  text-align: center;
+  height: 100px;
+  margin-bottom: 0;
+  border-top: 1px solid var(--cor-border-rodape);
+  padding-top: 20px;
+}
+
+.rodape-sobre p {
+  color: var(--cor-texto-principal-hover)
+}
+
+.autoria {
+  font-size: 0.7rem;
 }
 
 /*-- Media print --*/
