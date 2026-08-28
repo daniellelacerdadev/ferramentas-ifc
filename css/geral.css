@@ -26,17 +26,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-
-  min-height: 100px;
-
   text-align: center;
-
-  padding: 10px;
-  padding-top: 20px;
+  padding-top: 20px 10px;
 }
 
 .logo-home {
-  width: 300px;
+  min-width: 40%;
   margin-bottom: 30px;
 }
 
@@ -72,7 +67,7 @@ body {
 
 .cabecalho {
     position: relative;
-    height: 180px;
+    min-height: 200px;
     text-align: center;
     padding: 15px;
     margin-top: 0;

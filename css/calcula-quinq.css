@@ -1,7 +1,9 @@
 /*--Calculadora Quinquênio--*/
 
 .quinquenio{
-  height: 700px;
+  padding: 30px;
+  place-content: center;
+  height: 650px;
 }
 
 .quinquenio-box {

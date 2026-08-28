@@ -10,6 +10,7 @@ main {
 
 .introducao p {
   margin: 30px 20px;
+  padding-top: 30px;
   font-size: 1rem;
 }
 
@@ -48,10 +49,12 @@ h5 {
   text-align: center;
   padding-top: 15px;
   font-weight: 700;
+  color: var(--cor-verde-principal);
 }
 
 .tabela {
   margin-top: 30px;
+  padding-top: 30px;
 }
 
 table th, td {
