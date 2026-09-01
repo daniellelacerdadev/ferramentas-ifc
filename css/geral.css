@@ -48,7 +48,7 @@ body {
 .menu-principal {
    display: flex;
    flex: 2;
-   gap: 80px;
+   gap: 40px;
    justify-content: center;
    align-items: flex-start;
 }
@@ -217,7 +217,7 @@ h3, h6 {
    RESPONSIVIDADE - CELULAR
    ========================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 970px) {
   .menu-principal {
    display: flex;
    flex-direction: column;
