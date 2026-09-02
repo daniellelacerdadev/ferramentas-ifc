@@ -147,8 +147,8 @@ h3, h6 {
     margin-bottom: 0;
     align-items: center;
     border-top: 1px solid var(--cor-border-rodape);
-    margin-top: 80px;
-    padding-top: 20px;
+    margin-top: 100px;
+    padding-top: 30px;
 }
 
 .rodape img {
@@ -167,10 +167,11 @@ h3, h6 {
 
 .rodape-sobre {
   text-align: center;
-  height: 100px;
+  height: 80px;
   margin-bottom: 0;
   border-top: 1px solid var(--cor-border-rodape);
   padding-top: 20px;
+  margin-top: 40px;
 }
 
 .rodape-sobre p {
