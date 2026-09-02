@@ -115,10 +115,11 @@ header img {
 
 .btn {
   position: absolute;
+  font-size: .9rem;
   top: 70px;
   right: 20px;
   margin-left: auto;
-  padding: 10px 16px;
+  padding: 10px 14px;
   border-radius: 12px;
   cursor: pointer;
   background-color: var(--cor-verde-principal);
@@ -130,7 +131,7 @@ header img {
 .btn:hover {
   color: var(--cor-branco);
   font-weight: 600;
-  font-size: 0.9em;
+  font-size: 1rem;
   background-color: var(--cor-verde-principal-hover);
 
 }
