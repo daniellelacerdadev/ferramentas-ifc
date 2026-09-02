@@ -238,6 +238,13 @@ legend {
   width: 40px;
  }
 
+ .submit {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+ }
+
  .btn-submit {
   top: 70px;
   right: 20px;
@@ -325,7 +332,8 @@ legend {
 @media (max-width: 768px) {
 
   .btn {
-    top: 40px;
+    top: 30px;
+    right: 10px;
   }
 
     .sectioncard {
@@ -395,7 +403,9 @@ legend {
         font-size: 0.85rem;
     }
 
-    .btn-submit {
+    .submit {
+      flex-direction: column;
       gap: 30px;
     }
+
 }
