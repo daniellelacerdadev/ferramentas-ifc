@@ -1230,22 +1230,45 @@ async function gerarLinkManifestacao() {
             "input, select, textarea"
         );
 
-        campos.forEach((campo) => {
+       campos.forEach((campo) => {
 
-            if (!campo.name) {
-                return;
-            }
+    if (!campo.name) {
+        return;
+    }
 
-            // Radio e checkbox: somente os marcados
-            if (
-                (campo.type === "radio" || campo.type === "checkbox") &&
-                !campo.checked
-            ) {
-                return;
-            }
+    // CHECKBOX
+    // Pode haver várias opções com o mesmo name
+    if (campo.type === "checkbox") {
 
-            dadosFormulario[campo.name] = campo.value;
-        });
+        if (!campo.checked) {
+            return;
+        }
+
+        if (!Array.isArray(dadosFormulario[campo.name])) {
+            dadosFormulario[campo.name] = [];
+        }
+
+        dadosFormulario[campo.name].push(campo.value);
+
+        return;
+    }
+
+    // RADIO
+    // Apenas uma opção pode estar selecionada
+    if (campo.type === "radio") {
+
+        if (!campo.checked) {
+            return;
+        }
+
+        dadosFormulario[campo.name] = campo.value;
+
+        return;
+    }
+
+    // DEMAIS CAMPOS
+    dadosFormulario[campo.name] = campo.value;
+});
 
 
         // Envia os dados para o backend

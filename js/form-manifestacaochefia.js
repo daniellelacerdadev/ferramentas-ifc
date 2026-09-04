@@ -84,9 +84,15 @@ function preencherFormulario(dados) {
                 `[name="${nomeCampo}"]`
             );
 
-            opcoes.forEach((opcao) => {
-                opcao.checked = opcao.value === valor;
-            });
+          opcoes.forEach((opcao) => {
+
+             if (Array.isArray(valor)) {
+                 opcao.checked = valor.includes(opcao.value);
+            } else {
+                 opcao.checked = opcao.value === valor;
+            }
+
+        });
 
             return;
         }
