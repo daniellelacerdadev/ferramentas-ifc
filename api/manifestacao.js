@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
     // Permite a comunicação com o formulário
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Methods","GET, POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
     // Responde à verificação do navegador

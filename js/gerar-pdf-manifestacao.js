@@ -53,6 +53,60 @@ function textoRadio(name) {
         : selecionado.value;
 }
 
+function textoQuantidadeDias() {
+
+    const selecionado = document.querySelector(
+        'input[name="quantidadeDias"]:checked'
+    );
+
+    if (!selecionado) {
+        return "";
+    }
+
+    if (selecionado.value !== "outro") {
+        return `${selecionado.value} dias`;
+    }
+
+    const quantidadeOutro =
+        document.getElementById("quantidade-outro");
+
+    if (!quantidadeOutro || !quantidadeOutro.value) {
+        return "";
+    }
+
+    return `${quantidadeOutro.value} dias (saldo remanescente de licença interrompida)`;
+}
+
+
+function textoDiasLicencaAnterior() {
+
+    const licencaSim =
+        document.getElementById("licenca-sim");
+
+    if (!licencaSim || !licencaSim.checked) {
+        return "";
+    }
+
+    const diasAnterior =
+        document.getElementById("dias-licenca-anterior");
+
+    if (!diasAnterior || !diasAnterior.value) {
+        return "";
+    }
+
+    if (diasAnterior.value !== "outro") {
+        return `${diasAnterior.value} dias`;
+    }
+
+    const diasAnteriorOutro =
+        document.getElementById("dias-anterior-outro");
+
+    if (!diasAnteriorOutro || !diasAnteriorOutro.value) {
+        return "";
+    }
+
+    return `${diasAnteriorOutro.value} dias (licença anteriormente interrompida)`;
+}
 
 function textosCheckbox(name) {
 
@@ -784,61 +838,50 @@ function avisoAdministrativo() {
         valorCampo("nome")
     );
 
-    campo(
-        "Cargo",
-        valorCampo("cargo")
+    camposLadoALado(
+    "Cargo",
+    valorCampo("cargo"),
+    "E-mail institucional",
+    valorCampo("email")
     );
 
-    campo(
-        "Matrícula SIAPE",
-        valorCampo("matricula")
-    );
 
-    campo(
-        "CPF",
-        valorCampo("cpf")
-    );
-
-    campo(
-        "E-mail institucional",
-        valorCampo("email")
+    camposLadoALado(
+    "Matrícula SIAPE",
+    valorCampo("matricula"),
+    "CPF",
+    valorCampo("cpf")
     );
 
 
     const lotacao =
-        document.getElementById("lotacao");
+    document.getElementById("lotacao");
+
+const exercicio =
+    document.getElementById("exercicio");
 
 
-    campo(
-        "Unidade de lotação",
-        lotacao
-            ? lotacao.options[
-                lotacao.selectedIndex
-              ].text
-            : ""
+camposLadoALado(
+    "Unidade de lotação",
+    lotacao
+        ? lotacao.options[
+            lotacao.selectedIndex
+        ].text
+        : "",
+
+    "Unidade de Exercício",
+    exercicio
+        ? exercicio.options[
+            exercicio.selectedIndex
+        ].text
+        : ""
     );
 
-    const exercicio =
-        document.getElementById("exercicio");
-
-
-    campo(
-        "Unidade de Exercício",
-        exercicio
-            ? exercicio.options[
-                exercicio.selectedIndex
-              ].text
-            : ""
-    );
-
-    campo(
-        "Chefia imediata",
-        valorCampo("chefia")
-    );
-
-    campo(
-        "E-mail da chefia",
-        valorCampo("email-chefia")
+   camposLadoALado(
+    "Chefia imediata",
+    valorCampo("chefia"),
+    "E-mail da chefia",
+    valorCampo("email-chefia")
     );
 
 
@@ -869,7 +912,39 @@ function avisoAdministrativo() {
       );
     }
 
+// ======================================================
+// LICENÇA ANTERIOR
+// ======================================================
 
+const licencaAnteriorSelecionada =
+    document.querySelector(
+        'input[name="licenca-anterior"]:checked'
+    );
+
+if (licencaAnteriorSelecionada) {
+
+    textoGrande(
+        "Já usufruiu de licença neste quinquênio",
+        licencaAnteriorSelecionada.value === "sim"
+            ? "Sim"
+            : "Não"
+    );
+}
+
+if (
+    licencaAnteriorSelecionada &&
+    licencaAnteriorSelecionada.value === "sim"
+) {
+
+    camposLadoALado(
+        "Dias já usufruídos no quinquênio",
+        textoDiasLicencaAnterior(),
+        "Data de conclusão da última licença",
+        formatarDataPDF(
+            valorCampo("data-ultima-licenca")
+        )
+    );
+}
     // ======================================================
     // SEÇÃO II
     // ======================================================
@@ -879,18 +954,15 @@ function avisoAdministrativo() {
     );
 
 
-    campo(
-        "Quantidade de dias",
-        textoRadio("quantidadeDias")
+    textoGrande(
+    "Quantidade de dias",
+    textoQuantidadeDias()
     );
 
 
-    campo(
+    camposLadoALado(
     "Data de início",
-    formatarDataPDF(valorCampo("data-inicio"))
-    );
-
-    campo(
+    formatarDataPDF(valorCampo("data-inicio")),
     "Data de término",
     formatarDataPDF(valorCampo("data-fim"))
     );
@@ -909,22 +981,18 @@ function avisoAdministrativo() {
 
 
     campo(
-        "Nome da (s) ação (ações) de capacitação",
-        formatarDataPDF(valorCampo("nome-acao"))
-    );
+         "Nome da (s) ação (ações) de capacitação",
+        valorCampo("nome-acao")
+    )
 
 
-    campo(
-        "Carga horária total",
-        valorCampo("carga")
-            ? valorCampo("carga") + " horas"
-            : ""
-    );
-
-
-    campo(
-        "Cidade/UF/País",
-        valorCampo("local")
+    camposLadoALado(
+    "Carga horária total",
+    valorCampo("carga")
+        ? valorCampo("carga") + " horas"
+        : "",
+    "Cidade/UF/País",
+    valorCampo("local")
     );
 
 
@@ -1014,7 +1082,7 @@ titulo(
 
 campo(
     "Nome da chefia imediata",
-    valorCampo("chefia")
+    valorCampo("chefia-manifestacao")
 );
 
 campo(

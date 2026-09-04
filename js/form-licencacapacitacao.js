@@ -181,7 +181,29 @@ function mostrarDadosLicencaAnterior() {
                 <option value="60">60 dias</option>
                 <option value="75">75 dias</option>
                 <option value="90">90 dias</option>
+                <option value="outro">Outro</option>
             </select>
+
+            <div id="campo-dias-anterior-outro" hidden>
+                <label for="dias-anterior-outro">
+                    Informe a quantidade efetivamente usufruída:
+                </label>
+
+                <input
+                    type="number"
+                    id="dias-anterior-outro"
+                    name="dias-anterior-outro"
+                    min="1"
+                    max="89"
+                    step="1"
+                    inputmode="numeric">
+
+                <p class="orientacao-outro">
+                 Utilize esta opção somente quando a quantidade de dias
+                 efetivamente usufruída for diferente dos períodos acima,
+                em razão de interrupção de Licença para Capacitação.
+                </p>
+            </div>
         </div>
 
         <div>
@@ -199,7 +221,40 @@ function mostrarDadosLicencaAnterior() {
 
     const diasAnterior = document.getElementById("dias-licenca-anterior");
 
-    diasAnterior.addEventListener("change", validarSaldoLicenca);
+    diasAnterior.addEventListener("change", function () {
+
+    const campoOutroAnterior = document.getElementById(
+        "campo-dias-anterior-outro"
+    );
+
+    const diasAnteriorOutro = document.getElementById(
+        "dias-anterior-outro"
+    );
+
+    const outroSelecionado = diasAnterior.value === "outro";
+
+    campoOutroAnterior.hidden = !outroSelecionado;
+    diasAnteriorOutro.required = outroSelecionado;
+
+    if (!outroSelecionado) {
+        diasAnteriorOutro.value = "";
+    }
+
+    validarSaldoLicenca();
+    atualizarEstadoFormulario();
+    });
+
+
+    const diasAnteriorOutro = document.getElementById(
+    "dias-anterior-outro"
+    );
+
+    diasAnteriorOutro.addEventListener("input", function () {
+
+    validarSaldoLicenca();
+    atualizarEstadoFormulario();
+
+});
 
     const dataUltimaLicenca = document.getElementById("data-ultima-licenca");
 
@@ -213,6 +268,40 @@ function esconderDadosLicencaAnterior() {
     mensagemLicencaAnterior.innerHTML = "";
 }
 
+function obterDiasUsufruidos() {
+
+    const diasAnterior = document.getElementById(
+        "dias-licenca-anterior"
+    );
+
+    if (!diasAnterior || !diasAnterior.value) {
+        return null;
+    }
+
+    if (diasAnterior.value !== "outro") {
+        return Number(diasAnterior.value);
+    }
+
+    const diasAnteriorOutro = document.getElementById(
+        "dias-anterior-outro"
+    );
+
+    if (!diasAnteriorOutro || !diasAnteriorOutro.value) {
+        return null;
+    }
+
+    const dias = Number(diasAnteriorOutro.value);
+
+    if (
+        !Number.isInteger(dias) ||
+        dias < 1 ||
+        dias > 89
+    ) {
+        return null;
+    }
+
+    return dias;
+}
 
 function validarSaldoLicenca() {
 
@@ -223,7 +312,12 @@ function validarSaldoLicenca() {
         return;
     }
 
-    const diasUsufruidos = Number(diasAnterior.value);
+    const diasUsufruidos = obterDiasUsufruidos();
+
+    if (!diasUsufruidos) {
+    mensagemLicencaAnterior.innerHTML = "";
+    return;
+}
 
     // A licença para capacitação possui limite de 90 dias por quinquênio.
     const saldo = 90 - diasUsufruidos;
@@ -236,6 +330,68 @@ function validarSaldoLicenca() {
 
     validarQuantidadeAtual();
 }
+
+    //== QUANTIDADE DE DIAS SOLICITADA ==//
+
+const campoOutroDias = document.getElementById("campo-outro-dias");
+const quantidadeOutro = document.getElementById("quantidade-outro");
+
+
+function obterDiasSolicitados() {
+
+    const quantidadeSelecionada = document.querySelector(
+        'input[name="quantidadeDias"]:checked'
+    );
+
+    if (!quantidadeSelecionada) {
+        return null;
+    }
+
+    // Opções normais: 15, 30, 45, 60, 75 ou 90
+    if (quantidadeSelecionada.value !== "outro") {
+        return Number(quantidadeSelecionada.value);
+    }
+
+    // Opção "Outro"
+    if (!quantidadeOutro.value) {
+        return null;
+    }
+
+    const dias = Number(quantidadeOutro.value);
+
+    if (
+        !Number.isInteger(dias) ||
+        dias < 1 ||
+        dias > 90
+    ) {
+        return null;
+    }
+
+    return dias;
+}
+
+
+function atualizarCampoOutroDias() {
+
+    const quantidadeSelecionada = document.querySelector(
+        'input[name="quantidadeDias"]:checked'
+    );
+
+    const outroSelecionado =
+        quantidadeSelecionada?.value === "outro";
+
+    campoOutroDias.hidden = !outroSelecionado;
+
+    quantidadeOutro.required = outroSelecionado;
+
+    if (!outroSelecionado) {
+        quantidadeOutro.value = "";
+    }
+
+    atualizarEstadoFormulario();
+}
+
+
 
 //== VALIDAÇÃO DA QUANTIDADE DA LICENÇA ATUAL ==//
 
@@ -253,7 +409,28 @@ function validarQuantidadeAtual() {
         return;
     }
 
-    const diasSolicitados = Number(quantidadeAtual.value);
+    const diasSolicitados = obterDiasSolicitados();
+
+if (!diasSolicitados) {
+    mensagemSaldo.innerHTML = "";
+    return;
+}
+
+if (
+    quantidadeAtual.value === "outro" &&
+    !document.getElementById("licenca-sim").checked
+) {
+
+    mensagemSaldo.innerHTML = `
+        <p class="mensagem-erro">
+            A opção <strong>Outro</strong> é exclusiva para utilização
+            de saldo remanescente decorrente de interrupção de Licença
+            para Capacitação anteriormente concedida.
+        </p>
+    `;
+
+    return;
+}
 
     // Se não houver licença anterior, todo o quinquênio está disponível.
     if (!diasAnterior || !diasAnterior.value) {
@@ -261,7 +438,13 @@ function validarQuantidadeAtual() {
         return;
     }
 
-    const diasUsufruidos = Number(diasAnterior.value);
+    const diasUsufruidos = obterDiasUsufruidos();
+
+    if (!diasUsufruidos) {
+    mensagemSaldo.innerHTML = "";
+    return;
+    }
+
     const saldo = 90 - diasUsufruidos;
 
     if (diasSolicitados > saldo) {
@@ -275,6 +458,7 @@ function validarQuantidadeAtual() {
 
         return;
     }
+
 
     mensagemSaldo.innerHTML = `
         <p class="mensagem-ok">
@@ -292,12 +476,21 @@ const quantidadeAtualRadios = document.querySelectorAll(
 );
 
 quantidadeAtualRadios.forEach((radio) => {
+    radio.addEventListener("change", atualizarCampoOutroDias);
     radio.addEventListener("change", validarQuantidadeAtual);
     radio.addEventListener("change", calcularDataFim);
     radio.addEventListener("change", validarFgCd);
     radio.addEventListener("change", validarCargaHoraria);
 });
 
+quantidadeOutro.addEventListener("input", function () {
+
+    validarQuantidadeAtual();
+    calcularDataFim();
+    validarFgCd();
+    validarCargaHoraria();
+    atualizarEstadoFormulario();
+});
 //== MOSTRA OU ESCONDE OS DADOS DA LICENÇA ANTERIOR ==//
 
 licencaSim.addEventListener("change", mostrarDadosLicencaAnterior);
@@ -389,7 +582,12 @@ function calcularDataFim() {
         return;
     }
 
-    const dias = Number(quantidadeAtual.value);
+    const dias = obterDiasSolicitados();
+
+        if (!dias) {
+        dataFim.value = "";
+        return;
+    }
 
     const inicio = new Date(dataInicio.value + "T00:00:00");
 
@@ -429,9 +627,14 @@ function validarFgCd() {
         return;
     }
 
-    const diasSolicitados = Number(quantidadeAtual.value);
+    const diasSolicitados = obterDiasSolicitados();
 
-    if (diasSolicitados >= 45) {
+    if (!diasSolicitados) {
+    mensagemFgCd.innerHTML = "";
+    return;
+    }
+
+    if (diasSolicitados > 30) {
 
         mensagemFgCd.innerHTML = `
             <p class="mensagem-alerta">
@@ -523,7 +726,12 @@ function validarCargaHoraria() {
     }
 
     const horas = Number(cargaHoraria.value);
-    const dias = Number(quantidadeAtual.value);
+    const dias = obterDiasSolicitados();
+
+    if (!dias) {
+    mensagemCargaHoraria.innerHTML = "";
+    return;
+    }
 
     const horasSemanais = (horas / dias) * 7;
 
@@ -676,6 +884,175 @@ function formularioEstaValido() {
     );
 }
 
+// ----------------------------------------------------------
+// Mostra os campos obrigatórios que ainda precisam ser preenchidos
+// ----------------------------------------------------------
+
+function mostrarCamposPendentes() {
+
+    const mensagemErros = document.getElementById("mensagem-erros");
+    const pendencias = [];
+
+    // Campos comuns: texto, e-mail, data, select e textarea
+    const camposObrigatorios = formulario.querySelectorAll(
+        "input[required], select[required], textarea[required]"
+    );
+
+    camposObrigatorios.forEach((campo) => {
+
+        // Radio será tratado separadamente
+        if (campo.type === "radio") {
+            return;
+        }
+
+        if (!campo.checkValidity()) {
+
+            const label = formulario.querySelector(
+                `label[for="${campo.id}"]`
+            );
+
+           const nomesAmigaveis = {
+                nome: "Nome completo",
+                cargo: "Cargo",
+                matricula: "Matrícula SIAPE",
+                cpf: "CPF",
+                email: "E-mail institucional",
+                lotacao: "Unidade de lotação",
+                exercicio: "Unidade de exercício",
+                chefia: "Nome da chefia imediata",
+                "email-chefia": "E-mail institucional da chefia imediata",
+                data: "Data de efetivo exercício no serviço público",
+                "data-cargo": "Data de efetivo exercício no cargo atual",
+                "data-inicio": "Período da Licença para Capacitação",
+                promotora: "Instituição promotora da ação de capacitação",
+                "nome-acao": "Nome da ação de capacitação",
+                carga: "Carga horária total",
+                local: "Cidade/UF/País",
+                "manifestacao-servidor": "Manifestação do servidor",
+                "quantidade-outro": "Quantidade de dias do saldo remanescente",
+                "dias-anterior-outro": "Quantidade de dias efetivamente usufruídos na licença anterior"
+    };
+
+    let nomeCampo =
+    nomesAmigaveis[campo.name] ||
+    nomesAmigaveis[campo.id] ||
+    campo.name ||
+    "Campo obrigatório";
+
+    pendencias.push(nomeCampo);
+        }
+    });
+
+
+    // ------------------------------------------------------
+    // Grupos de radio obrigatórios
+    // ------------------------------------------------------
+
+    const gruposRadio = [
+        {
+            name: "licenca-anterior",
+            texto: "Informe se já usufruiu de Licença para Capacitação referente ao quinquênio solicitado"
+        },
+        {
+            name: "quantidadeDias",
+            texto: "Selecione a quantidade de dias da Licença para Capacitação"
+        },
+        {
+            name: "acao",
+            texto: "Selecione o tipo de ação de capacitação"
+        },
+        {
+            name: "onus",
+            texto: "Selecione o tipo de ônus da Licença para Capacitação"
+        }
+    ];
+
+    gruposRadio.forEach((grupo) => {
+
+        const radios = formulario.querySelectorAll(
+            `input[name="${grupo.name}"]`
+        );
+
+        if (
+            radios.length > 0 &&
+            !formulario.querySelector(
+                `input[name="${grupo.name}"]:checked`
+            )
+        ) {
+            pendencias.push(grupo.texto);
+        }
+    });
+
+
+    // ------------------------------------------------------
+    // Relevância da ação
+    // Pelo menos uma opção deve ser selecionada
+    // ------------------------------------------------------
+
+    const relevanciaMarcada = formulario.querySelector(
+        'input[name="relevancia"]:checked'
+    );
+
+    if (!relevanciaMarcada) {
+        pendencias.push(
+            "Selecione pelo menos uma opção sobre a relação da ação de capacitação com o PDP, órgão, carreira ou função"
+        );
+    }
+
+
+    // ------------------------------------------------------
+    // Compromissos da Seção V
+    // Todos devem ser marcados
+    // ------------------------------------------------------
+
+    if (!compromissosValidos()) {
+        pendencias.push(
+            "Leia e assinale todos os compromissos da Seção V"
+        );
+    }
+
+
+    // Remove eventuais mensagens repetidas
+    const pendenciasUnicas = [...new Set(pendencias)];
+
+
+    // ------------------------------------------------------
+    // Se não houver pendências
+    // ------------------------------------------------------
+
+    if (pendenciasUnicas.length === 0) {
+
+        mensagemErros.hidden = true;
+        mensagemErros.innerHTML = "";
+
+        return true;
+    }
+
+
+    // ------------------------------------------------------
+    // Exibe as pendências
+    // ------------------------------------------------------
+
+    mensagemErros.innerHTML = `
+        <strong>⚠️ Antes de continuar, verifique os campos abaixo:</strong>
+
+        <ul>
+            ${pendenciasUnicas
+                .map((pendencia) => `<li>${pendencia}</li>`)
+                .join("")}
+        </ul>
+    `;
+
+    mensagemErros.hidden = false;
+
+    mensagemErros.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    return false;
+}
+
 
 // ----------------------------------------------------------
 // Atualiza os botões e a mensagem de sucesso
@@ -684,11 +1061,6 @@ function formularioEstaValido() {
 function atualizarEstadoFormulario() {
 
     const formularioValido = formularioEstaValido();
-
-    // Botões
-    botaoEnvio.disabled = !formularioValido;
-
-    botaoLinkChefia.disabled = !formularioValido;
 
 
     // Mensagem de sucesso
@@ -799,7 +1171,7 @@ atualizarEstadoFormulario();
 
 async function gerarLinkManifestacao() {
 
-    if (!formularioEstaValido()) {
+    if (!mostrarCamposPendentes()) {
         return;
     }
 
@@ -927,3 +1299,7 @@ botaoLinkChefia.addEventListener(
         gerarLinkManifestacao();
     }
 );
+
+
+
+  

@@ -94,6 +94,128 @@ function preencherFormulario(dados) {
         // Select, input e textarea
         campo.value = valor;
     });
+    // ----------------------------------------------------------
+// CAMPOS ESPECIAIS - LICENÇA ANTERIOR
+// ----------------------------------------------------------
+
+if (dados["licenca-anterior"] === "sim") {
+
+    const containerLicencaAnterior =
+        document.getElementById("dadoslicencaanterior");
+
+    containerLicencaAnterior.innerHTML = `
+        <div class="campo">
+            <label for="dias-licenca-anterior">
+                Dias já usufruídos neste quinquênio:
+            </label>
+
+            <select
+                id="dias-licenca-anterior"
+                name="dias-licenca-anterior"
+                disabled
+            >
+                <option value="">Selecione</option>
+                <option value="15">15 dias</option>
+                <option value="30">30 dias</option>
+                <option value="45">45 dias</option>
+                <option value="60">60 dias</option>
+                <option value="75">75 dias</option>
+                <option value="90">90 dias</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <div id="campo-dias-anterior-outro" hidden>
+                <label for="dias-anterior-outro">
+                    Quantidade efetivamente usufruída:
+                </label>
+
+                <input
+                    type="number"
+                    id="dias-anterior-outro"
+                    name="dias-anterior-outro"
+                    readonly
+                >
+            </div>
+
+            <label for="data-ultima-licenca">
+                Data de conclusão da última licença:
+            </label>
+
+            <input
+                type="date"
+                id="data-ultima-licenca"
+                name="data-ultima-licenca"
+                readonly
+            >
+        </div>
+    `;
+
+
+    const diasAnterior =
+        document.getElementById("dias-licenca-anterior");
+
+    diasAnterior.value =
+        dados["dias-licenca-anterior"] || "";
+
+
+    const dataUltima =
+        document.getElementById("data-ultima-licenca");
+
+    dataUltima.value =
+        dados["data-ultima-licenca"] || "";
+
+
+    if (dados["dias-licenca-anterior"] === "outro") {
+
+        const campoOutroAnterior =
+            document.getElementById(
+                "campo-dias-anterior-outro"
+            );
+
+        const diasOutroAnterior =
+            document.getElementById(
+                "dias-anterior-outro"
+            );
+
+        campoOutroAnterior.hidden = false;
+
+        diasOutroAnterior.value =
+            dados["dias-anterior-outro"] || "";
+    }
+}
+// ----------------------------------------------------------
+// CAMPOS ESPECIAIS - QUANTIDADE ATUAL "OUTRO"
+// ----------------------------------------------------------
+
+if (dados["quantidadeDias"] === "outro") {
+
+    const campoOutroDias =
+        document.getElementById("campo-outro-dias");
+
+    const quantidadeOutro =
+        document.getElementById("quantidade-outro");
+
+    if (campoOutroDias && quantidadeOutro) {
+
+        campoOutroDias.hidden = false;
+
+        quantidadeOutro.value =
+            dados["quantidade-outro"] || "";
+    }
+}
+// ----------------------------------------------------------
+// REPETE O NOME DA CHEFIA NA SEÇÃO FINAL
+// ----------------------------------------------------------
+
+const chefiaManifestacao =
+    document.getElementById(
+        "chefia-manifestacao"
+    );
+
+if (chefiaManifestacao) {
+    chefiaManifestacao.value =
+        dados.chefia || "";
+}
 }
 
 

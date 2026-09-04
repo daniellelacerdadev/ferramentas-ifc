@@ -53,6 +53,60 @@ function textoRadio(name) {
         : selecionado.value;
 }
 
+function textoQuantidadeDias() {
+
+    const selecionado = document.querySelector(
+        'input[name="quantidadeDias"]:checked'
+    );
+
+    if (!selecionado) {
+        return "";
+    }
+
+    if (selecionado.value !== "outro") {
+        return `${selecionado.value} dias`;
+    }
+
+    const quantidadeOutro =
+        document.getElementById("quantidade-outro");
+
+    if (!quantidadeOutro || !quantidadeOutro.value) {
+        return "";
+    }
+
+    return `${quantidadeOutro.value} dias (saldo remanescente de licença interrompida)`;
+}
+
+
+function textoDiasLicencaAnterior() {
+
+    const licencaSim =
+        document.getElementById("licenca-sim");
+
+    if (!licencaSim || !licencaSim.checked) {
+        return "";
+    }
+
+    const diasAnterior =
+        document.getElementById("dias-licenca-anterior");
+
+    if (!diasAnterior || !diasAnterior.value) {
+        return "";
+    }
+
+    if (diasAnterior.value !== "outro") {
+        return `${diasAnterior.value} dias`;
+    }
+
+    const diasAnteriorOutro =
+        document.getElementById("dias-anterior-outro");
+
+    if (!diasAnteriorOutro || !diasAnteriorOutro.value) {
+        return "";
+    }
+
+    return `${diasAnteriorOutro.value} dias (licença anteriormente interrompida)`;
+}
 
 function textosCheckbox(name) {
 
@@ -354,7 +408,7 @@ async function gerarPDF() {
 
     function titulo(texto) {
 
-        verificarEspaco(16);
+        verificarEspaco(14);
 
         pdf.setFont(
             "helvetica",
@@ -625,6 +679,16 @@ async function gerarPDF() {
     const larguraDisponivel =
         larguraTexto - espacamentoTexto;
 
+    let larguraQuebra = larguraTexto;
+
+if (
+    textoLimpo.startsWith(
+        "O(s) curso(s) deverá(ão) abranger todo o período"
+    )
+) {
+    larguraQuebra = larguraTexto - 42;
+}
+
     const linhas = pdf.splitTextToSize(
         textoLimpo,
         larguraDisponivel
@@ -675,38 +739,39 @@ async function gerarPDF() {
     );
 
 
-    // =========================
-    // TEXTO
-    // =========================
+   // =========================
+// TEXTO
+// =========================
 
-    pdf.setFont(
-        "helvetica",
-        "normal"
-    );
+pdf.setFont(
+    "helvetica",
+    "normal"
+);
 
-    pdf.setFontSize(7.4);
+pdf.setFontSize(7.4);
 
-    pdf.setTextColor(
-        50,
-        50,
-        50
-    );
+pdf.setTextColor(
+    50,
+    50,
+    50
+);
 
-    pdf.text(
-        linhas,
-        xTexto,
-        y,
-        {
-            lineHeightFactor: 1.3
-        }
-    );
+pdf.text(
+    linhas,
+    xTexto,
+    y,
+    {
+        lineHeightFactor: 1.3
+    }
+);
 
 
     // =========================
     // ESPAÇO PARA O PRÓXIMO
     // =========================
 
-    y += alturaTexto + 3;
+   y += alturaTexto + 3;
+
 }
 
     // ======================================================
@@ -730,59 +795,48 @@ async function gerarPDF() {
         valorCampo("nome")
     );
 
-    campo(
+    camposLadoALado(
         "Cargo",
-        valorCampo("cargo")
+      valorCampo("cargo"),
+      "E-mail institucional",
+      valorCampo("email")
     );
+    
 
-    campo(
+    camposLadoALado(
         "Matrícula SIAPE",
-        valorCampo("matricula")
-    );
-
-    campo(
+       valorCampo("matricula"),
         "CPF",
-        valorCampo("cpf")
-    );
-
-     campo(
-        "E-mail institucional",
-        valorCampo("email")
-    );
+      valorCampo("cpf")
+     );
 
     const lotacao =
-        document.getElementById("lotacao");
+    document.getElementById("lotacao");
+
+const exercicio =
+    document.getElementById("exercicio");
 
 
-    campo(
-        "Unidade de lotação",
-        lotacao
-            ? lotacao.options[
-                lotacao.selectedIndex
-              ].text
-            : ""
-    );
+camposLadoALado(
+    "Unidade de lotação",
+    lotacao
+        ? lotacao.options[
+            lotacao.selectedIndex
+        ].text
+        : "",
 
-    const exercicio =
-        document.getElementById("exercicio");
-
-
-    campo(
-        "Unidade de Exercício",
-        exercicio
-            ? exercicio.options[
-                exercicio.selectedIndex
-              ].text
-            : ""
-    );
+    "Unidade de Exercício",
+    exercicio
+        ? exercicio.options[
+            exercicio.selectedIndex
+        ].text
+        : ""
+);
 
 
-    campo(
+    camposLadoALado(
         "Chefia imediata",
-        valorCampo("chefia")
-    );
-
-    campo(
+      valorCampo("chefia"),
         "E-mail da chefia",
         valorCampo("email-chefia")
     );
@@ -815,6 +869,38 @@ async function gerarPDF() {
       );
     }
 
+// ======================================================
+// LICENÇA ANTERIOR
+// ======================================================
+
+const licencaAnteriorSelecionada =
+    document.querySelector(
+        'input[name="licenca-anterior"]:checked'
+    );
+
+if (licencaAnteriorSelecionada) {
+
+    textoGrande(
+        "Já usufruiu de licença neste quinquênio",
+        licencaAnteriorSelecionada.value === "sim"
+            ? "Sim"
+            : "Não"
+    );
+}
+
+
+if (
+    licencaAnteriorSelecionada &&
+    licencaAnteriorSelecionada.value === "sim"
+) {
+
+    camposLadoALado(
+        "Dias já usufruídos no quinquênio",
+       formatarDataPDF(textoDiasLicencaAnterior()),
+        "Data de conclusão da última licença",
+        formatarDataPDF(valorCampo("data-ultima-licenca"))
+    );
+}
 
     // ======================================================
     // SEÇÃO II
@@ -824,19 +910,16 @@ async function gerarPDF() {
         "II – DADOS DA(S) AÇÃO(AÇÕES) DE CAPACITAÇÃO"
     );
 
-
-    campo(
-        "Quantidade de dias",
-        textoRadio("quantidadeDias")
+    textoGrande(
+    "Quantidade de dias",
+    textoQuantidadeDias()
     );
+   
 
 
-    campo(
+    camposLadoALado(
     "Data de início",
-    formatarDataPDF(valorCampo("data-inicio"))
-    );
-
-    campo(
+    formatarDataPDF(valorCampo("data-inicio")),
     "Data de término",
     formatarDataPDF(valorCampo("data-fim"))
     );
@@ -860,18 +943,17 @@ async function gerarPDF() {
     );
 
 
-    campo(
+    camposLadoALado(
         "Carga horária total",
-        valorCampo("carga")
+        formatarDataPDF(valorCampo("carga")
             ? valorCampo("carga") + " horas"
-            : ""
-    );
-
-
-    campo(
+            : ""),
         "Cidade/UF/País",
-        valorCampo("local")
+        formatarDataPDF(valorCampo("local"))
     );
+
+
+   
 
 
     // ======================================================
@@ -965,20 +1047,15 @@ async function gerarPDF() {
 // ==========================================================
 
 document
-    .querySelector("form")
+    .getElementById("envio")
     .addEventListener(
-        "submit",
-        function (event) {
+        "click",
+        function () {
 
-            event.preventDefault();
+            if (!mostrarCamposPendentes()) {
+                return;
+            }
 
             gerarPDF();
         }
     );
-
-    document
-    .getElementById("gerar-link-chefia")
-    .addEventListener("click", function () {
-
-        alert("O link da chefia será gerado aqui.");
-    });

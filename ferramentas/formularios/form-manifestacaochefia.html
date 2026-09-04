@@ -9,8 +9,8 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
     crossorigin="anonymous">
      <!-- Estilo customizado -->
-    <link rel="stylesheet" type="text/css" href="../css/geral.css">
-    <link rel="stylesheet" type="text/css" href="../css/form-licencacapacitacao.css">
+    <link rel="stylesheet" type="text/css" href="../../css/geral.css">
+    <link rel="stylesheet" type="text/css" href="../../css/form-licencacapacitacao.css">
 
      <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/1e631c2bc0.js" crossorigin="anonymous"></script>
@@ -22,12 +22,12 @@
   <header class="cabecalho">
 
     <div class="logo">
-      <img src="../assets/logo_gov.png"  alt="Logo do governo e dados do órgão de emissão" class="logo-home">
+      <img src="../../assets/logo_gov.png"  alt="Logo do governo e dados do órgão de emissão" class="logo-home">
     </div>
 
     <nav>
       <a
-        href="../index.html"
+        href="../../index.html"
         class="btn btn-outline-rosa">
 
           Voltar ao Menu Principal
@@ -164,30 +164,42 @@
         </div>
         <div class="quantidade">
           <div>
-            <input type="radio" name="quantidadeDias" id="q15" value="15" disabled> 
-            <label for="q15">15 dias</label>
+            <input type="radio" name="quantidadeDias" id="qt15" value="15" disabled> 
+            <label for="qt15">15 dias</label>
           </div>
           <div>
             <input type="radio" name="quantidadeDias" id="qt30" value="30" disabled>
-            <label for="q30">30 dias</label>
+            <label for="qt30">30 dias</label>
           </div>
           <div>
             <input type="radio" name="quantidadeDias" id="qt45" value="45" disabled>
-            <label for="q45">45 dias</label>
+            <label for="qt45">45 dias</label>
           </div>
           <div>
             <input type="radio" name="quantidadeDias" id="qt60" value="60" disabled> 
-            <label for="q60">60 dias</label>
+            <label for="qt60">60 dias</label>
           </div>
           <div>
             <input type="radio" name="quantidadeDias" id="qt75" value="75" disabled>
-            <label for="q75">75 dias</label> 
+            <label for="qt75">75 dias</label> 
           </div>
           <div>
             <input type="radio" name="quantidadeDias" id="qt90" value="90" disabled>
-            <label for="q90">90 dias</label>
+            <label for="qt90">90 dias</label>
           </div>
-          <div id="mensagemsaldo" class="quantidade"></div>
+          <div>
+            <input type="radio" name="quantidadeDias" id="qOutro" value="outro" disabled>
+            <label for="qOutro">Outro</label>
+          </div>
+
+            <div id="campo-outro-dias" hidden>
+              <label for="quantidade-outro">
+                Quantidade de dias:
+              </label>
+
+              <input type="number" id="quantidade-outro" name="quantidade-outro" min="1" max="90" readonly>
+            </div>
+            <div id="mensagemsaldo" class="quantidade"></div>
         </div>
 
         <div class="linha">
@@ -345,7 +357,7 @@
           <div class="acoes-compromisso">
              <label for="validacao-curso">
               <input type="checkbox" name="validacao" id="validacao-curso" value="curso" disabled>
-              O(s) curso(s) deverá(ão) abranger todo o período da licença para capacitação, iniciando no primeiro dia e finalizando no último, sem intervalo entre as ações. A ausência de participação efetiva ou de comprovação poderá sujeitar o servidor às consequências previstas na legislação vigente. Antes de escolher a ação, verifique se há necessidade de inscrição prévia na instituição promotora. [<a href="../Ferramentas/tabela-instituicoespromotoras.html">Consulte aqui</a>]
+              O(s) curso(s) deverá(ão) abranger todo o período da licença para capacitação, iniciando no primeiro dia e finalizando no último, sem intervalo entre as ações. A ausência de participação efetiva ou de comprovação poderá sujeitar o servidor às consequências previstas na legislação vigente. Antes de escolher a ação, verifique se há necessidade de inscrição prévia na instituição promotora. [<a href="../tabela-instituicoespromotoras.html" target="_blank" rel="noopener noreferrer">Consulte aqui</a>]
             </label>
           </div>
           <div class="acoes-compromisso">
@@ -415,7 +427,7 @@
         </div>
       </fieldset>
       <fieldset class="sectioncard">
-        <legend>II - MANIFESTAÇÃO DA CHEFIA-IMEDIATA</legend>
+        <legend>VI - MANIFESTAÇÃO DA CHEFIA-IMEDIATA<span class="obrigatorio" aria-hidden="true">*</span></legend>
           <div class="manifestacao">
           <div>
             <input type="radio" name="manifestacao" id="deacordo" value="sim" required>
@@ -437,18 +449,18 @@
         </div>
       </fieldset>
       <fieldset class="sectioncard">
-        <legend>III - DADOS DA CHEFIA IMEDIATA DO REQUERENTE</legend>
+        <legend>VII - DADOS DA CHEFIA IMEDIATA DO REQUERENTE</legend>
           <div class="linha-dupla">
             <div class="campo-inline">
-              <label for="chefia">Nome da Chefia imediata:</label>
-              <input type="text" name="chefia" id="chefia" required>
+              <label for="chefia-manifestacao">
+                Nome da Chefia imediata:
+              </label>
+              <input type="text" name="chefia-manifestacao" id="chefia-manifestacao" readonly>
             </div>
             <div>
               <label for="data-atual">Data: </label>
-                <input class="campo-data" type="date" name="data-atual" id="data-atual" >
-              
+              <input class="campo-data" type="date" name="data-atual" id="data-atual" >   
             </div>
-
           </div>
       </fieldset>
       <div class="submit">
@@ -463,7 +475,7 @@
 
   <footer class="rodape">
 
-          <img src="../assets/logo_ifc.png" class="logoifc"  alt="Logo IFC">
+          <img src="../../assets/logo_ifc.png" class="logoifc"  alt="Logo IFC">
 
           <div class="endereco">  
 
@@ -483,8 +495,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="../js/form-manifestacaochefia.js" defer></script>
-    <script src="../js/gerar-pdf-manifestacao.js" defer></script>
+    <script src="../../js/form-manifestacaochefia.js" defer></script>
+    <script src="../../js/gerar-pdf-manifestacao.js" defer></script>
 
 </body>
 </html>

@@ -269,6 +269,17 @@ legend {
   border: none;
 }
 
+.obrigatorio {
+  color: #c62828;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.aviso-obrigatorios {
+  margin-left: 30px;
+  font-size: 1.2rem;
+}
+
 .mensagem-ok {
     color: var(--cor-verde-principal);
     font-weight: 600;
@@ -322,6 +333,24 @@ legend {
 
 #mensagem-sucesso.visivel {
     display: block;
+}
+
+.mensagem-erros {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border: 1px solid #b71c1c;
+  border-radius: 8px;
+  background-color: #fff5f5;
+  color: #8b0000;
+}
+
+.mensagem-erros strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mensagem-erros ul {
+  margin: 8px 0 0 20px;
 }
 
 
