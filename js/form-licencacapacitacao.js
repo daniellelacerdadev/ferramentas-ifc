@@ -571,34 +571,80 @@ definirDataMinima();
 
 function calcularDataFim() {
 
-    const dataFim = document.getElementById("data-fim");
+    const dataFim =
+        document.getElementById("data-fim");
 
-    const quantidadeAtual = document.querySelector(
-        'input[name="quantidadeDias"]:checked'
-    );
+    const quantidadeAtual =
+        document.querySelector(
+            'input[name="quantidadeDias"]:checked'
+        );
 
     if (!dataInicio.value || !quantidadeAtual) {
         dataFim.value = "";
         return;
     }
 
-    const dias = obterDiasSolicitados();
-
-        if (!dias) {
+    // Evita cálculo enquanto a data ainda está sendo digitada
+    if (
+        !/^\d{4}-\d{2}-\d{2}$/.test(
+            dataInicio.value
+        )
+    ) {
         dataFim.value = "";
         return;
     }
 
-    const inicio = new Date(dataInicio.value + "T00:00:00");
+    const dias = obterDiasSolicitados();
 
-    // O dia de início conta como o primeiro dia da licença.
-    inicio.setDate(inicio.getDate() + dias - 1);
+    if (!dias) {
+        dataFim.value = "";
+        return;
+    }
 
-    const ano = inicio.getFullYear();
-    const mes = String(inicio.getMonth() + 1).padStart(2, "0");
-    const dia = String(inicio.getDate()).padStart(2, "0");
+    const [ano, mes, dia] =
+        dataInicio.value
+            .split("-")
+            .map(Number);
 
-    dataFim.value = `${ano}-${mes}-${dia}`;
+    const inicio =
+        new Date(
+            ano,
+            mes - 1,
+            dia
+        );
+
+    // Confirma que a data informada realmente existe
+    if (
+        inicio.getFullYear() !== ano ||
+        inicio.getMonth() !== mes - 1 ||
+        inicio.getDate() !== dia
+    ) {
+        dataFim.value = "";
+        return;
+    }
+
+    // O primeiro dia já conta como dia de licença
+    inicio.setDate(
+        inicio.getDate() + dias - 1
+    );
+
+    const anoFim =
+        String(
+            inicio.getFullYear()
+        ).padStart(4, "0");
+
+    const mesFim =
+        String(
+            inicio.getMonth() + 1
+        ).padStart(2, "0");
+
+    const diaFim =
+        String(
+            inicio.getDate()
+        ).padStart(2, "0");
+
+    dataFim.value =
+        `${anoFim}-${mesFim}-${diaFim}`;
 }
 
 // Atualiza a data final quando a data de início for alterada.

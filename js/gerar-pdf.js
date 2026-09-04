@@ -205,11 +205,11 @@ async function gerarPDF() {
     try {
 
         logoGov = await carregarImagem(
-            "../assets/logo_gov.png"
+            "../../assets/logo_gov.png"
         );
 
         logoIfc = await carregarImagem(
-            "../assets/logo_ifc.png"
+            "../../assets/logo_ifc.png"
         );
 
     } catch (erro) {
