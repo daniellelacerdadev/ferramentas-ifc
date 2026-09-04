@@ -960,7 +960,7 @@ function mostrarCamposPendentes() {
            const nomesAmigaveis = {
                 nome: "Nome completo",
                 cargo: "Cargo",
-                matricula: "Matrícula SIAPE",
+                matricula: "A Matrícula SIAPE deve conter 7 dígitos",
                 cpf: "CPF",
                 email: "E-mail institucional",
                 lotacao: "Unidade de lotação",
