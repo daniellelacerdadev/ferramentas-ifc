@@ -205,11 +205,11 @@ async function gerarPDF() {
     try {
 
         logoGov = await carregarImagem(
-            "../assets/logo_gov.png"
+            "../../assets/logo_gov.png"
         );
 
         logoIfc = await carregarImagem(
-            "../assets/logo_ifc.png"
+            "../../assets/logo_ifc.png"
         );
 
     } catch (erro) {
@@ -1035,16 +1035,61 @@ if (
     );
 
 
-    const compromissos =
-        textosCheckbox("validacao");
+   const compromissos =
+    textosCheckbox("validacao");
 
+if (compromissos.length > 0) {
 
-    compromissos.forEach(
-        (item) => {
-
-            checkboxTexto(item);
-        }
+    textoGrande(
+        "Declaração do(a) requerente",
+        "O(A) servidor(a) declarou ciência e concordância com todos os compromissos relacionados à Licença para Capacitação apresentados no requerimento, conforme relacionados abaixo."
     );
+
+    compromissos.forEach((item, indice) => {
+
+        const textoLimpo =
+            String(item)
+                .replace(/\s+/g, " ")
+                .trim();
+
+        const textoNumerado =
+            `${indice + 1}. ${textoLimpo}`;
+
+        const linhas =
+            pdf.splitTextToSize(
+                textoNumerado,
+                larguraTexto
+            );
+
+        verificarEspaco(
+            linhas.length * 3.4 + 2
+        );
+
+        pdf.setFont(
+            "helvetica",
+            "normal"
+        );
+
+        pdf.setFontSize(7);
+
+        pdf.setTextColor(
+            50,
+            50,
+            50
+        );
+
+        pdf.text(
+            linhas,
+            margem,
+            y,
+            {
+                lineHeightFactor: 1.15
+            }
+        );
+
+        y += linhas.length * 3.4 + 1.8;
+    });
+}
 
     // ======================================================
 // SEÇÃO VI
@@ -1080,16 +1125,11 @@ titulo(
     "VII – DADOS DA CHEFIA IMEDIATA DO REQUERENTE"
 );
 
-campo(
+camposLadoALado(
     "Nome da chefia imediata",
-    valorCampo("chefia-manifestacao")
-);
-
-campo(
+    valorCampo("chefia-manifestacao"),
     "Data da manifestação",
-    formatarDataPDF(
-        valorCampo("data-atual")
-    )
+    formatarDataPDF(valorCampo("data-atual"))
 );
 
 avisoAdministrativo();
