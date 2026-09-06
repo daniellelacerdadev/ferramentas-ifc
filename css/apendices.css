@@ -1,56 +1,104 @@
 /*--Menu--*/
 
+.navbar {
+  display:flex;
+  position: relative;
+  align-items:center;
+  justify-content: space-between;
+  margin-top: 45px;
 
-
-.btn-menu-sobre {
-  width: fit-content;
-  font-size: 1.2rem;
-  padding: 8px;
-  cursor: pointer;
-  background-color: var(--cor-verde-principal);
-  color: var(--cor-branco);
-  border: none;
-  border-radius: 12px;
-  font-weight: 500;
 }
 
-.btn-menu-sobre:hover {
+.navbar-toggler {
+    position: absolute;
+    border: none;
+    background-color: var(--cor-verde-principal-hover);
+    color: var(--cor-verde-principal);
+    cursor: pointer;
+    font-family: 1.2rem;
+    width: 35px;
+    height: 35px;
+    appearance: auto;
+    letter-spacing: normal;
+    text-transform: none;
+    padding-block: 1px;
+    padding-inline: 6px;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+ }
+
+ul {
+    list-style: none;
+    display: block;
+    margin-block-start: 1rem;
+    margin-block-end: -0.2rem;
+    padding-inline-start: 30px;
+}
+
+.nav-link {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    background-color: var(--cor-verde-principal);
+    color: var(--cor-branco);
+    border: 0.2px solid var(--cor-verde-principal);
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: .9rem;
+    transition: all .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.nav-link:hover, .nav-link.active {
   color: var(--cor-verde-principal);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: .95rem;
   background-color: var(--cor-verde-principal-hover);
   text-decoration: none;
 }
 
-
-.sobre-nav {
-  display:flex;
-  justify-content:center;
-  width:100%;
-  margin-top: 45px;
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    color: var(--cor-verde-principal);
+    background-color: var(--cor-verde-principal-hover);
+    transition: all .3s cubic-bezier(.4, 0, .2, 1);
 }
 
-.menu-sobre {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
-  gap: 15px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  
+.nav-link:hover:after .nav-ink.active:after {
+    width: 100%
 }
 
-.menu-sobre li {
-  list-style: none;
+.navbar-toggler,.nav_close {
+    display: none;
 }
+
+.nav_close  {
+    background-color: var(--cor-fundo);
+}
+
+
+
 
 /*--Conteúdo--*/
 
 .apresentacao {
   padding: 32px;
-  margin: -12px 10px;
+  margin: -25px 10px;
   background-color: var(--cor-fundo);
   border: 1px solid var(--cor-verde-principal);
   border-radius: 12px;
@@ -84,3 +132,88 @@
   text-decoration: none;
   color: var(--verde-principal);
 }
+
+
+@media (max-width: 1099px){
+    .navbar-toggler {
+    display: block;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--cor-verde-principal);
+    }   
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 250px;
+        height: 100vh;
+        background-color: var(--cor-verde-principal);
+        padding: 5rem 2rem 2rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,.15);
+        transition: right .3s ease;
+        z-index: 1001
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 2px;
+    }
+
+     .navbar-collapse.show {
+        right: 0;
+        padding: 5px;
+        width: 200px;
+        background-color: var(--cor-verde-principal-hover);
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        text-align: left;
+        background-color: var(--cor-verde-principal-hover);
+        color: var(--cor-verde-principal);
+        font-weight: 600;
+        border: none;
+        white-space: normal;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+    }
+
+    .nav-list li {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .nav-link:hover, .nav-link.active, .nav-ink.active:after {
+        font-size: 1rem;
+        background-color: var(--cor-fundo);
+    }
+
+    .nav_close {
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+}
+@media (min-width: 1100px) {
+    .navbar-toggler {
+    display: none;
+    }
+
+   .navbar-collapse{
+        display:flex;
+        justify-content:center;
+        background:transparent;
+        width:auto;
+        height:auto;
+        padding:0;
+        box-shadow:none;
+    }
+
+}
+
