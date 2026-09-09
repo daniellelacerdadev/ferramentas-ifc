@@ -435,7 +435,13 @@
           <div class="acoes-compromisso">
              <label for="validacao-encaminhamento"><span class="obrigatorio" aria-hidden="true">*</span>
               <input type="checkbox" name="validacao" id="validacao-encaminhamento" value="encaminhamento">
-              Estou ciente de que o pdf deste formulário deverá ser encaminhado à Coordenação de Gestão de Pessoas do meu campus, ou se eu for lotado na Reitoria, à Coordenação de Concessões, Aposentadoria e Ações Judiciais (concessoes@ifc.edu.br) junto com o print do curso ou declaração de matrícula, para abertura do processo e solicitação das devidas assinaturas.</strong>.
+              Estou ciente de que, após concluir o preenchimento, deverei utilizar o botão “Gerar PDF do requerimento”, disponível ao final desta página, e encaminhar o arquivo gerado à Coordenação de Gestão de Pessoas do meu campus ou, se lotado(a) na Reitoria, à Coordenação de Concessões, Aposentadoria e Ações Judiciais (concessoes@ifc.edu.br), juntamente com o comprovante da ação de desenvolvimento, para abertura do processo e solicitação das devidas assinaturas.</strong>.
+            </label>
+          </div>
+          <div class="acoes-compromisso">
+              <label for="validacao-link-chefia"><span class="obrigatorio" aria-hidden="true">*</span>
+              <input type="checkbox" name="validacao" id="validacao-link-chefia" value="link">
+              Estou ciente de que deverei utilizar o botão “Gerar link para anuência da chefia”, disponível ao final desta página, e encaminhar o link gerado à minha chefia imediata para registro de sua anuência ou não anuência com a solicitação. O link não é encaminhado automaticamente pelo sistema.
             </label>
           </div>
         </div>
@@ -451,6 +457,23 @@
            </p>
         </div>
       -->
+        <div class="instrucoes">
+          <h5> PRÓXIMAS ETAPAS </h5>
+         
+          <ol>
+            <li>Gere o PDF do requerimento </li>
+            <p> Após concluir e conferir o preenchimento, clique no botão “Gerar PDF do requerimento” abaixo.</p>
+            <p> <strong>Não utilize a função “Imprimir” ou “Salvar como PDF” do navegador.</strong></p>
+
+            <li>Gere o link para manifestação da chefia</li>
+            <p>Clique em “Gerar link para manifestação da chefia”.</p>
+              <p><strong> O sistema criará um link exclusivo com os dados do requerimento.</strong></p>
+
+            <li>Encaminhe o link à chefia imediata. </li>
+            <p>Após gerar o link, copie-o e encaminhe-o à sua chefia.</p>
+            <p><strong> O envio não é realizado automaticamente pelo sistema.</strong></p>
+          </ol>
+        </div>
       </fieldset> 
       <div id="mensagem-sucesso"></div>
       <div id="mensagem-erros" class="mensagem-erros" hidden></div>
@@ -459,7 +482,7 @@
           <input type="button" id="envio" class="btn-submit" value="Gerar PDF do requerimento">
 
           <button type="button" id="gerar-link-chefia" class="btn-submit">
-            Gerar link para manifestação da chefia
+            Gerar link para anuência da chefia
           </button>
         </div>
     </form>

@@ -1,8 +1,5 @@
 /*-- Formulário de Reserva de vaga para Licença Capacitação --*/
 
-
-
-
 p {
   margin: 10px;
 }
@@ -51,8 +48,29 @@ legend {
   gap: 30px;
 }
 
-.acoes-compromisso {
+.acoes-compromisso, .instrucoes {
   margin: 5px 20px;
+}
+
+.instrucoes {
+  margin: 20px;
+  border: 1px solid var(--cor-border-rodape);
+  width: 40%;
+  justify-self: center;
+}
+
+.instruções ol, li, p{
+  font-size: 1.2rem;
+}
+
+.instrucoes h5 {
+  padding: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.instrucoes  li {
+  font-weight: 600;
 }
 
 .campo input,

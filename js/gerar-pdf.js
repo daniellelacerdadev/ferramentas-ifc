@@ -686,7 +686,7 @@ if (
         "O(s) curso(s) deverá(ão) abranger todo o período"
     )
 ) {
-    larguraQuebra = larguraTexto - 42;
+    larguraQuebra = larguraTexto - 30;
 }
 
     const linhas = pdf.splitTextToSize(
@@ -748,7 +748,7 @@ pdf.setFont(
     "normal"
 );
 
-pdf.setFontSize(7.4);
+pdf.setFontSize(7.2);
 
 pdf.setTextColor(
     50,
@@ -770,7 +770,7 @@ pdf.text(
     // ESPAÇO PARA O PRÓXIMO
     // =========================
 
-   y += alturaTexto + 3;
+   y += alturaTexto + 2;
 
 }
 
