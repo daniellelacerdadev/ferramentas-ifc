@@ -1112,7 +1112,7 @@ campo(
 
 // Observação da chefia
 textoGrande(
-    "Observações ou justificativa da manifestação da chefia",
+    "Observações ou justificativa da chefia",
     valorCampo("observacao-chefia")
 );
 

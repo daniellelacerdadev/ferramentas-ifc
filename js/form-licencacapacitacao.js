@@ -1309,12 +1309,12 @@ async function gerarLinkManifestacao() {
        // Mostra o link para a manifestação
 mensagemSucesso.innerHTML = `
     <p>
-        <strong>Link para manifestação da chefia gerado com sucesso!</strong>
+        <strong>Link para anuência da chefia gerado com sucesso!</strong>
     </p>
 
     <p>
         <a href="${linkManifestacao}" target="_blank">
-            Abrir formulário de manifestação da chefia
+            Abrir formulário para anuência da chefia
         </a>
     </p>
 

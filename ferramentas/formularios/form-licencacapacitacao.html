@@ -292,7 +292,7 @@
             <input name="carga" id="carga" required>
           </div>
           <div class="campo-inline">
-            <label for="local">Cidade/UF/País: <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <label for="local" title="Local onde (ou de onde) o servidor irá realizar a ação">Cidade/UF/País: <span class="obrigatorio" aria-hidden="true">*</span></label>
             <input name="local" id="local" required>
           </div>
         </div>
@@ -461,13 +461,9 @@
           <h5> PRÓXIMAS ETAPAS </h5>
          
           <ol>
-            <li>Gere o PDF do requerimento </li>
-            <p> Após concluir e conferir o preenchimento, clique no botão “Gerar PDF do requerimento” abaixo.</p>
-            <p> <strong>Não utilize a função “Imprimir” ou “Salvar como PDF” do navegador.</strong></p>
-
             <li>Gere o link para anuência da chefia</li>
-            <p>Clique em “Gerar link para anuência da chefia”.</p>
-              <p><strong> O sistema criará um link exclusivo com os dados do requerimento.</strong></p>
+            <p> Após concluir e conferir o preenchimento, Clique em “Gerar link para anuência da chefia”.</p>
+            <p> <strong>Não utilize a função “Imprimir” ou “Salvar como PDF” do navegador.</strong></p>
 
             <li>Encaminhe o link à chefia imediata. </li>
             <p>Após gerar o link, copie-o e encaminhe-o à sua chefia.</p>
@@ -479,7 +475,6 @@
       <div id="mensagem-erros" class="mensagem-erros" hidden></div>
 
         <div class="submit">
-          <input type="button" id="envio" class="btn-submit" value="Gerar PDF do requerimento">
 
           <button type="button" id="gerar-link-chefia" class="btn-submit">
             Gerar link para anuência da chefia
