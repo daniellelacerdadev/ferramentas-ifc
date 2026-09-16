@@ -439,45 +439,37 @@
           <div class="acoes-compromisso">
               <label for="validacao-link-chefia"><span class="obrigatorio" aria-hidden="true">*</span>
               <input type="checkbox" name="validacao" id="validacao-link-chefia" value="link">
-              Estou ciente de que deverei utilizar o botão “Gerar link para anuência da chefia”, disponível ao final desta página, e encaminhar o link gerado à minha chefia imediata para registro de sua anuência ou não anuência com a solicitação. O link não é encaminhado automaticamente pelo sistema.
+              Estou ciente de que, ao utilizar o botão “Enviar solicitação”, o link para registro da anuência da chefia imediata será encaminhado automaticamente à unidade de gestão de pessoas responsável pela continuidade do procedimento.
             </label>
           </div>
         </div>
-          <!--
-          <div class="importante">
-           <span><img src="../../assets/triangle-exclamation-solid-full.svg"> <h3>Importante</h3></span>
-            <p>
-               A solitação da licença será enviada para 
-              o e-mail institucional informado. 
-            </p>         
-            <p>                                 
-          Confira se os e-mails institucionais do servidor e da chefia estão corretos antes de enviar a solicitação.  
-           </p>
-        </div>
-      -->
-        <div class="instrucoes">
-          <h5> PRÓXIMAS ETAPAS </h5>
          
-          <ol>
-            <li>Gere o link para anuência da chefia</li>
-            <p> Após concluir e conferir o preenchimento, Clique em “Gerar link para anuência da chefia”.</p>
-            <p> <strong>Não utilize a função “Imprimir” ou “Salvar como PDF” do navegador.</strong></p>
-
-            <li>Encaminhe o link à chefia imediata. </li>
-            <p>Após gerar o link, copie-o e encaminhe-o à sua chefia.</p>
-            <p><strong> O envio não é realizado automaticamente pelo sistema.</strong></p>
-          </ol>
+        <div class="proximas-etapas">
+          <h3> PRÓXIMAS ETAPAS </h3>
+          
+          <p>
+            Ao clicar em <strong>“Enviar solicitação”</strong> os dados preenchidos serão registrados; você receberá, em seu e-mail institucional, um PDF para conferência e registro; e o link para anuência da chefia imediata será encaminhado automaticamente à unidade de gestão de pessoas (CGP ou concessões) responsável pela continuidade do procedimento. 
+          </p>
+          
         </div>
       </fieldset> 
       <div id="mensagem-sucesso"></div>
       <div id="mensagem-erros" class="mensagem-erros" hidden></div>
 
+       <div class="importante">
+           <span><img src="../../assets/triangle-exclamation-solid-full.svg"> <h3>Importante</h3></span>       
+            <p>                                 
+          Confira se seu e-mail institucional e sua unidade de exercício estão corretos antes de enviar a solicitação.  
+           </p>
+        </div>
+
         <div class="submit">
 
           <button type="button" id="gerar-link-chefia" class="btn-submit">
-            Gerar link para anuência da chefia
+            Enviar solicitação
           </button>
         </div>
+      
     </form>
   </section>
 

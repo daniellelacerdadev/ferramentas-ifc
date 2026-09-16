@@ -49,17 +49,24 @@ export default async function handler(req, res) {
 
     try {
         const {
-            emailServidor,
-            unidade,
-            linkManifestacao
-        } = req.body;
+          emailServidor,
+          unidade,
+          linkManifestacao,
+          pdfBase64,
+          nomeArquivo
+    } = req.body;
 
-        if (!emailServidor || !unidade || !linkManifestacao) {
+        if (
+            !emailServidor ||
+            !unidade ||
+            !linkManifestacao ||
+            !pdfBase64 ||
+            !nomeArquivo
+        ) {
             return res.status(400).json({
                 erro: "Dados obrigatórios não informados."
             });
         }
-
         const emailCGP = emailsCGP[unidade];
 
         if (!emailCGP) {
@@ -74,33 +81,59 @@ export default async function handler(req, res) {
             to: [emailServidor],
             subject: "Solicitação registrada — Licença para Capacitação",
             html: `
-                <h2>Solicitação registrada</h2>
+                <h2>Comprovante de preenchimento</h2>
 
-                <p>
-                    Sua solicitação de Licença para Capacitação
-                    foi registrada no Sistema de Ferramentas IFC.
-                </p>
+                  <p>
+                    Sua solicitação de Licença para Capacitação foi registrada
+                    por meio do formulário eletrônico disponibilizado pela DGP.
+                  </p>
 
-                <p>
-                    O fluxo para obtenção da anuência da chefia imediata
-                    foi iniciado.
-                </p>
+                  <p>
+                    O PDF anexo contém os dados informados no formulário
+                    e é encaminhado exclusivamente para sua
+                    <strong>conferência e registro</strong>.
+                  </p>
 
-                <p>
-                    <strong>Atenção:</strong> esta mensagem não representa
-                    a concessão da Licença para Capacitação.
-                    O afastamento somente poderá ocorrer após a conclusão
-                    dos procedimentos administrativos e a publicação
-                    do respectivo ato de concessão.
-                </p>
+                  <p>
+                    <strong>
+                    Este documento não deve ser utilizado para abertura do processo.
+                    </strong>
+                  </p>
 
-                <hr>
+                  <p>
+                    O documento destinado à instrução do processo será aquele
+                    contendo o registro da anuência da chefia imediata.
+                  </p>
 
-                <p>
-                    <strong>Esta é uma mensagem automática.
-                    Não responda a este e-mail.</strong>
-                </p>
-            `
+                  <p>
+                    O fluxo para obtenção da anuência da chefia foi iniciado
+                    por meio do formulário eletrônico.
+                  </p>
+
+                  <p>
+                    <strong>Atenção:</strong> o recebimento desta mensagem não
+                    representa a concessão da Licença para Capacitação.
+                    O afastamento somente poderá ocorrer após a conclusão dos
+                    procedimentos administrativos e a publicação do respectivo
+                    ato de concessão.
+                  </p>
+
+              <hr>
+
+                  <p>
+                    <strong>
+                    Esta é uma mensagem automática. Não responda a este e-mail.
+                    </strong>
+                  </p>
+
+            `,
+            attachments: [
+              {
+                  filename: nomeArquivo,
+                  content: pdfBase64
+              }
+        ] 
+              
         });
 
         // 2. Link para CGP / Concessões
@@ -110,13 +143,6 @@ export default async function handler(req, res) {
             subject: "[TESTE DO SISTEMA] Anuência da chefia — Licença para Capacitação",
             html: `
                 <h2>Solicitação de Licença para Capacitação</h2>
-
-                 <p>
-               <strong>ATENÇÃO: esta mensagem faz parte de um teste
-               de desenvolvimento do Sistema de Ferramentas IFC.
-               Não há solicitação real associada a este e-mail
-               e nenhuma providência é necessária.</strong>
-              </p>
 
                 <p>
                     Encaminhe o link abaixo à chefia imediata

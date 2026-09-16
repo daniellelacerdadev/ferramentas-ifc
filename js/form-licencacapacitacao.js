@@ -895,8 +895,6 @@ const validacoes = document.querySelectorAll(
     'input[name="validacao"]'
 );
 
-const botaoEnvio = document.getElementById("envio");
-
 const botaoLinkChefia = document.getElementById(
     "gerar-link-chefia"
 );
@@ -1115,8 +1113,8 @@ function atualizarEstadoFormulario() {
         mensagemSucesso.innerHTML = `
             <p>
                  <strong>Formulário preenchido com sucesso!</strong>
-                Você pode gerar o PDF do requerimento e o link
-                para manifestação da chefia.
+                Confira os dados informados e envie a solicitação
+                para dar continuidade ao procedimento.
             </p>
         `;
 
@@ -1305,58 +1303,78 @@ async function gerarLinkManifestacao() {
         console.log("Token gerado:", resultado.token);
         console.log("Link para manifestação:", linkManifestacao);
 
+        // Gera o PDF para envio como comprovante ao servidor
+
+        const { nomeArquivo, pdfBase64 } = await gerarPDF();
+
+        // Envia o comprovante ao servidor e o link à CGP/Concessões
+        const respostaEmail = await fetch(
+         "https://ferramentas-ifc.vercel.app/api/enviar-requerimento",
+         {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServidor: dadosFormulario.email,
+            unidade: dadosFormulario.exercicio,
+            linkManifestacao,
+            pdfBase64,
+            nomeArquivo
+        })
+    }
+);
+
+if (!respostaEmail.ok) {
+    const erroEmail = await respostaEmail.json();
+
+    console.error(
+        "Erro no envio dos e-mails:",
+        erroEmail
+    );
+
+    throw new Error(
+        "O requerimento foi registrado, mas não foi possível enviar os e-mails."
+    );
+}
 
        // Mostra o link para a manifestação
-mensagemSucesso.innerHTML = `
+    mensagemSucesso.innerHTML = `
     <p>
-        <strong>Link para anuência da chefia gerado com sucesso!</strong>
+        <strong>
+            Solicitação encaminhada com sucesso!
+        </strong>
     </p>
 
     <p>
-        <a href="${linkManifestacao}" target="_blank">
-            Abrir formulário para anuência da chefia
-        </a>
+        Um comprovante de preenchimento foi enviado
+        para o seu e-mail institucional.
     </p>
 
-    <button type="button" id="copiar-link-chefia" class="btn-submit">
-        Copiar link
-    </button>
+    <p>
+        O link para registro da anuência da chefia imediata
+        foi encaminhado à unidade responsável.
+    </p>
+
+    <p>
+        <strong>
+            Aguarde a continuidade dos procedimentos administrativos.
+        </strong>
+    </p>
 `;
 
 mensagemSucesso.classList.add("visivel");
 
-// Botão para copiar o link
-const botaoCopiarLink = document.getElementById(
-    "copiar-link-chefia"
-);
-
-botaoCopiarLink.addEventListener("click", async () => {
-
-    try {
-
-        await navigator.clipboard.writeText(linkManifestacao);
-
-        botaoCopiarLink.textContent = "Link copiado!";
-
-    } catch (erro) {
-
-        console.error("Erro ao copiar link:", erro);
-
-        alert("Não foi possível copiar o link automaticamente.");
-    }
-});
-
-
-    } catch (erro) {
+        } catch (erro) {
 
         console.error("Erro ao gerar link:", erro);
 
         alert(
-            "Não foi possível gerar o link para manifestação da chefia."
+            "Não foi possível concluir o envio da solicitação. " +
+            "Tente novamente."
         );
     }
 }
-
 
 // Executa a função ao clicar no botão
 botaoLinkChefia.addEventListener(
@@ -1369,6 +1387,3 @@ botaoLinkChefia.addEventListener(
     }
 );
 
-
-
-  

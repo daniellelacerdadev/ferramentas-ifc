@@ -1029,33 +1029,25 @@ if (
     }
 
 
-    // ======================================================
-    // SALVAR
-    // ======================================================
+   // ======================================================
+// PREPARAR PDF PARA ENVIO
+// ======================================================
 
-    pdf.save(
-        `Licenca-Capacitacao-${
-            valorCampo("nome") ||
-            "requerente"
-        }.pdf`
-    );
+const nomeArquivo =
+    `Licenca-Capacitacao-${
+        valorCampo("nome") ||
+        "requerente"
+    }.pdf`;
+
+const pdfBase64 = pdf.output("datauristring").split(",")[1];
+
+return {
+    nomeArquivo,
+    pdfBase64
+ };
+
 }
 
 
-// ==========================================================
-// ENVIO DO FORMULÁRIO
-// ==========================================================
 
-document
-    .getElementById("envio")
-    .addEventListener(
-        "click",
-        function () {
 
-            if (!mostrarCamposPendentes()) {
-                return;
-            }
-
-            gerarPDF();
-        }
-    );
