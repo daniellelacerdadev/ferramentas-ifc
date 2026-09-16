@@ -98,7 +98,7 @@ export default async function handler(req, res) {
             cc: [emailServidor],
 
             subject:
-                "[TESTE DO SISTEMA] Anuência da chefia — Licença para Capacitação",
+                "Anuência da chefia — Licença para Capacitação",
 
             html: `
                 <h2>Anuência da chefia — Licença para Capacitação</h2>
