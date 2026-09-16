@@ -351,7 +351,7 @@
       <fieldset class="sectioncard">
         <legend>V -  COMPROMISSO DO(A) REQUERENTE QUANTO ÀS OBRIGAÇÕES REFERENTES À LICENÇA CAPACITAÇÃO</legend>
           <div class="linha">
-            <P> Leia e assinale cada uma das informações a seguir, para gerar o pdf do formulário:</P>
+            <P> Compromissos declarados pelo(a) requerente no preenchimento da solicitação:</P>
           </div>
         <div>
           <div class="acoes-compromisso">
@@ -419,21 +419,15 @@
             </label>
           </div>
           <div class="acoes-compromisso">
-             <label for="validacao-encaminhamento">
-              <input type="checkbox" name="validacao" id="validacao-encaminhamento" value="encaminhamento" disabled>
-              Estou ciente de que, após concluir o preenchimento, deverei utilizar o botão “Gerar PDF do requerimento”, disponível ao final desta página, e encaminhar o arquivo gerado à Coordenação de Gestão de Pessoas do meu campus ou, se lotado(a) na Reitoria, à Coordenação de Concessões, Aposentadoria e Ações Judiciais (concessoes@ifc.edu.br), juntamente com o comprovante da ação de desenvolvimento, para abertura do processo e solicitação das devidas assinaturas.</strong>.
-            </label>
-          </div>
-          <div class="acoes-compromisso">
               <label for="validacao-link-chefia"><span class="obrigatorio" aria-hidden="true">*</span>
               <input type="checkbox" name="validacao" id="validacao-link-chefia" value="link" disabled>
-              Estou ciente de que deverei utilizar o botão “Gerar link para anuência da chefia”, disponível ao final desta página, e encaminhar o link gerado à minha chefia imediata para registro de sua anuência ou não anuência com a solicitação. O link não é encaminhado automaticamente pelo sistema
+             Estou ciente de que, ao utilizar o botão “Enviar solicitação”, o link para registro da anuência da chefia imediata será encaminhado automaticamente à unidade de gestão de pessoas responsável pela continuidade do procedimento.
             </label>
           </div>
         </div>
       </fieldset>
       <fieldset class="sectioncard">
-        <legend>VI - MANIFESTAÇÃO DA CHEFIA-IMEDIATA<span class="obrigatorio" aria-hidden="true">*</span></legend>
+        <legend>VI -  ANUÊNCIA DA CHEFIA IMEDIATA<span class="obrigatorio" aria-hidden="true">*</span></legend>
           <div class="manifestacao">
           <div>
             <input type="radio" name="manifestacao" id="deacordo" value="sim" required>
@@ -459,9 +453,9 @@
           <div class="linha-dupla">
             <div class="campo-inline">
               <label for="chefia-manifestacao">
-                Nome da Chefia imediata:
+                Nome da Chefia imediata:<span class="obrigatorio" aria-hidden="true">*</span>
               </label>
-              <input type="text" name="chefia-manifestacao" id="chefia-manifestacao" readonly>
+              <input type="text" name="chefia-manifestacao" id="chefia-manifestacao" required>
             </div>
             <div>
               <label for="data-atual">Data: </label>
@@ -469,12 +463,16 @@
             </div>
           </div>
       </fieldset>
-      <div class="instrucoes">
-       <h5>Clique em “Enviar” para gerar o PDF do requerimento com o registro da anuência e devolva-o ao servidor que encaminhou o link.</h5>
+      <div class="instrucoes-chefia">
+        <h3>ATENÇÃO</h3>
+       <p> Ao clicar em <strong>“Enviar”</strong>, o registro da anuência será concluído
+        e o documento será encaminhado automaticamente à unidade de
+        gestão de pessoas responsável pela continuidade do procedimento.
+        O servidor receberá uma cópia para ciência.</p>
       </div>
 
       <div class="submit">
-        <input type="submit" id="envio" class="btn-submit">
+        <input type="submit" id="envio" class="btn-submit" value="Enviar">
         
           
       

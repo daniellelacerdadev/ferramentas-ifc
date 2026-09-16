@@ -218,26 +218,37 @@ legend {
   font-weight: 600;
 }
 
-.proximas-etapas {
+.instrucoes {
+  margin: 30px;
   width: 70%;
   justify-self: center;
   line-height: 1.6;
+  border: 1px solid var(--cor-verde-principal);
+  background-color: var(--cor-fundo);
+  border-radius: 8px;
 }
 
-.proximas-etapas h3 {
+.instrucoes h4, .instrucoes-chefia h3 {
   padding-top: 15px;
   margin-top: 10px;
-  font-size: 1.2rem;
   font-weight: 700;
   text-align: center;
 }
 
-.importante, .proximas-etapas {
+.instrucoes-chefia {
+  margin: 30px;
+  line-height: 1.6;
+  border: 1px solid var(--cor-verde-principal);
+  background-color: var(--cor-fundo);
+}
+
+.importante {
   margin: 30px ;
   font-weight: 600;
   text-align: center;
   border: 1px solid var(--cor-verde-principal);
   background-color: var(--cor-fundo);
+  border-radius: 8px;
 }
 
 .importante h3 {
@@ -245,8 +256,9 @@ legend {
   margin-top: 20px;
 }
 
-.importante p, .proximas-etapas p {
-  font-size: 1.2rem;
+.importante p, .instrucoes p, .instrucoes-chefia p {
+  font-size: 1rem;
+  padding: 10px;
 }
 
  .importante img {

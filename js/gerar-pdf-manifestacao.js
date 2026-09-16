@@ -1161,29 +1161,23 @@ avisoAdministrativo();
     // SALVAR
     // ======================================================
 
-    pdf.save(
-        `Licenca-Capacitacao-${
-            valorCampo("nome") ||
-            "requerente"
-        }.pdf`
-    );
+    const nomeArquivo =
+    `Licenca-Capacitacao-${
+        valorCampo("nome") ||
+        "requerente"
+    }.pdf`;
+
+const pdfBase64 =
+    pdf.output("datauristring").split(",")[1];
+
+return {
+    nomeArquivo,
+    pdfBase64
+};
+
 }
 
 
-// ==========================================================
-// ENVIO DO FORMULÁRIO
-// ==========================================================
 
-document
-    .querySelector("form")
-    .addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-            gerarPDF();
-        }
-    );
 
    

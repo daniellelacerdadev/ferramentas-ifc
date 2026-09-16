@@ -209,19 +209,7 @@ if (dados["quantidadeDias"] === "outro") {
             dados["quantidade-outro"] || "";
     }
 }
-// ----------------------------------------------------------
-// REPETE O NOME DA CHEFIA NA SEÇÃO FINAL
-// ----------------------------------------------------------
 
-const chefiaManifestacao =
-    document.getElementById(
-        "chefia-manifestacao"
-    );
-
-if (chefiaManifestacao) {
-    chefiaManifestacao.value =
-        dados.chefia || "";
-}
 }
 
 function preencherDataManifestacao() {
@@ -256,3 +244,177 @@ function preencherDataManifestacao() {
 
 carregarRequerimento();
 preencherDataManifestacao();
+
+// ==========================================================
+// ENVIO DA ANUÊNCIA DA CHEFIA
+// ==========================================================
+
+const formularioChefia = document.querySelector("form");
+
+formularioChefia.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const botaoEnviar = document.getElementById("envio");
+
+    const nomeChefia =
+        document.getElementById("chefia-manifestacao")?.value.trim();
+
+    const emailServidor =
+        document.getElementById("email")?.value.trim();
+
+    const unidade =
+        document.getElementById("exercicio")?.value;
+
+    const nomeServidor =
+        document.getElementById("nome")?.value.trim();
+
+    const anuencia =
+        document.querySelector(
+            'input[name="manifestacao"]:checked'
+        )?.value;
+
+    const observacao =
+        document.getElementById("observacao-chefia")?.value.trim();
+
+
+    // ------------------------------------------------------
+    // VALIDAÇÕES
+    // ------------------------------------------------------
+
+    if (!anuencia) {
+        alert(
+            "Informe se está de acordo ou não com a solicitação."
+        );
+        return;
+    }
+
+    if (anuencia === "não" && !observacao) {
+        alert(
+            "Em caso de não concordância, informe a justificativa."
+        );
+
+        document
+            .getElementById("observacao-chefia")
+            ?.focus();
+
+        return;
+    }
+
+    if (!nomeChefia) {
+        alert(
+            "Informe o nome da chefia responsável pelo registro da anuência."
+        );
+
+        document
+            .getElementById("chefia-manifestacao")
+            ?.focus();
+
+        return;
+    }
+
+    if (
+        !emailServidor ||
+        !unidade ||
+        !nomeServidor
+    ) {
+        alert(
+            "Não foi possível identificar os dados da solicitação. " +
+            "Atualize a página e tente novamente."
+        );
+        return;
+    }
+
+
+    // ------------------------------------------------------
+    // GERA PDF E ENVIA
+    // ------------------------------------------------------
+
+    try {
+
+        botaoEnviar.disabled = true;
+        botaoEnviar.value = "Enviando...";
+
+        const {
+            nomeArquivo,
+            pdfBase64
+        } = await gerarPDF();
+
+        const resposta = await fetch(
+            "https://ferramentas-ifc.vercel.app/api/enviar-anuencia",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServidor,
+                    unidade,
+                    pdfBase64,
+                    nomeArquivo,
+                    nomeServidor,
+                    anuencia
+                })
+            }
+        );
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok) {
+
+            console.error(
+                "Erro no envio da anuência:",
+                resultado
+            );
+
+            throw new Error(
+                resultado.erro ||
+                "Não foi possível enviar a anuência."
+            );
+        }
+
+
+        // --------------------------------------------------
+        // SUCESSO
+        // --------------------------------------------------
+
+        const instrucoes =
+            document.querySelector(".instrucoes");
+
+        if (instrucoes) {
+
+            instrucoes.innerHTML = `
+                <h5>
+                    Anuência registrada e encaminhada com sucesso!
+                </h5>
+
+                <p>
+                    O documento foi encaminhado à unidade de
+                    gestão de pessoas responsável pela continuidade
+                    do procedimento.
+                </p>
+
+                <p>
+                    O servidor recebeu uma cópia para ciência.
+                </p>
+            `;
+        }
+
+        botaoEnviar.value = "Enviado";
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao concluir o envio:",
+            erro
+        );
+
+        alert(
+            "Não foi possível concluir o envio. " +
+            "Tente novamente."
+        );
+
+        botaoEnviar.disabled = false;
+        botaoEnviar.value = "Enviar";
+    }
+});
