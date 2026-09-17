@@ -41,7 +41,7 @@
     <h5>Manifestação da Chefia Imediata</h5>
     <h6>(Lei nº 8.112/90, Decreto nº 9.991/2019 e Resolução CONSUPER nº 35/2025)</h6>
 
-    <form action="">
+    <form action="" novalidate>
       <fieldset class="sectioncard">
       <legend>I – DADOS PESSOAIS E FUNCIONAIS DO(A) REQUERENTE</legend>
         <div class="linha-dupla">
@@ -102,7 +102,6 @@
               <option value="blumenau">Campus Blumenau</option>
               <option value="brusque">Campus Brusque</option>
               <option value="camboriu">Campus Camboriú</option>
-              <option value="campos-novos">Campus Campos Novos</option>
               <option value="concordia">Campus Concórdia</option>
               <option value="fraiburgo">Campus Fraiburgo</option>
               <option value="ibirama">Campus Ibirama</option>
@@ -422,7 +421,7 @@
           <div class="acoes-compromisso">
               <label for="validacao-link-chefia">
               <input type="checkbox" name="validacao" id="validacao-link-chefia" value="link" disabled>
-             Estou ciente de que, ao utilizar o botão “Enviar solicitação”, o link para registro da anuência da chefia imediata será encaminhado automaticamente à unidade de gestão de pessoas responsável pela continuidade do procedimento.
+              <strong>Estou ciente de que, após o envio da solicitação, receberei em meu e-mail institucional o link para registro da manifestação da chefia imediata, sendo minha responsabilidade o envio deste para a minha chefia.</strong>
             </label>
           </div>
         </div>
@@ -467,7 +466,18 @@
       <div id="mensagem-erros-chefia" class="mensagem-erros" hidden></div>
       <div class="instrucoes-chefia">
         <h3>ATENÇÃO</h3>
-       <p> Não é necessário imprimir ou salvar esta página. Ao clicar em <strong>“Enviar”</strong>, o registro da anuência será concluído e o documento será encaminhado automaticamente à unidade de gestão de pessoas responsável pela continuidade do procedimento. O servidor receberá uma cópia para ciência.</p>
+       <p>
+        <strong>NÃO imprima ou salve esta página.</strong>
+        Após preencher os campos obrigatórios, clique em
+        <strong>“Enviar”</strong>. O envio somente será concluído quando todos os campos
+        obrigatórios estiverem devidamente preenchidos.
+      </p>
+
+      <p>
+        O documento final será gerado e encaminhado automaticamente
+        à unidade de gestão de pessoas responsável pela continuidade
+        do procedimento. O servidor receberá uma cópia para ciência.
+      </p>
       </div>
 
       <div class="submit">

@@ -248,7 +248,79 @@ preencherDataManifestacao();
 // ==========================================================
 // ENVIO DA ANUÊNCIA DA CHEFIA
 // ==========================================================
+function mostrarCamposPendentesChefia() {
 
+    const pendencias = [];
+
+    const anuencia =
+        document.querySelector(
+            'input[name="manifestacao"]:checked'
+        )?.value;
+
+    const observacao =
+        document.getElementById(
+            "observacao-chefia"
+        )?.value.trim();
+
+    const nomeChefia =
+        document.getElementById(
+            "chefia-manifestacao"
+        )?.value.trim();
+
+    if (!anuencia) {
+        pendencias.push(
+            "Informe se está de acordo ou não com a solicitação."
+        );
+    }
+
+    if (anuencia === "não" && !observacao) {
+        pendencias.push(
+            "Informe a justificativa da não concordância."
+        );
+    }
+
+    if (!nomeChefia) {
+        pendencias.push(
+            "Informe o nome da chefia imediata."
+        );
+    }
+
+    const mensagem =
+        document.getElementById(
+            "mensagem-erros-chefia"
+        );
+
+    if (pendencias.length === 0) {
+
+        mensagem.hidden = true;
+        mensagem.innerHTML = "";
+
+        return true;
+    }
+
+    mensagem.innerHTML = `
+        <p>
+            <strong>
+                Para concluir o envio, verifique:
+            </strong>
+        </p>
+
+        <ul>
+            ${pendencias
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+        </ul>
+    `;
+
+    mensagem.hidden = false;
+
+    mensagem.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    return false;
+}
 const formularioChefia = document.querySelector("form");
 
 formularioChefia.addEventListener("submit", async function (event) {
@@ -281,35 +353,7 @@ formularioChefia.addEventListener("submit", async function (event) {
     // ------------------------------------------------------
     // VALIDAÇÕES
     // ------------------------------------------------------
-
-    if (!anuencia) {
-        alert(
-            "Informe se está de acordo ou não com a solicitação."
-        );
-        return;
-    }
-
-    if (anuencia === "não" && !observacao) {
-        alert(
-            "Em caso de não concordância, informe a justificativa."
-        );
-
-        document
-            .getElementById("observacao-chefia")
-            ?.focus();
-
-        return;
-    }
-
-    if (!nomeChefia) {
-        alert(
-            "Informe o nome da chefia responsável pelo registro da anuência."
-        );
-
-        document
-            .getElementById("chefia-manifestacao")
-            ?.focus();
-
+    if (!mostrarCamposPendentesChefia()) {
         return;
     }
 
@@ -379,26 +423,35 @@ formularioChefia.addEventListener("submit", async function (event) {
         // --------------------------------------------------
 
         const instrucoes =
-            document.querySelector(".instrucoes");
+            document.querySelector(".instrucoes-chefia");
 
         if (instrucoes) {
 
             instrucoes.innerHTML = `
-                <h5>
-                    Anuência registrada e encaminhada com sucesso!
-                </h5>
+               
+                      <h5>
+                Manifestação registrada e encaminhada com sucesso!
+                 </h5>
 
-                <p>
-                    O documento foi encaminhado à unidade de
-                    gestão de pessoas responsável pela continuidade
-                    do procedimento.
-                </p>
+            <p>
+                 O documento foi encaminhado à unidade de
+                gestão de pessoas responsável pela continuidade
+                do procedimento.
+            </p>
 
-                <p>
-                    O servidor recebeu uma cópia para ciência.
-                </p>
+            <p>
+             O servidor recebeu uma cópia para ciência.
+            </p>
             `;
         }
+
+        const mensagemErros =
+    document.getElementById("mensagem-erros-chefia");
+
+    if (mensagemErros) {
+        mensagemErros.hidden = true;
+        mensagemErros.innerHTML = "";
+    }
 
         botaoEnviar.value = "Enviado";
 

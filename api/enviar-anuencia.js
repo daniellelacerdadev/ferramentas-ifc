@@ -98,13 +98,13 @@ export default async function handler(req, res) {
             cc: [emailServidor],
 
             subject:
-                "Anuência da chefia — Licença para Capacitação",
+                "Manifestação da chefia — Licença para Capacitação",
 
             html: `
-                <h2>Anuência da chefia — Licença para Capacitação</h2>
+                <h2>Manifestação da chefia — Licença para Capacitação</h2>
 
                 <p>
-                    Foi concluído o registro da anuência da chefia
+                    Foi concluído o registro da manifestação da chefia
                     referente à solicitação de Licença para Capacitação
                     de <strong>${nomeServidor}</strong>.
                 </p>
