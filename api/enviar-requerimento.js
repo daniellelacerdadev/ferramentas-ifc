@@ -1,21 +1,4 @@
-const emailsCGP = {
-    "abelardo-luz": "cgp.abelardoluz@ifc.edu.br",
-    "araquari": "cgp.araquari@ifc.edu.br",
-    "blumenau": "cgp.blumenau@ifc.edu.br",
-    "brusque": "cgp.brusque@ifc.edu.br",
-    "camboriu": "cgp.camboriu@ifc.edu.br",
-    "concordia": "cgp.concordia@ifc.edu.br",
-    "fraiburgo": "cgp.fraiburgo@ifc.edu.br",
-    "ibirama": "cgp.ibirama@ifc.edu.br",
-    "luzerna": "cgp.luzerna@ifc.edu.br",
-    "rio-do-sul": "cgp.riodosul@ifc.edu.br",
-    "sao-bento": "cgp.sbs@ifc.edu.br",
-    "sao-francisco": "cgp.sfs@ifc.edu.br",
-    "santa-rosa": "cgp.srs@ifc.edu.br",
-    "sombrio": "cgp.sombrio@ifc.edu.br",
-    "videira": "cgp.videira@ifc.edu.br",
-    "reitoria": "concessoes@ifc.edu.br"
-};
+
 
 const remetente =
     "Sistema de Ferramentas IFC <nao-responda@concessoes.ifc.edu.br>";
@@ -49,16 +32,14 @@ export default async function handler(req, res) {
 
     try {
         const {
-          emailServidor,
-          unidade,
-          linkManifestacao,
-          pdfBase64,
-          nomeArquivo
+        emailServidor,
+        linkManifestacao,
+        pdfBase64,
+        nomeArquivo
     } = req.body;
 
         if (
             !emailServidor ||
-            !unidade ||
             !linkManifestacao ||
             !pdfBase64 ||
             !nomeArquivo
@@ -67,13 +48,7 @@ export default async function handler(req, res) {
                 erro: "Dados obrigatórios não informados."
             });
         }
-        const emailCGP = emailsCGP[unidade];
-
-        if (!emailCGP) {
-            return res.status(400).json({
-                erro: "Não foi possível identificar a unidade responsável."
-            });
-        }
+       
 
         // 1. Confirmação para o servidor
         await enviarEmail({
@@ -83,48 +58,64 @@ export default async function handler(req, res) {
             html: `
                 <h2>Comprovante de preenchimento</h2>
 
-                  <p>
-                    Sua solicitação de Licença para Capacitação foi registrada
-                    por meio do formulário eletrônico disponibilizado pela DGP.
-                  </p>
+    <p>
+        Sua solicitação de Licença para Capacitação foi registrada
+        por meio do formulário eletrônico disponibilizado pela DGP.
+    </p>
 
-                  <p>
-                    O PDF anexo contém os dados informados no formulário
-                    e é encaminhado exclusivamente para sua
-                    <strong>conferência e registro</strong>.
-                  </p>
+    <p>
+        O PDF anexo contém os dados informados no formulário
+        e é encaminhado exclusivamente para sua
+        <strong>conferência e registro</strong>.
+    </p>
 
-                  <p>
-                    <strong>
-                    Este documento não deve ser utilizado para abertura do processo.
-                    </strong>
-                  </p>
+    <p>
+        <strong>
+            Este documento não deve ser utilizado para abertura do processo.
+        </strong>
+    </p>
 
-                  <p>
-                    O documento destinado à instrução do processo será aquele
-                    contendo o registro da anuência da chefia imediata.
-                  </p>
+    <h3>Próxima etapa: manifestação da chefia imediata</h3>
 
-                  <p>
-                    O fluxo para obtenção da anuência da chefia foi iniciado
-                    por meio do formulário eletrônico.
-                  </p>
+    <p>
+        Encaminhe o link abaixo à sua chefia imediata para que ela
+        registre sua manifestação sobre a solicitação:
+    </p>
 
-                  <p>
-                    <strong>Atenção:</strong> o recebimento desta mensagem não
-                    representa a concessão da Licença para Capacitação.
-                    O afastamento somente poderá ocorrer após a conclusão dos
-                    procedimentos administrativos e a publicação do respectivo
-                    ato de concessão.
-                  </p>
+    <p>
+        <a href="${linkManifestacao}">
+            Acessar formulário para manifestação da chefia
+        </a>
+    </p>
 
-              <hr>
+    <p>
+        <strong>
+            O link é individual e está relacionado à sua solicitação.
+        </strong>
+    </p>
 
-                  <p>
-                    <strong>
-                    Esta é uma mensagem automática. Não responda a este e-mail.
-                    </strong>
-                  </p>
+    <p>
+        Após o registro da manifestação da chefia, o documento final
+        será encaminhado automaticamente à unidade de gestão de pessoas
+        responsável pela continuidade do procedimento.
+        Você receberá uma cópia para ciência.
+    </p>
+
+    <p>
+        <strong>Atenção:</strong> o recebimento desta mensagem não
+        representa a concessão da Licença para Capacitação.
+        O afastamento somente poderá ocorrer após a conclusão dos
+        procedimentos administrativos e a publicação do respectivo
+        ato de concessão.
+    </p>
+
+    <hr>
+
+    <p>
+        <strong>
+            Esta é uma mensagem automática. Não responda a este e-mail.
+        </strong>
+    </p>
 
             `,
             attachments: [
@@ -136,49 +127,16 @@ export default async function handler(req, res) {
               
         });
 
-        // 2. Link para CGP / Concessões
-        await enviarEmail({
-            from: remetente,
-            to: [emailCGP],
-            subject: "[TESTE DO SISTEMA] Anuência da chefia — Licença para Capacitação",
-            html: `
-                <h2>Solicitação de Licença para Capacitação</h2>
-
-                <p>
-                    Encaminhe o link abaixo à chefia imediata
-                    do servidor para registro da anuência ou não anuência:
-                </p>
-
-                <p>
-                    <a href="${linkManifestacao}">
-                        Acessar formulário para anuência da chefia
-                    </a>
-                </p>
-
-                <p>
-                    O link é individual e está relacionado
-                    à solicitação registrada no sistema.
-                </p>
-
-                <hr>
-
-                <p>
-                    <strong>Esta é uma mensagem automática.
-                    Não responda a este e-mail.</strong>
-                </p>
-            `
-        });
-
         return res.status(200).json({
             sucesso: true,
-            mensagem: "E-mails enviados com sucesso."
+            mensagem: "E-mail enviado com sucesso."
         });
 
     } catch (erro) {
         console.error("Erro em enviar-requerimento:", erro);
 
         return res.status(500).json({
-            erro: "Não foi possível realizar o envio dos e-mails."
+            erro: "Não foi possível realizar o envio do e-mail."
         });
     }
 }

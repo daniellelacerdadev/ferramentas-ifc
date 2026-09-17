@@ -1307,7 +1307,7 @@ async function gerarLinkManifestacao() {
 
         const { nomeArquivo, pdfBase64 } = await gerarPDF();
 
-        // Envia o comprovante ao servidor e o link à CGP/Concessões
+        // Envia ao servidor o comprovante e o link para manifestação da chefia
         const respostaEmail = await fetch(
          "https://ferramentas-ifc.vercel.app/api/enviar-requerimento",
          {
@@ -1317,7 +1317,6 @@ async function gerarLinkManifestacao() {
         },
         body: JSON.stringify({
             emailServidor: dadosFormulario.email,
-            unidade: dadosFormulario.exercicio,
             linkManifestacao,
             pdfBase64,
             nomeArquivo
@@ -1329,37 +1328,40 @@ if (!respostaEmail.ok) {
     const erroEmail = await respostaEmail.json();
 
     console.error(
-        "Erro no envio dos e-mails:",
+        "Erro no envio do e-mail:",
         erroEmail
     );
 
     throw new Error(
-        "O requerimento foi registrado, mas não foi possível enviar os e-mails."
+        "O requerimento foi registrado, mas não foi possível enviar o e-mail."
     );
 }
 
        // Mostra o link para a manifestação
     mensagemSucesso.innerHTML = `
-    <p>
+     <p>
         <strong>
-            Solicitação encaminhada com sucesso!
+            Solicitação enviada com sucesso!
         </strong>
     </p>
 
     <p>
-        Um comprovante de preenchimento foi enviado
+        Um comprovante de preenchimento e o link para registro
+        da manifestação da chefia imediata foram enviados
         para o seu e-mail institucional.
     </p>
 
     <p>
-        O link para registro da anuência da chefia imediata
-        foi encaminhado à unidade responsável.
+        <strong>
+            Encaminhe o link recebido à sua chefia imediata
+            para continuidade do procedimento.
+        </strong>
     </p>
 
     <p>
-        <strong>
-            Aguarde a continuidade dos procedimentos administrativos.
-        </strong>
+        Após a manifestação da chefia, o documento final será
+        encaminhado automaticamente à unidade de gestão de pessoas
+        responsável. Você receberá uma cópia para ciência.
     </p>
 `;
 
