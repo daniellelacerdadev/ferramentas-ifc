@@ -228,7 +228,7 @@ legend {
   border-radius: 8px;
 }
 
-.instrucoes h4, .instrucoes-chefia h3 {
+.instrucoes h4, .instrucoes-chefia h3, .instrucoes-chefia h5 {
   padding-top: 15px;
   margin-top: 10px;
   font-weight: 700;
@@ -365,7 +365,7 @@ legend {
 }
 
 .mensagem-erros {
-  margin: 20px 0;
+  margin: 20px 30px;
   padding: 16px 20px;
   border: 1px solid #b71c1c;
   border-radius: 8px;
