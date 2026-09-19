@@ -1,0 +1,159 @@
+/*--Guia Formulário--*/
+
+ main {
+    background-color: var(--cor-fundo);
+    padding: 20px;
+}
+
+.introducao {
+    margin: 30px;
+}
+
+.introducao h2 {
+    text-align: center;
+    color: var(--cor-verde-principal);
+    font-weight: 600;
+    padding-bottom: 30px;
+}
+
+.introducao p {
+    font-size: 1.4rem;
+}
+
+.instrucoes {
+    margin: 15px;
+    max-width: 80%;
+    justify-self: center;
+    padding-top: 20px;
+    border: .5px solid var(--cor-border-rodape);
+    background-color: var(--cor-verde-principal-hover);
+}
+
+.carousel {
+    display: flex;
+    position: relative;
+    padding: 20px 0 35px 0;
+}
+
+.carousel-item h3 {
+    margin: 25px;
+   
+}
+
+.carousel-item p {
+    margin-left: 20px;
+    font-size: 1.4rem;
+}
+
+.carousel-item {
+    text-align: center;
+}
+.img-fluid  {
+    max-width: 80%;
+    padding: 20px;
+   
+}
+
+.alerta {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 15%;
+  height: calc(50%-95px);
+  top: 220px;
+  bottom: auto;
+}
+
+
+.number {
+    width: 20px;
+    margin: 10px 3px;
+}
+
+.btn-explicacao {
+    padding: 8px;
+    margin: 5px 10px;
+    align-self: flex-start;
+    height: auto;
+    max-width: fit-content;
+    background-color: var(--cor-fundo-input);
+    border: none;
+    border-radius: 12px;
+    font-size: .95rem;
+    color: var(--cor-verde-secundario);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-explicacao:hover,
+.btn-explicacao.ativo {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.botoes-explicacao {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  align-items: flex-start;
+  margin-top: 24px;
+}
+
+.caixa-explicacao {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 22px auto 10px;
+  padding: 20px 24px;
+  background-color: var(--cor-fundo-input);
+  border-left: 5px solid var(--cor-verde-principal-hover);
+  border-radius: 10px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.caixa-explicacao h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.caixa-explicacao p:last-child {
+  margin-bottom: 0;
+}
+
+.caixa-explicacao p {
+  font-size: .9rem;
+  margin-top: 10px;
+}
+
+.caixa-explicacao ul {
+  margin-left: 30px;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .botoes-explicacao {
+    gap: 10px;
+  }
+
+  .btn-explicacao {
+    width: 100%;
+  }
+
+  .caixa-explicacao {
+    margin-top: 16px;
+    padding: 16px;
+  }
+}

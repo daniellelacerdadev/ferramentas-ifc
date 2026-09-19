@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     crossorigin="anonymous">
      <!-- Estilo customizado -->
     <link rel="stylesheet" type="text/css" href="../../css/geral.css">
-    <link rel="stylesheet" type="text/css" href="../../css/apendices.css">
+    <link rel="stylesheet" type="text/css" href="../../css/guia.css">
     
 
      
@@ -20,186 +20,433 @@
     <script src="https://kit.fontawesome.com/1e631c2bc0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-   <body>
-     <header class="cabecalho">
+  <header class="cabecalho">
 
-            <div class="home">
-                <img src="../../assets/logo_gov.png"  alt="Logo do governo e dados do órgão de emissão" class="logo-home">
-             </div>
+    <div class="home">
 
-           <nav>
+      <img src="../../assets/logo_gov.png"  alt="Logo do governo e dados do órgão de emissão" class="logo-home">
+    </div>
 
-                <a
-                 href="../../index.html"
-                    class="btn btn-outline-rosa">
+    <nav>
 
-                  Voltar ao Menu Principal
+      <a
+        href="../../index.html" class="btn btn-outline-rosa">
 
-                </a>
+        Voltar ao Menu Principal
 
-           </nav>
-        </header>
+      </a>
 
-        <main>
-          <section class="introducao">
-            <h2>Passo a passo para preenchimento e envio do requerimento</h2>
+    </nav>
+  </header>
 
-            <p>
-              Este formulário possui validações automáticas que auxiliam no correto preenchimento da solicitação. Para concluir o procedimento, utilize os botões disponíveis no próprio formulário, conforme as orientações a seguir.
-            </p>
-          </section>
+  <main>
+    <section class="introducao">
+      <h2>Como utilizar este passo a passo:</h2>
 
-          <section class="instrucoes">
-            <div id="carousel-instrucoes" class="carousel slide" data-ride="carousel">
+        <p>
+          Navegue pelas etapas utilizando as setas do carrossel. Os itens numerados nas imagens possuem orientações complementares. Clique nos cards numerados abaixo de cada imagem para consultar as respectivas explicações.
+        </p>
+    </section>
 
-              <div class="carousel-inner">
+    <section class="instrucoes">
+      <div id="carousel-instrucoes" class="carousel slide" data-ride="carousel" data-interval="false">
 
-                <div class="carousel-item active">
+        <div class="carousel-inner">
 
-                  <h3>Passo 1 de 8 — Preencha o formulário</h3>
+          <div class="carousel-item active">
 
-                    <p>
-                Preencha todos os campos obrigatórios e observe
-                as mensagens de validação apresentadas pelo sistema.
-                    </p>
+            <h3>Dados pessoais e funcionais</h3>
 
-                  <img src="../../assets/guia-form-step1.png" class="img-fluid produto-imagem"
-                alt="Exemplo de preenchimento do formulário - campos de escrita ou preenchimento">
+                  <img src="../../assets/slide-1.png" class="img-fluid produto-imagem"
+                alt="Seção de dados pessoais e funcionais do formulário de licença para capacitação">
 
-                </div>
+            <div class="botoes-explicacao">
+              <button type="button" class="btn-explicacao" data-info="info-1">
+                <span><img src="../../assets/1.png" class="number" alt="1"> </span>
+                Matrícula SIAPE
+              </button>
 
-                <div class="carousel-item">
+              <button type="button" class="btn-explicacao" data-info="info-2">
+              <span><img src="../../assets/2.png" class="number" alt="2"> </span>
+                Chefia imediata
+              </button>
 
-                  <h3>Passo 2 de 8 — Escolha uma opção</h3>
+              <button type="button" class="btn-explicacao" data-info="info-3">
+              <span><img src="../../assets/3.png" class="number" alt="3"> </span>
+                Ingresso no Serviço Público
+              </button>
 
-                  <p>
-                Nos campos obrigatórios com opções para assinalar, marque pelo menos uma, ou mais, quando possível (relação da ação de desenvolvimento).
-                  </p>
+              <button type="button" class="btn-explicacao" data-info="info-4">
+              <span><img src="../../assets/4.png" class="number" alt="4"> </span>
+               Ingresso no cargo atual
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-5">
+              <span><img src="../../assets/5.png" class="number" alt="5"> </span>
+               Quinquênio concluído
+              </button>
+
+              
+            </div>
+            <div class="caixa-explicacao" hidden></div>
+          </div>
+
+              
+
+          <div class="carousel-item">
+
+            <h3>Licença anterior e saldo do quinquênio</h3>
+
+              <img
+                src="../../assets/slide-2.png" class="img-fluid produto-imagem"
+                alt="Campos para preenchimento da licença anterior">
+
+            <div class="botoes-explicacao">
+
+              <button type="button" class="btn-explicacao" data-info="info-6">
+              <span><img src="../../assets/6.png" class="number" alt="6"> </span>
+                Licença anterior
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-7">
+              <span><img src="../../assets/7.png" class="number" alt="7"> </span>
+               Dias utilizados
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-8">
+              <span><img src="../../assets/8.png" class="number" alt="8"> </span>
+               Interstício
+              </button>
+
+              
+            </div>
+            <div class="caixa-explicacao" hidden></div>
+          </div>
+
+          <div class="carousel-item">
+
+              <h3>Período da licença</h3>
+
+                <img
+                src="../../assets/slide-3.png" class="img-fluid produto-imagem"
+                alt="Campos para definição do período da Licença para Capacitação">
+
+            <div class="botoes-explicacao">
+
+              <button type="button" class="btn-explicacao" data-info="info-9">
+              <span><img src="../../assets/9.png" class="number" alt="9"> </span>
+                Período da licença
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-10">
+              <span><img src="../../assets/10.png" class="number" alt="10"> </span>
+               Antecedência mínima
+              </button>
+
+
+              
+            </div>
+            <div class="caixa-explicacao" hidden></div>
+          </div>
+
+          <div class="carousel-item">
+
+            <h3>Opção para saldo remanescente de licença anterior interrompida </h3>
 
                     <img
-                src="../../assets/guia-form-step2.png" class="img-fluid produto-imagem"
-                alt="Exemplo de campos com opções a marcar">
-        
-                </div>
+                src="../../assets/slide-4.png" class="img-fluid produto-imagem"
+                alt="Opção 'outro' para saldo remanescente de licença interrompida">
 
-                <div class="carousel-item">
+            <div class="botoes-explicacao">
 
-                  <h3>Passo 3 de 8 — Leia com atenção e assinale cada item</h3>
+              <button type="button" class="btn-explicacao" data-info="info-11">
+              <span><img src="../../assets/11.png" class="number" alt="11"> </span>
+                Opção “Outro”
+              </button>
 
-                  <p>
-                Na Seção V, dos compromissos do requerente quanto às obrigações referentes à licença para capacitação, o servidor deve ler cada um e, ao final, todos devem estar preenchidos. 
-                  </p>
+              
+            </div>
+            <div class="caixa-explicacao" hidden></div>
+          </div>
 
-                    <img
-                src="../../assets/guia-form-step3.png" class="img-fluid produto-imagem"
-                alt="seção dos compromissos e obrigações">
-        
-                </div>
+          <div class="carousel-item">
 
-                <div class="carousel-item">
-
-                  <h3>Passo 4 de 8 — Confira a conclusão</h3>
-
-                  <p>
-                Caso tenha preenchido todos os campos obrigatórios, aparecerá a mensagem abaixo, validando o sucesso no preenchimento. Você pode prosseguir e clicar nos botões para gerar o PDF do requerimento e para gerar o link para a solicitação da anuência da chefia.
-                  </p>
+                  <h3>Preenchendo o saldo remanescente da licença interrompida</h3>
 
                     <img
-                src="../../assets/guia-form-step4.png" class="img-fluid produto-imagem"
-                alt="mensagem de sucesso">
+                src="../../assets/slide-5.png" class="img-fluid produto-imagem"
+                alt="Campo para adicionar o saldo remanescente">
+
+          <div class="botoes-explicacao">
+
+              
+              <button type="button" class="btn-explicacao" data-info="info-11">
+              <span><img src="../../assets/11.png" class="number" alt="11"> </span>
+                Opção “Outro”
+              </button>
+              
+          </div>
+              <div class="caixa-explicacao" hidden></div>
         
-                </div>
+          </div>
 
-                <div class="carousel-item">
+          <div class="carousel-item">
 
-                  <h3>Passo 5 de 8 — Preenchimento incompleto</h3>
-
-                  <p>
-                Quando faltar algum campo a ser preenchido ou assinalado, será (ão) listado (s) acima dos botões e você não poderá gerar nem o pdf e nem o link da chefia, enquanto não completar todo o formulário. 
-                  </p>
+                  <h3>Dados da ação de desenvolvimento</h3>
 
                     <img
-                src="../../assets/guia-form-step5.png" class="img-fluid produto-imagem"
-                alt="campos sem preenchimento">
+                src="../../assets/slide-6.png" class="img-fluid produto-imagem"
+                alt="Declaração da ação de desenvolvimento">
+
+            <div class="botoes-explicacao">
+
+              
+              <button type="button" class="btn-explicacao" data-info="info-12">
+              <span><img src="../../assets/12.png" class="number" alt="12"> </span>
+                Instituição Promotora
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-13">
+              <span><img src="../../assets/13.png" class="number" alt="13"> </span>
+                Ações de desenvolvimento
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-14">
+              <span><img src="../../assets/14.png" class="number" alt="14"> </span>
+                Carga horária total
+              </button>
+
+              <button type="button" class="btn-explicacao" data-info="info-15">
+              <span><img src="../../assets/15.png" class="number" alt="15"> </span>
+               Local
+              </button>
+
+               <button type="button" class="btn-explicacao" data-info="info-16">
+              <span><img src="../../assets/16.png" class="number" alt="16"> </span>
+               Carga semanal
+              </button>
+              
+          </div>
+            <div class="caixa-explicacao" hidden></div>
         
-                </div>
+        </div>
 
                 <div class="carousel-item">
 
-                  <h3>Passo 6 de 8 — Gere o PDF do requerimento</h3>
+                  <h3>Relação da ação com o PDP/atividades</h3>
 
-                  <p>
-                 Clique no botão para gerar o PDF do requerimento com os dados do servidor. </p>
-                 <p class="alerta">
-                   Não utilize Imprimir/Salvar como PDF do navegador.
-                  </p>
+                    <img src="../../assets/slide-7.png" class="img-fluid produto-imagem"
+                alt="Relação da ação com o PDP/atividades">
 
-                    <img
-                src="../../assets/guia-form-step6.png" class="img-fluid produto-imagem"
-                alt="mensagem de sucesso">
+                 <div class="botoes-explicacao">
+
+              <button type="button" class="btn-explicacao" data-info="info-17">
+              <span><img src="../../assets/17.png" class="number" alt="17"> </span>
+               Relação da ação
+              </button>
+
+          </div>
+            <div class="caixa-explicacao" hidden></div>
         
-                </div>
+        </div>
 
-                <div class="carousel-item">
+        <div class="carousel-item">
 
-                  <h3>Modelo do Requerimento em PDF</h3>
-
-                  <p>
-                    O requerimento em PDF do servidor será baixado no seguinte modelo:
-                  </p>
-
-                    <img src="../../assets/modelo-form-serv.png" class="img-fluid produto-imagem"
-                alt="modelo do requerimento em PDF">
-        
-                </div>
-
-                <div class="carousel-item">
-
-                  <h3>Passo 7 de 8 — Gere o link para anuência da chefia</h3>
-
-                  <p>
-                 Clique no botão para gerar o link para solicitar a anuência da chefia. Será gerado um link que o servidor deve copíar e encaminhar por e-mail para sua respectiva chefia.
-                 </p>
-                 <p>
-                  A chefia abrirá este link e se encontrará no formulário eletrônico com todos os dados do servidor - que não poderão ser editados por ela - além da seção da anuência. A manifestação por escrito apenas será obrigatória se a chefia não estiver de acordo. 
-                 </p>
-                 
+                  <h3>Sobre o ônus da licença</h3>
                 
-                    <img src="../../assets/guia-form-step7.png" class="img-fluid produto-imagem" alt="gerar link para anuência da chefia">
+                    <img src="../../assets/slide-8.png" class="img-fluid produto-imagem" alt="sobre o ônus da licença">
+
+            <div class="botoes-explicacao">
+
+              <button type="button" class="btn-explicacao" data-info="info-18">
+              <span><img src="../../assets/18.png" class="number" alt="18"> </span>
+               Ônus limitado
+              </button>
+
+               <button type="button" class="btn-explicacao" data-info="info-19">
+              <span><img src="../../assets/19.png" class="number" alt="19"> </span>
+               Ônus para outro órgão
+              </button>
+
+          </div>
+            <div class="caixa-explicacao" hidden></div>
+        
+        </div>
+
+        <div class="carousel-item">
+
+                  <h3>Compromissos do requerente</h3>
+
+                    <img src="../../assets/slide-9.png" class="img-fluid produto-imagem" alt="compromissos do requerente">
+
+                    <div class="botoes-explicacao">
+
+              <button type="button" class="btn-explicacao" data-info="info-20">
+              <span><img src="../../assets/20.png" class="number" alt="20"> </span>
+               Compromissos
+              </button>
+
+               <button type="button" class="btn-explicacao" data-info="info-21">
+              <span><img src="../../assets/21.png" class="number" alt="21"> </span>
+               Tabela das principais instituições 
+              </button>
+
+          </div>
+            <div class="caixa-explicacao" hidden></div>
+            </div>
+      
+
+                 <div class="carousel-item">
+
+                  <h3>Faltou preencher algum campo?</h3>
+                
+                    <img
+                src="../../assets/slide-10.png" class="img-fluid produto-imagem"
+                alt="mensagem com os campos que não foram preenchidos quando clica para enviar">
         
                 </div>
 
                  <div class="carousel-item">
 
-                  <h3>Passo 8 de 8 — Encaminhe o link para o e-mail da chefia</h3>
-
-                  <p>
-                    Encaminhe o link copiado para o e-mail de sua chefia imediata com cópia para a Coordenação de Gestão de Pessoas, se for lotado no Campus, ou para concessoes@ifc.edu.br, se for lotado na Reitoria.
-                  </p>
-                  <p>
-                  A chefia abrirá este link e será encaminhado para a página do formulário eletrônico com todos os dados do servidor - que não poderão ser editados por ela - além da seção para a sua resposta quanto à anuência. A manifestação por escrito apenas será obrigatória se a chefia não estiver de acordo. 
-                  </p>
-                 
+                  <h3>Todos os campos devidamente preenchidos</h3>
                 
-                    <img src="../../assets/guia-form-step8.png" class="img-fluid produto-imagem" alt="Anuência da Chefia">
+                    <img
+                src="../../assets/slide-11.png" class="img-fluid produto-imagem"
+                alt="mensagem de sucesso quando todos os campos preenchidos, antes de clicar em Enviar solicitação">
         
                 </div>
 
                  <div class="carousel-item">
 
-                  <h3>Modelo do Requerimento em PDF - com a manifestação da chefia</h3>
-
-                  <p>
-                 O requerimento em PDF do servidor - com a anuência ou desacordo da chefia - será baixado no seguinte modelo:
-                 </p>
+                  <h3>Conferência e envio</h3>
                 
                     <img
-                src="../../assets/modelo-form-chefia.png" class="img-fluid produto-imagem"
-                alt="requerimento em pdf com resposta da chefia">
+                src="../../assets/slide-12.png" class="img-fluid produto-imagem"
+                alt="avisos a serem lidos com atenção antes de enviar">
         
                 </div>
 
-              </div>
+                 <div class="carousel-item">
+
+                  <h3>Mensagem de sucesso após clicar em "Enviar solicitação"</h3>
+                
+                    <img
+                src="../../assets/slide-13.png" class="img-fluid produto-imagem"
+                alt="Mensagem após clicar em 'Enviar solicitação'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>O que acontece após o envio?</h3>
+                
+                    <img
+                src="../../assets/slide-14.png" class="img-fluid produto-imagem"
+                alt="Fluxo após o envio do formulário'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Modelo do e-mail que o servidor deve receber</h3>
+                
+                    <img
+                src="../../assets/slide-15.png" class="img-fluid produto-imagem"
+                alt="Modelo do e-mail que o servidor deve receber'">
+        
+                </div>
+
+                 <div class="carousel-item">
+
+                  <h3>Formulário para manifestação da chefia</h3>
+                
+                    <img
+                src="../../assets/slide-16.png" class="img-fluid produto-imagem"
+                alt="Formulário para manifestação da chefia'">
+        
+                </div>
+
+                 <div class="carousel-item">
+
+                  <h3>Campos para preenchimento da chefia</h3>
+                
+                    <img
+                src="../../assets/slide-17.png" class="img-fluid produto-imagem"
+                alt="Campos para preenchimento da chefia'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Chefia desfavorável à licença? Manifeste o motivo.</h3>
+                
+                    <img
+                src="../../assets/slide-18.png" class="img-fluid produto-imagem"
+                alt="Mensagem de erro por campo não preenchido pela chefia">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Mensagem quando o formulário é enviado após campos preenchidos</h3>
+                
+                    <img
+                src="../../assets/slide-19.png" class="img-fluid produto-imagem"
+                alt="Mensagem quando o formulário é enviado após campos preenchidos'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Se a chefia for favorável</h3>
+                
+                    <img
+                src="../../assets/slide-20.png" class="img-fluid produto-imagem"
+                alt="Formulário com a anuência da chefia'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Mensagem de sucesso após Envio com Anuência da chefia</h3>
+                
+                    <img
+                src="../../assets/slide-21.png" class="img-fluid produto-imagem"
+                alt="Mensagem de sucesso após Envio com Anuência da chefia'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Modelo do requerimento a ser recebido sem anuência da chefia</h3>
+                
+                    <img
+                src="../../assets/slide-22.png" class="img-fluid produto-imagem"
+                alt="Modelo do requerimento enviado sem anuência da chefia'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Modelo do requerimento a ser recebido com a anuência da chefia</h3>
+                
+                    <img
+                src="../../assets/slide-23.png" class="img-fluid produto-imagem"
+                alt="Modelo do requerimento enviado com a anuência da chefia'">
+        
+                </div>
+
+                <div class="carousel-item">
+
+                  <h3>Após a anuência da chefia e recebimento do requerimento</h3>
+                
+                    <img
+                src="../../assets/slide-24.png" class="img-fluid produto-imagem"
+                alt="Fluxo após recebimento do requerimento com a anuência da chefia">
+        
+                </div>
+
+              
 
           <a href="#carousel-instrucoes" class="carousel-control-prev" data-slide="prev">
                <span class="carousel-control-prev-icon"></span>
@@ -208,11 +455,11 @@
           <a href="#carousel-instrucoes" class="carousel-control-next" data-slide="next">
         <span class="carousel-control-next-icon"></span>
           </a>
-
+       </div>
       </div>
-          </section>
+    </section>
 
-        </main>
+  </main>
         
         <footer class="rodape-sobre">
 
@@ -233,5 +480,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="../../js/guia.js" defer></script>
 </body>
 </html>
