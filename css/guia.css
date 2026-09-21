@@ -17,7 +17,7 @@
 }
 
 .introducao p {
-    font-size: 1.4rem;
+    font-size: .98rem;
 }
 
 .instrucoes {
@@ -138,6 +138,65 @@
   margin-left: 30px;
 }
 
+.sumario-guia {
+  max-width: 1000px;
+  margin: 30px auto 40px;
+  padding: 24px;
+}
+
+.sumario-guia h3 {
+  text-align: center;
+  color: var(--cor-verde-principal);
+  margin-bottom: 10px;
+}
+
+.sumario-guia > p {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: .9rem;
+}
+
+.sumario-opcoes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.btn-sumario {
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: var(--cor-verde-principal-hover);
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.btn-sumario:hover {
+  background-color: var(--cor-verde-principal); 
+  color: var(--cor-fundo-input);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn-sumario:focus {
+  outline: none;
+}
+
+.btn-sumario:focus-visible {
+  outline: 2px solid #2d6335;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .sumario-opcoes {
+    grid-template-columns: 1fr;
+  }
+
+  .sumario-guia {
+    padding: 16px;
+  }
+}
 
 
 

@@ -247,7 +247,7 @@ const explicacoes = {
    "info-16": {
     titulo: `
     <img src="../../assets/16.png" class="number" alt="16">
-    Local
+    Carga semanal
   `,
     texto: `
       <p>
@@ -347,6 +347,309 @@ const explicacoes = {
     `
   },
 
+   "info-22": {
+    titulo: `
+    <img src="../../assets/22.png" class="number" alt="22">
+     Faltou preencher algum campo?
+  `,
+    texto: `
+      <p>
+      Ao clicar em <strong>“Enviar solicitação”</strong>, caso ainda existam informações obrigatórias não preenchidas, o formulário apresentará uma lista dos campos que precisam ser verificados.
+      </p>
+      <p>
+      Corrija os itens indicados e tente realizar o envio novamente.
+      </p>
+    `
+  },
+
+   "info-23": {
+    titulo: `
+    <img src="../../assets/23.png" class="number" alt="23">
+     Formulário completamente preenchido
+  `,
+    texto: `
+      <p>
+      Quando todos os campos e compromissos obrigatórios estiverem preenchidos corretamente, será exibida a mensagem <strong>“Formulário preenchido com sucesso!”</strong>.
+      </p>
+      <p>
+      Antes de enviar, confira especialmente seu e-mail institucional e sua unidade de exercício, pois essas informações serão utilizadas no fluxo eletrônico da solicitação.
+      </p>
+      <p>
+      Após a conferência, clique em “Enviar solicitação”.
+      </p>
+    `
+  },
+
+   "info-24": {
+    titulo: `
+    <img src="../../assets/24.png" class="number" alt="24">
+     Envio concluído
+  `,
+    texto: `
+      <p>
+      Aguarde a confirmação <strong>“Solicitação enviada com sucesso!” </strong>.
+      </p>
+      <p>
+      O sistema enviará ao seu e-mail institucional um <strong> comprovante de preenchimento e o link individual para registro da manifestação da chefia imediata. Não gerar, imprimir ou salvar documentos diretamente pela página do formulário. </strong>.
+      </p>
+      <p>
+      <strong>Encaminhe o link recebido à sua chefia imediata </strong>.
+      </p>
+      <p>
+      O comprovante recebido neste momento destina-se à sua conferência e registro e <strong> não deve ser utilizado para abertura do processo </strong>.
+    `
+  },
+
+   "info-25": {
+    titulo: `
+    <img src="../../assets/25.png" class="number" alt="25">
+     Após o envio
+  `,
+    texto: `
+      <p>
+      Após clicar em <strong>“Enviar solicitação” </strong> e receber a confirmação do envio, acompanhe seu e-mail institucional.
+      </p>
+      <p>
+      O sistema enviará automaticamente as informações necessárias para a próxima etapa. 
+      </p>
+    `
+  },
+
+   "info-26": {
+    titulo: `
+    <img src="../../assets/26.png" class="number" alt="26">
+     E-mail recebido
+  `,
+    texto: `
+      <p>
+      Você receberá em seu e-mail institucional:
+      </p>
+      <ul>
+        <li>um PDF para conferência e registro;</li>
+        <li>um link individual para registro da manifestação da chefia imediata.</li>
+      </ul>
+      <p>
+      O PDF recebido nesta etapa é apenas um comprovante de preenchimento e não deve ser utilizado para abertura do processo.
+      </p>
+    `
+  },
+
+   "info-27": {
+    titulo: `
+    <img src="../../assets/27.png" class="number" alt="27">
+     Link da chefia
+  `,
+    texto: `
+      <p>
+      Encaminhe à sua <strong> chefia imediata </strong> o link individual recebido por e-mail.
+      </p>
+      <p>
+      O link dará acesso à página destinada exclusivamente ao registro da manifestação da chefia sobre a solicitação.
+      </p>
+      <p>
+      <strong>Não encaminhe o PDF no lugar do link.</strong>
+      </p>
+    `
+  },
+
+   "info-28": {
+    titulo: `
+    <img src="../../assets/28.png" class="number" alt="28">
+     Modelo de e-mail com o link da chefia
+  `,
+    texto: `
+      <p>
+      O e-mail que você deve receber com o comprovante do requerimento e o link para a chefia virá neste modelo acima.
+      </p>
+      <p>
+      Ao acessar o link, a chefia será direcionada à página de Manifestação da Chefia Imediata.
+      </p>
+      <p>
+      Nessa página estarão disponíveis os dados e as informações preenchidas pelo servidor, para conferência, além dos campos destinados à manifestação da chefia.
+      </p>    
+    `
+  },
+
+   "info-29": {
+    titulo: `
+    <img src="../../assets/29.png" class="number" alt="29">
+     Dados do servidor
+  `,
+    texto: `
+      <p>
+      Os dados do requerimento são carregados automaticamente e apresentados à chefia somente para consulta, não podendo ser alterados nessa etapa.
+      </p>
+      <p>
+      A chefia deverá conferir as informações e preencher apenas os campos destinados à sua manifestação.
+      </p>
+    `
+  },
+
+   "info-30": {
+    titulo: `
+    <img src="../../assets/30.png" class="number" alt="30">
+     De acordo
+  `,
+    texto: `
+      <p>
+      Se estiver de acordo com a solicitação apresentada, a chefia deverá selecionar <strong> “De acordo com a solicitação” </strong>.
+      </p>
+      <p>
+      A manifestação favorável permitirá o prosseguimento do fluxo após o envio, sem a necessidade de escrever qualquer manifestação.
+      </p>
+    `
+  },
+   "info-31": {
+    titulo: `
+    <img src="../../assets/31.png" class="number" alt="31">
+    Não estou de acordo
+  `,
+    texto: `
+      <p>
+      Caso não concorde com a solicitação, a chefia deverá selecionar <strong> “Não estou de acordo com a solicitação” </strong>.
+      </p>
+      <p>
+      Nessa situação, será necessário informar a <strong> justificativa da não concordância antes do envio </strong>.
+      </p>
+    `
+  },
+
+   "info-32": {
+    titulo: `
+    <img src="../../assets/32.png" class="number" alt="32">
+    Observações
+  `,
+    texto: `
+      <p>
+      Este campo poderá ser utilizado pela chefia para registrar informações complementares sobre sua manifestação.
+      </p>
+      <p>
+      Quando a manifestação for favorável, o preenchimento é opcional. Em caso de não concordância, <strong> a justificativa é obrigatória </strong>.
+      </p>
+    `
+  },
+
+   "info-33": {
+    titulo: `
+    <img src="../../assets/33.png" class="number" alt="33">
+    Identificação
+  `,
+    texto: `
+      <p>
+      Informe o nome da pessoa que está registrando a manifestação como chefia imediata.
+      </p>
+      <p>
+      O nome deve ser preenchido por quem efetivamente estiver respondendo à solicitação, inclusive quando a manifestação for realizada por chefia substituta.
+      </p>
+      <p>
+      A data será preenchida automaticamente pelo sistema.
+      </p>
+    `
+  },
+
+   "info-34": {
+    titulo: `
+    <img src="../../assets/34.png" class="number" alt="34">
+    Enviar manifestação
+  `,
+    texto: `
+      <p>
+      Após conferir as informações e preencher os campos obrigatórios, clique em <strong>“Enviar” </strong>.
+      </p>
+      <p>
+      <strong> Não imprima nem utilize a opção do navegador para salvar esta página em PDF.</strong>
+      </p>
+      <p>
+      O documento final será gerado automaticamente pelo sistema após o envio da manifestação e encaminhado aos destinatários previstos no fluxo.
+      </p>
+    `
+  },
+
+   "info-35": {
+    titulo: `
+    <img src="../../assets/35.png" class="number" alt="35">
+     Não concordância
+  `,
+    texto: `
+      <p>
+      Ao selecionar <strong> “Não estou de acordo com a solicitação” </strong>, informe no campo de observações o motivo da não concordância.
+      </p>
+      <p>
+      A solicitação somente poderá ser enviada após o preenchimento da justificativa.
+      </p>
+    `
+  },
+
+  "info-36": {
+    titulo: `
+    <img src="../../assets/36.png" class="number" alt="36">
+     Erro ao tentar enviar
+  `,
+    texto: `
+      <p>
+      Caso a chefia tente realizar o envio sem informar a justificativa da não concordância, o sistema apresentará uma mensagem indicando o campo pendente.
+      </p>
+      <p>
+      Preencha a justificativa e clique novamente em “Enviar”.
+      </p>
+    `
+  },
+
+  "info-37": {
+    titulo: `
+    <img src="../../assets/37.png" class="number" alt="37">
+     Não concordância
+  `,
+    texto: `
+      <p>
+      Quando a chefia selecionar <strong>“Não estou de acordo com a solicitação” </strong>, o documento final registrará a manifestação e a respectiva justificativa.
+      </p>
+      <p>
+      Nesse caso, a solicitação não terá prosseguimento, não sendo necessário ao servidor encaminhar os demais documentos previstos para continuidade do procedimento.
+      </p>
+    `
+  },
+
+   "info-38": {
+    titulo: `
+    <img src="../../assets/38.png" class="number" alt="38">
+     Quando houver anuência
+  `,
+    texto: `
+      <p>
+      Quando a chefia selecionar<strong> “De acordo com a solicitação” </strong>, o sistema gerará automaticamente o documento final contendo o requerimento e a manifestação da chefia.
+      </p>
+      <p>
+      O documento será encaminhado à unidade de Gestão de Pessoas responsável pela continuidade do procedimento, com cópia ao servidor.
+      </p>
+       <p>
+      A anuência da chefia não corresponde à autorização da Licença para Capacitação. O servidor deverá cumprir as etapas seguintes e aguardar a publicação da Portaria de Autorização.
+      </p>
+    `
+  },
+
+   "info-39": {
+    titulo: `
+    <img src="../../assets/39.png" class="number" alt="39">
+    Comprovante da ação
+  `,
+    texto: `
+      <p>
+      Após a anuência da chefia, ainda existem providências que deverão ser cumpridas antes do início da Licença para Capacitação.
+      </p>
+     <ol>
+     <li>Encaminhe o comprovante da ação de desenvolvimento à unidade responsável, conforme informado no formulário.</li>
+     <p>
+     O documento apresentado dependerá do tipo de ação. Poderá ser, por exemplo, comprovante de inscrição ou matrícula, documento da instituição promotora, atestado de matrícula ou declaração do orientador da pós graduação, termo de compromisso ou outro documento correspondente à ação informada.
+     </p>
+     <p>
+     <strong>Atenção:</strong>quando a inscrição antecipada iniciar imediatamente a ação ou interferir no período registrado no certificado, utilize a documentação disponível para comprovação da ação e realize a inscrição no momento adequado.
+     <li>Aguarde o recebimento do Guia e do Parecer. Leia atentamente as orientações encaminhadas e responda ao e-mail declarando sua ciência.</li>
+     <li>Aguarde a publicação da Portaria de Autorização. A Licença para Capacitação somente poderá ser iniciada após a conclusão do procedimento e a respectiva publicação.</li>
+     </ol>
+    `
+  },
+
 };
 
 
@@ -360,13 +663,6 @@ $("#carousel-instrucoes").on("slide.bs.carousel", function () {
     botao.classList.remove("ativo");
   });
 });
-
-
-
-
-
-
-
 
 
 document.querySelectorAll(".btn-explicacao").forEach((botao) => {
@@ -398,5 +694,22 @@ document.querySelectorAll(".btn-explicacao").forEach((botao) => {
     `;
 
     caixa.hidden = false;
+  });
+});
+
+document.querySelectorAll(".btn-sumario").forEach((botao) => {
+  botao.addEventListener("click", () => {
+
+    const destino = Number(botao.dataset.slideDestino);
+
+    $("#carousel-instrucoes").carousel(destino);
+
+    document
+      .querySelector("#carousel-instrucoes")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
   });
 });
