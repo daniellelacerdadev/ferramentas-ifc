@@ -3,22 +3,24 @@
 .quinquenio{
   padding: 30px;
   place-content: center;
-  height: 600px;
+  height: auto;
+  min-height: 600px;
 }
 
 .quinquenio-box {
   margin: 50px auto;
   margin-top: 30px;
   text-align:  center;
-  max-width: 600px;
+  max-width: 860px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--cor-verde-principal);
   border-radius: 10px;
-  background: #f9f9f9;
+  background: var(--cor-fundo);
 }
 
-.quinquenio-box h4 {
+.quinquenio-box h4, h3 {
   margin-bottom: 20px;
+  color: var(--cor-verde-principal);
 }
 
 .quinquenio-box label {
@@ -32,19 +34,320 @@
   max-width: 250px;
   padding: 8px;
   margin-bottom: 15px;
+  background-color: var(--cor-fundo-input);
 }
 
-.quinquenio-box button {
-  padding: 10px 20px;
-  background-color: #2f5e2f;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
+
+#resultadoAjustado {
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+/* ----------------------------------
+   NOVA CALCULADORA DE QUINQUÊNIO
+---------------------------------- */
+
+.orientacao-inicial {
+  margin: 15px 0 25px;
+  color: var(--cor-preto);
+  font-size: .9rem;
+}
+
+.bloco-ocorrencias {
+  margin: 25px 0;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  background: var(--cor-branco);
+}
+
+.titulo-ocorrencias {
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: var(--cor-preto);
+  font-size: 1rem;
+}
+
+.opcoes-sim-nao {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.opcoes-sim-nao label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.opcoes-sim-nao input,
+.check-ocorrencia input {
+  width: auto;
+  margin: 0;
+  background-color: var(--cor-fundo-input);
+}
+
+.oculto {
+  display: none;
+}
+
+.aviso-ocorrencias {
+  margin: 15px 0 20px;
+  padding: 12px;
+  border-left: 4px solid var(--cor-verde-principal);
+  border-right: 4px solid var(--cor-verde-principal);
+  background: #f0f5f0;
+  font-size: 0.95rem;
+}
+
+#quinquenioOcorrencia {
+  margin: 20px;
+  border: 1px solid var(--cor-border-rodape);
+  padding: 8px;
+  border-radius: 10px;
+  background-color: var(--cor-fundo);
+  font-weight: 500;
+}
+
+.ocorrencia {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--cor-border-rodape);
+}
+
+.ocorrencia:last-child {
+  border-bottom: none;
+}
+
+.check-ocorrencia {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 !important;
   cursor: pointer;
 }
 
-#resultado {
+.detalhes-ocorrencia {
+  margin: 15px 0 5px 30px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f7f7f7;
+}
+
+.detalhes-ocorrencia label {
+  margin-top: 5px;
+}
+
+.detalhes-ocorrencia input {
+  display: block;
+}
+
+.explicacao {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.calculo-ocorrencia {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #eaf3ea;
+  color: #284d28;
+}
+
+#resultadoAjustado {
+  margin-top: 30px;
+}
+
+.resultado-box {
+  text-align: left;
+}
+
+.resultado-box h4 {
+  text-align: center;
+}
+
+.resultado-principal {
   margin-top: 20px;
-  line-height: 1.8;
+  padding: 20px;
+  border: 2px solid #507a50;
+  border-radius: 10px;
+  background: #f2f7f2;
+}
+
+.resultado-principal h5 {
+  color: #2f5e2f;
+  font-weight: bold;
+}
+
+.periodo-destaque {
+  margin: 15px 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #244724;
+}
+
+.resultado-ajuste {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f6f6f6;
+}
+
+.resultado-secundario {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.resultado-secundario h5,
+.resultado-ajuste h5 {
+  font-weight: bold;
+}
+
+.aviso-final {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 4px solid #b58b2a;
+  background: #fff8e7;
+}
+
+.mensagem-erro {
+  margin-top: 20px;
+  padding: 12px;
+  border-left: 4px solid #a94442;
+  background: #f9eded;
+  color: #843534;
+}
+
+
+.lista-quinquenios {
+  margin-top: 25px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.lista-quinquenios h4 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #2f5e2f;
+}
+
+.observacao-periodos {
+  margin-bottom: 20px;
+  padding: 12px;
+  border-left: 4px solid #507a50;
+  background: #f0f5f0;
+}
+
+.quinquenio-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.quinquenio-item.concluido {
+  border: 1px solid #b8cfb8;
+  background: #f2f7f2;
+}
+
+.quinquenio-item.andamento {
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+}
+
+.quinquenio-item strong {
+  color: var(--cor-verde-principal);
+}
+
+.quinquenio-item small {
+  color: #666;
+  font-size: .9rem;
+}
+
+#ocorrenciasAdicionadas {
+  margin-top: 20px;
+}
+
+.ocorrencia-adicionada {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid #d7d7d7;
+  border-radius: 8px;
+  background: #f7f7f7;
+}
+
+.ocorrencia-adicionada p {
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+
+#btnCalcularPeriodos,
+#btnRecalcular, #btnAdicionarOcorrencia, .btn-remover-ocorrencia {
+  margin: 30px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  background-color: var(--cor-verde-principal);
+  color: var(--cor-branco);
+  border: none;
+}
+
+ #btnLimparSimulacao {
+  margin: 30px 30px 30px 0;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  background-color: var(--cor-verde-principal);
+  color: var(--cor-branco);
+  border: none;
+ }
+
+#btnCalcularPeriodos:hover, #btnLimparSimulacao:hover,
+#btnRecalcular:hover, #btnAdicionarOcorrencia:hover {
+  margin: 30px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  background-color: var(--cor-verde-principal-hover);
+  color: var(--cor-verde-principal);
+  border: none;
+}
+
+@media (max-width: 600px) {
+
+  .quinquenio {
+    padding: 15px;
+  }
+
+  .quinquenio-box {
+    margin-top: 15px;
+    padding: 15px;
+  }
+
+  .opcoes-sim-nao {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .detalhes-ocorrencia {
+    margin-left: 0;
+  }
+
 }
 

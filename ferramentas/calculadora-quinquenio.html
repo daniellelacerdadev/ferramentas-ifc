@@ -41,21 +41,337 @@
 
         <section class="quinquenio">
 
-            <div class="quinquenio-box">
-              <h3>Calculadora de Quinquênio</h3>
+          <div class="quinquenio-box">
 
-                <label for="dataIngresso">
-                  Data de ingresso no serviço público federal:
-                </label>
+            <h3>Calculadora de Quinquênio</h3>
 
-                  <input type="date" id="dataIngresso">
+            <p class="orientacao-inicial">
+               Informe a data de ingresso no serviço público federal para consultar
+               o quinquênio correspondente à Licença para Capacitação.
+            </p>
 
-                    <button onclick="calcularQuinquenio()">
-                       Calcular
-                    </button>
+            <label for="dataIngresso">
+             Data de ingresso no serviço público federal:
+            </label>
 
-                      <div id="resultado"></div>
-                      </div>
+            <input type="date" id="dataIngresso">
+
+            <button type="button" id="btnCalcularPeriodos">
+             Calcular quinquênios
+            </button>
+
+            <button type="button" id="btnLimparSimulacao" class="btn-secundario oculto">
+                Limpar simulação
+            </button>
+
+          <div id="periodosCalculados"></div>
+
+          <div class="bloco-ocorrencias oculto" id="blocoOcorrencias">
+
+            <p class="titulo-ocorrencias">
+        Possui afastamentos ou ocorrências que possam alterar a contagem
+        do quinquênio?
+            </p>
+
+          <div class="opcoes-sim-nao">
+            <label>
+            <input type="radio" name="possuiOcorrencias" value="nao" checked>
+          Não
+          </label>
+
+          <label>
+          <input type="radio" name="possuiOcorrencias" value="sim">
+          Sim
+          </label>
+      </div>
+
+      <div id="listaOcorrencias" class="oculto">
+
+        <div class="aviso-ocorrencias">
+         <p> <strong>Atenção:</strong>
+            informe somente ocorrências que devam ser consideradas na apuração
+            de quinquênio já concluído.
+         </p>
+         <p>
+            Ocorrências pertencentes ao quinquênio atualmente em andamento
+         <strong>não devem ser informadas neste cálculo</strong>, pois seus
+         efeitos sobre a contagem somente serão considerados após a conclusão
+         do respectivo quinquênio.
+         </p>
+         <p>
+        O resultado apresentado possui caráter orientativo e será conferido
+        pela unidade de Gestão de Pessoas responsável durante a análise
+        do processo.
+         </p>
+      </div>
+
+      <div id="escolhaQuinquenio" class="escolha-quinquenio">
+
+        <label for="quinquenioOcorrencia">
+          Em qual quinquênio ocorreram os afastamentos ou ocorrências
+          que serão informados?
+        </label>
+
+        <select id="quinquenioOcorrencia">
+          <option value="">
+        Selecione o quinquênio
+          </option>
+        </select>
+
+      </div>
+
+        <!-- SAÚDE PRÓPRIA -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoSaudePropria">
+            Licença para tratamento da própria saúde
+          </label>
+
+          <div id="campoSaudePropria" class="detalhes-ocorrencia oculto">
+
+            <label for="diasSaudePropria">
+              Total acumulado de dias de licença:
+            </label>
+
+            <input type="number" id="diasSaudePropria" min="0">
+
+            <p class="explicacao">
+              Informe o total acumulado de dias de licença para tratamento
+              da própria saúde ao longo do tempo de serviço público federal
+              em cargo efetivo. Para fins desta estimativa, somente os dias
+              que excederem 730 dias serão considerados na alteração
+              da contagem.
+            </p>
+
+            <div id="resultadoSaudePropria" class="calculo-ocorrencia"></div>
+
+          </div>
+
+        </div>
+
+        <!-- SAÚDE FAMILIAR -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoSaudeFamiliar">
+            Licença por motivo de doença em pessoa da família
+          </label>
+
+          <div id="campoSaudeFamiliar" class="detalhes-ocorrencia oculto">
+
+            <label for="diasSaudeFamiliar">
+              Total de dias de licença no período de 12 meses:
+            </label>
+
+            <input type="number" id="diasSaudeFamiliar" min="0">
+
+              <p class="explicacao">
+                Informe o total de dias de licença por motivo de doença em pessoa
+                da família apurados no respectivo período de 12 meses.
+                Para fins desta estimativa, serão considerados somente os dias
+                que excederem 30 dias nesse período.
+              </p>
+
+                  <div id="resultadoSaudeFamiliar" class="calculo-ocorrencia"></div>
+
+          </div>
+
+        </div>
+
+        <!-- INTERESSES PARTICULARES -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoInteresses">
+            Licença para tratar de interesses particulares
+          </label>
+
+          <div id="campoInteresses" class="detalhes-ocorrencia oculto">
+
+            <label for="diasInteresses">
+              Total de dias da ocorrência:
+            </label>
+
+            <input type="number" id="diasInteresses" min="0">
+
+          </div>
+
+        </div>
+
+        <!-- ATIVIDADE POLÍTICA -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoPolitica">
+            Licença para atividade política
+          </label>
+
+          <div id="campoPolitica" class="detalhes-ocorrencia oculto">
+
+            <label for="diasPolitica">
+              Total de dias da ocorrência:
+            </label>
+
+            <input type="number" id="diasPolitica" min="0">
+
+          </div>
+
+        </div>
+
+        <!-- MANDATO CLASSISTA -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoMandato">
+            Licença para desempenho de mandato classista
+          </label>
+
+          <div id="campoMandato" class="detalhes-ocorrencia oculto">
+
+            <label for="diasMandato">
+              Total de dias da ocorrência:
+            </label>
+
+            <input type="number" id="diasMandato" min="0">
+
+          </div>
+
+        </div>
+
+        <!-- AFASTAMENTO CÔNJUGE -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoConjuge">
+            Licença por motivo de afastamento do cônjuge
+            (sem exercício provisório)
+          </label>
+
+          <div id="campoConjuge" class="detalhes-ocorrencia oculto">
+
+            <label for="diasConjuge">
+              Total de dias da ocorrência:
+            </label>
+
+            <input type="number" id="diasConjuge" min="0">
+
+          </div>
+
+        </div>
+
+        <!-- FALTAS -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoFaltas">
+            Faltas não justificadas
+          </label>
+
+          <div id="campoFaltas" class="detalhes-ocorrencia oculto">
+
+            <label for="diasFaltas">
+              Total de dias:
+            </label>
+
+            <input type="number" id="diasFaltas" min="0">
+
+          </div>
+
+        </div>
+
+        <!-- SUSPENSÃO -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoSuspensao">
+            Suspensão disciplinar
+          </label>
+
+          <div id="campoSuspensao" class="detalhes-ocorrencia oculto">
+
+            <label for="diasSuspensao">
+              Total de dias:
+            </label>
+
+            <input type="number" id="diasSuspensao" min="0">
+
+          </div>
+
+        </div>
+
+        <!-- OUTROS -->
+
+        <div class="ocorrencia">
+
+          <label class="check-ocorrencia">
+            <input type="checkbox" class="checkbox-ocorrencia"
+              data-campo="campoOutros">
+            Outros
+          </label>
+
+          <div id="campoOutros" class="detalhes-ocorrencia oculto">
+
+            <label for="descricaoOutros">
+              Descreva a ocorrência:
+            </label>
+
+            <input type="text" id="descricaoOutros">
+
+            <label for="diasOutros">
+              Total de dias a considerar:
+            </label>
+
+            <input type="number" id="diasOutros" min="0">
+
+          </div>
+
+        </div>
+
+        <div class="acoes-ocorrencia">
+
+          <button type="button" id="btnAdicionarOcorrencia" class="btn-secundario">
+            + Adicionar ocorrência
+          </button>
+
+          </div>
+
+          <div id="ocorrenciasAdicionadas"  class="oculto">
+
+            <h4>Ocorrências informadas</h4>
+
+          <div id="listaOcorrenciasAdicionadas"></div>
+   
+      </div>
+
+    </div>
+
+  </div>
+   
+                <button type="button" id="btnRecalcular" class="oculto">
+          Recalcular Quinquênios
+                  </button>
+
+              <div id="resultadoAjustado"></div>
+
+            </div>
+
         </section>
       
 
